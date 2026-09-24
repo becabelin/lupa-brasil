@@ -163,8 +163,8 @@ export const PHOTO_CREDITS: {
   },
   {
     candidateId: "hertz-dias",
-    credit: "Wikimedia Commons · Hertz Dias PSTU",
-    url: "https://commons.wikimedia.org/wiki/File:Hertz_Dias_PSTU.jpg",
+    credit: "Matheus Soares / PSTU · Divulgação (via Agência Brasil)",
+    url: "https://agenciabrasil.ebc.com.br/politica/noticia/2026-08/pstu-tem-o-professor-de-historia-hertz-dias-como-presidenciavel",
   },
   {
     candidateId: "edmilson-costa",
@@ -183,8 +183,8 @@ export const PHOTO_CREDITS: {
   },
   {
     candidateId: "clariana-barao",
-    credit: "Divulgação / campanha · Poder360 (uso editorial no site)",
-    url: "https://www.poder360.com.br/poder-eleicoes-2026/saiba-quem-e-a-aposta-do-dc-para-substituir-barbosa-e-rebelo/",
+    credit: "Democracia Cristã / Arquivo · Divulgação (via Agência Brasil)",
+    url: "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/clariana-barao-prioriza-propostas-de-protecao-mulher-e-infancia",
   },
   {
     candidateId: "augusto-cury",

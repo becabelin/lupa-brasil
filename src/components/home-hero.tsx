@@ -96,7 +96,7 @@ export function HomeHero({ meta }: Props) {
                       {c.party}
                     </span>
                   )}
-                  <div className="lupa-photo-caption pointer-events-none absolute inset-x-0 bottom-0 z-10 w-full bg-gradient-to-t from-black from-40% via-black/75 to-transparent px-2.5 pb-2.5 pt-12 opacity-100">
+                  <div className="lupa-photo-caption pointer-events-none absolute inset-x-0 bottom-0 z-10 w-full px-2.5 pb-2.5 pt-16">
                     <p className="w-full truncate text-[10px] font-bold uppercase tracking-wider text-white">
                       {c.name}
                     </p>

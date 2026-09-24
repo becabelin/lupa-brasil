@@ -54,6 +54,16 @@ const TSE_CHAPAS: CandidateSource = {
   url: "https://www.tse.jus.br/comunicacao/noticias/2026/Setembro/eleicoes-2026-tem-12-candidaturas-na-disputa-pela-presidencia-da-republica",
 };
 
+const AGENCIA_BRASIL_CLARIANA: CandidateSource = {
+  label: "Agência Brasil · perfil e propostas de Clariana Barão (DC)",
+  url: "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/clariana-barao-prioriza-propostas-de-protecao-mulher-e-infancia",
+};
+
+const AGENCIA_BRASIL_HERTZ: CandidateSource = {
+  label: "Agência Brasil · perfil de Hertz Dias (PSTU)",
+  url: "https://agenciabrasil.ebc.com.br/politica/noticia/2026-08/pstu-tem-o-professor-de-historia-hertz-dias-como-presidenciavel",
+};
+
 export const CANDIDATES: Candidate[] = [
   {
     id: "lula",
@@ -211,15 +221,17 @@ export const CANDIDATES: Candidate[] = [
     viceParty: "PSTU",
     color: "#000000",
     photo: "/candidatos/hertz-dias.jpg",
-    bio: "Professor da rede pública no Maranhão, rapper e ativista do movimento negro. Candidato do PSTU à Presidência, com Vanessa Portugal (também professora e militante) na vice.",
-    education: "Formação superior em História; professor da rede pública.",
+    bio: "Professor de história da rede pública no Maranhão, rapper e pesquisador. Natural de São José de Ribamar (MA). Mestre em educação, com pesquisas sobre cultura, juventude, racismo e organização popular. Disputa a Presidência pelo PSTU com Vanessa Portugal na vice.",
+    education: "Graduação em História; mestrado em Educação.",
     career: [
-      { when: "Formação", text: "Graduado em História; professor da rede pública no Maranhão." },
-      { when: "Militância", text: "Atuação no movimento negro e na cultura (rap)." },
-      { when: "PSTU", text: "Militante e candidato do Partido Socialista dos Trabalhadores Unificado." },
+      { when: "Formação", text: "Professor de história da rede pública no Maranhão; mestrado em educação." },
+      { when: "Militância", text: "Atuação no movimento negro, sindical e na cultura (rap)." },
+      { when: "2018", text: "Candidato a vice-presidente na chapa de Vera Lúcia (PSTU)." },
+      { when: "2020", text: "Candidato a prefeito de São Luís." },
+      { when: "2022", text: "Candidato ao governo do Maranhão." },
       { when: "2026", text: "Candidato a presidente pelo PSTU; chapa deferida no TSE." },
     ],
-    bioSources: [G1_QUEM_SAO, TSE_CHAPAS],
+    bioSources: [G1_QUEM_SAO, TSE_CHAPAS, AGENCIA_BRASIL_HERTZ],
   },
   {
     id: "edmilson-costa",
@@ -289,13 +301,15 @@ export const CANDIDATES: Candidate[] = [
     viceParty: "DC",
     color: "#000000",
     photo: "/candidatos/clariana-barao.jpg",
-    bio: "Advogada. Disputa a Presidência pela Democracia Cristã com Fabiana Torquato na vice. É a primeira vez, desde a criação do partido em 1995, que a DC não lança José Maria Eymael à Presidência.",
-    education: "Advogada (graduação em Direito).",
+    bio: "Advogada de Cuiabá (MT). Formada pelo Centro Universitário de Várzea Grande, com especialização em direito administrativo e gestão pública. Presidiu a Comissão de Solidariedade e Assistência Social da OAB em Várzea Grande e, em 2026, o diretório estadual do DC em Mato Grosso. Disputa a Presidência com Fabiana Torquato na vice. É a primeira vez, desde 1995, que a DC não lança José Maria Eymael à Presidência.",
+    education: "Direito (Univag, Várzea Grande/MT); especialização em direito administrativo e gestão pública.",
     career: [
-      { when: "Formação", text: "Graduada em Direito; atua como advogada." },
-      { when: "2026", text: "Candidata a presidente pela DC; chapa deferida no TSE." },
+      { when: "Formação", text: "Graduada em Direito pelo Centro Universitário de Várzea Grande; especialização em direito administrativo e gestão pública." },
+      { when: "OAB", text: "Presidente da Comissão de Solidariedade e Assistência Social da OAB em Várzea Grande." },
+      { when: "2024", text: "Coordenou grupo de voluntários em auxílio às vítimas das enchentes no Rio Grande do Sul." },
+      { when: "2026", text: "Presidente do diretório estadual do DC em Mato Grosso; candidata a presidente; chapa deferida no TSE." },
     ],
-    bioSources: [G1_QUEM_SAO, TSE_CHAPAS],
+    bioSources: [G1_QUEM_SAO, TSE_CHAPAS, AGENCIA_BRASIL_CLARIANA],
   },
   {
     id: "augusto-cury",

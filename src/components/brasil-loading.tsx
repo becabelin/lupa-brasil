@@ -41,7 +41,7 @@ export function BrasilLoading({
         alt="Brasil em preto e branco"
         className="absolute inset-0"
       />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black via-black/70 to-transparent px-4 pb-4 pt-10">
+      <div className="lupa-photo-caption pointer-events-none absolute inset-x-0 bottom-0 z-20 px-4 pb-4 pt-14">
         <p className="text-center text-[10px] font-bold uppercase tracking-[0.22em] text-white/70">
           {label}
         </p>

@@ -86,7 +86,7 @@ export function HomeEleicoes({ candidateCount }: { candidateCount: number }) {
                       className="object-cover object-top"
                       sizes="200px"
                     />
-                    <span className="lupa-photo-caption absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent px-3 pb-2.5 pt-10">
+                    <span className="lupa-photo-caption absolute inset-x-0 bottom-0 px-3 pb-2.5 pt-14">
                       <span className="block truncate text-[10px] font-bold uppercase tracking-[0.16em] text-white">
                         {c.name.split(" ").slice(0, 2).join(" ")}
                       </span>

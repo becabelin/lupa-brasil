@@ -654,14 +654,23 @@ select.appearance-none {
   }
 }
 
-/* Legenda sobre foto: branco real (text-white no tema escuro vira papel escuro). */
+/* Legenda sobre foto: scrim preto real + texto branco (sem remap de tema). */
 .lupa-photo-caption {
+  background-image: linear-gradient(
+    to top,
+    #000000 0%,
+    rgba(0, 0, 0, 0.92) 28%,
+    rgba(0, 0, 0, 0.55) 58%,
+    transparent 100%
+  ) !important;
+  background-color: transparent !important;
   color: #ffffff !important;
 }
 .lupa-photo-caption .text-white,
 .lupa-photo-caption p,
 .lupa-photo-caption span {
   color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
 }
 
 /* Faixa preta: não deixar tema/remap lavar o contraste. */
