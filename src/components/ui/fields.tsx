@@ -21,7 +21,10 @@ function FieldLabel({ htmlFor, children }: { htmlFor: string; children: React.Re
 }
 
 const fieldClass =
-  "lupa-soft w-full border-2 border-black bg-white px-3 py-3 text-base font-semibold text-black outline-none transition focus:bg-black focus:text-white";
+  "lupa-soft w-full border-2 border-black bg-white px-3 py-3 text-base font-semibold text-black outline-none transition";
+
+/** Invert só no trigger do select (sem placeholder). Inputs de busca ficam no papel. */
+const fieldFocusInvert = "focus:bg-black focus:text-white";
 
 export function FilterInput({
   label,
@@ -40,7 +43,7 @@ export function FilterInput({
         <input
           id={id}
           {...props}
-          className={`lupa-search-input ${fieldClass} placeholder:font-normal placeholder:text-[#666] focus:placeholder:text-white/70 ${
+          className={`lupa-search-input ${fieldClass} placeholder:font-normal placeholder:text-[#666] ${
             isSearch ? (hasText ? "pr-11" : "") : ""
           } ${props.className ?? ""}`}
         />
@@ -221,7 +224,7 @@ export function FilterSelect({
           aria-controls={listId}
           onClick={() => !disabled && setOpen((v) => !v)}
           onKeyDown={onTriggerKeyDown}
-          className={`lupa-select-trigger ${fieldClass} flex cursor-pointer items-center justify-between gap-3 text-left disabled:cursor-not-allowed disabled:opacity-50 ${
+          className={`lupa-select-trigger ${fieldClass} ${fieldFocusInvert} flex cursor-pointer items-center justify-between gap-3 text-left disabled:cursor-not-allowed disabled:opacity-50 ${
             open ? "bg-black text-white" : ""
           }`}
         >
@@ -262,7 +265,7 @@ export function FilterSelect({
                   onKeyDown={onListKeyDown}
                   placeholder={searchPlaceholder}
                   autoComplete="off"
-                  className="lupa-search-input w-full border-2 border-black bg-white px-3 py-2 text-sm font-semibold outline-none placeholder:font-normal placeholder:text-[#666] focus:bg-black focus:text-white focus:placeholder:text-white/70"
+                  className="lupa-search-input w-full border-2 border-black bg-white px-3 py-2 text-sm font-semibold text-black outline-none placeholder:font-normal placeholder:text-[#666]"
                 />
               </div>
             ) : null}

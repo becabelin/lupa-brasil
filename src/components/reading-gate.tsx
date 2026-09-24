@@ -6,20 +6,27 @@ import {
   type ReadingLevel,
 } from "@/components/accessibility";
 import { AccessibilityControls } from "@/components/accessibility-controls";
+import {
+  isGateAllowed,
+  openReadingGateAttr,
+  subscribeGateAllowed,
+  unlockShell,
+} from "@/lib/entry-flow";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 import { VOICE } from "@/data/voice";
 
 /**
- * Primeira visita: tela preta + modal compacto (sem scroll).
+ * Depois do splash: tela preta + modal compacto (sem scroll).
  * Tema/texto/contraste escolhidos aqui valem no rodapé (Aa).
  */
 export function ReadingGate() {
-  const { setReadingLevel, readingChosen, readingLevel } = useAccessibility();
-  const [mounted, setMounted] = useState(false);
+  const { setReadingLevel, readingChosen, readingLevel, prefsReady } =
+    useAccessibility();
+  const [gateAllowed, setGateAllowed] = useState(isGateAllowed);
   const [picked, setPicked] = useState<ReadingLevel | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const primaryCtaRef = useRef<HTMLButtonElement>(null);
-  const open = mounted && !readingChosen;
+  const open = prefsReady && !readingChosen && gateAllowed;
 
   useFocusTrap(open, panelRef, {
     restoreFocus: false,
@@ -27,15 +34,15 @@ export function ReadingGate() {
     lockScroll: true,
   });
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => subscribeGateAllowed(() => setGateAllowed(true)), []);
 
   useEffect(() => {
     if (!open) return;
-    document.documentElement.dataset.readingGate = "open";
+    openReadingGateAttr();
     return () => {
-      delete document.documentElement.dataset.readingGate;
+      if (typeof document !== "undefined") {
+        delete document.documentElement.dataset.readingGate;
+      }
     };
   }, [open]);
 
@@ -46,6 +53,7 @@ export function ReadingGate() {
 
   const enter = (level: ReadingLevel) => {
     setReadingLevel(level);
+    unlockShell();
   };
 
   return (

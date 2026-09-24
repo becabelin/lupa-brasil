@@ -184,6 +184,29 @@ button[role="option"] {
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
   overflow: hidden;
+  /* Superfície sempre papel: remaps de tema não lavarem a lista. */
+  background-color: var(--paper) !important;
+  color: var(--ink) !important;
+  border-color: var(--ink) !important;
+}
+
+/* Trigger aberto / opção ativa: P&B real (sem remap). */
+.lupa-select-trigger[aria-expanded="true"],
+.lupa-select-trigger:focus-visible {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+.lupa-select-menu [role="option"][aria-selected="true"],
+.lupa-select-menu [role="option"]:hover,
+.lupa-select-menu [role="option"]:focus-visible {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.lupa-select-menu .bg-\[\#f0f0f0\],
+.lupa-select-menu .bg-\[\#f5f5f5\] {
+  background-color: #f0f0f0 !important;
+  color: #111111 !important;
 }
 
 body {
@@ -197,6 +220,44 @@ body {
 input[type="search"].lupa-search-input {
   -webkit-appearance: none;
   appearance: none;
+}
+
+/*
+  Busca (header, FilterInput, FilterSelect): sempre papel + placeholder muted.
+  Não inverter no focus. focus:bg-black + placeholder #666 falhava AA;
+  remaps de tema também quebravam focus:placeholder:text-white/*.
+*/
+.lupa-search-input {
+  background-color: var(--paper) !important;
+  color: var(--ink) !important;
+  border-color: var(--ink) !important;
+  caret-color: var(--ink);
+}
+.lupa-search-input::placeholder {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+.lupa-search-input:focus,
+.lupa-search-input:focus-visible {
+  background-color: var(--paper) !important;
+  color: var(--ink) !important;
+}
+.lupa-search-input:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+.lupa-search-input:focus::placeholder,
+.lupa-search-input:focus-visible::placeholder,
+.lupa-select-menu .lupa-search-input::placeholder,
+.lupa-select-menu .lupa-search-input:focus::placeholder,
+.focus\:placeholder\:text-white\/70:focus::placeholder,
+.focus\:placeholder\:text-white\/80:focus::placeholder {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+.lupa-select-menu .lupa-search-input {
+  background-color: var(--paper) !important;
+  color: var(--ink) !important;
 }
 
 input[type="search"].lupa-search-input::-webkit-search-decoration,
@@ -471,47 +532,53 @@ img[data-needs-bw] {
   --tw-gradient-from-position: 40% !important;
 }
 
-/* Hover invertido: precisa vencer os !important dos cinzas acima */
+/* Hover invertido: branco/preto REAIS (var(--paper) no tema escuro lavava o contraste). */
 .hover\:text-white:hover,
 .group:hover.hover\:text-white,
 .group:hover .group-hover\:text-white {
-  color: var(--paper) !important;
+  color: #ffffff !important;
 }
 .hover\:text-black:hover,
 .group:hover.hover\:text-black,
 .group:hover .group-hover\:text-black {
-  color: var(--ink) !important;
+  color: #000000 !important;
 }
 .group:hover .group-hover\:text-white\/55 {
-  color: color-mix(in srgb, var(--paper) 85%, transparent) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
 }
 .group:hover .group-hover\:text-white\/60 {
-  color: color-mix(in srgb, var(--paper) 88%, transparent) !important;
+  color: rgba(255, 255, 255, 0.82) !important;
 }
 .group:hover .group-hover\:text-white\/65,
 .group:hover .group-hover\:text-white\/70 {
-  color: color-mix(in srgb, var(--paper) 90%, transparent) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
 }
 .group:hover .group-hover\:text-white\/75 {
-  color: color-mix(in srgb, var(--paper) 90%, transparent) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 .group:hover .group-hover\:text-white\/80 {
-  color: color-mix(in srgb, var(--paper) 92%, transparent) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
 }
 .group:hover .group-hover\:text-white\/85 {
-  color: color-mix(in srgb, var(--paper) 92%, transparent) !important;
+  color: rgba(255, 255, 255, 0.94) !important;
 }
 .group:hover .group-hover\:text-white\/90 {
-  color: color-mix(in srgb, var(--paper) 95%, transparent) !important;
+  color: rgba(255, 255, 255, 0.96) !important;
 }
 .group:hover .group-hover\:text-black\/55 {
-  color: color-mix(in srgb, var(--ink) 72%, transparent) !important;
+  color: rgba(0, 0, 0, 0.72) !important;
 }
 .group:hover .group-hover\:text-black\/60 {
-  color: color-mix(in srgb, var(--ink) 72%, transparent) !important;
+  color: rgba(0, 0, 0, 0.72) !important;
 }
 .group:hover .group-hover\:text-black\/80 {
-  color: color-mix(in srgb, var(--ink) 80%, transparent) !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+.hover\:bg-black:hover {
+  background-color: #000000 !important;
+}
+.hover\:bg-white:hover {
+  background-color: #ffffff !important;
 }
 .shadow-\[4px_4px_0_0_\#000\],
 .hover\:shadow-\[4px_4px_0_0_\#000\]:hover,
@@ -783,18 +850,31 @@ select.appearance-none {
 .lupa-reading-gate .text-\[\#666666\] {
   color: var(--muted) !important;
 }
-html[data-reading-gate="open"] body > header,
-html[data-reading-gate="open"] body > main,
-html[data-reading-gate="open"] body > footer {
-  visibility: hidden;
+html[data-shell-lock],
+html[data-reading-gate="open"],
+html[data-intro-splash="open"] {
+  background-color: #000000;
 }
 
+html[data-shell-lock] body,
+html[data-reading-gate="open"] body,
+html[data-intro-splash="open"] body {
+  background-color: #000000;
+}
+
+html[data-shell-lock] body > header,
+html[data-shell-lock] body > main,
+html[data-shell-lock] body > footer,
+html[data-reading-gate="open"] body > header,
+html[data-reading-gate="open"] body > main,
+html[data-reading-gate="open"] body > footer,
 html[data-intro-splash="open"] body > header,
 html[data-intro-splash="open"] body > main,
 html[data-intro-splash="open"] body > footer {
   visibility: hidden;
 }
 
+html[data-shell-lock] .lupa-cookie-banner,
 html[data-intro-splash="open"] .lupa-cookie-banner {
   display: none !important;
 }
@@ -880,7 +960,8 @@ html[data-intro-splash="open"] .lupa-cookie-banner {
 .lupa-on-dark .border-white {
   border-color: #ffffff !important;
 }
-.lupa-on-dark .border-white\/50 {
+.lupa-on-dark .border-white\/50,
+.lupa-on-dark .border-white\/40 {
   border-color: rgba(255, 255, 255, 0.55) !important;
 }
 .lupa-on-dark .hover\:bg-white:hover,
@@ -966,15 +1047,20 @@ html[data-intro-splash="open"] .lupa-cookie-banner {
 .lupa-ink-block .text-white {
   color: #ffffff !important;
 }
-.lupa-ink-block .text-white\/80,
-.lupa-ink-block .text-white\/85 {
-  color: rgba(255, 255, 255, 0.9) !important;
+.lupa-ink-block .text-white\/45,
+.lupa-ink-block .text-white\/50,
+.lupa-ink-block .text-white\/55 {
+  color: rgba(255, 255, 255, 0.84) !important;
 }
 .lupa-ink-block .text-white\/70 {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.lupa-ink-block .text-white\/80,
+.lupa-ink-block .text-white\/85 {
+  color: rgba(255, 255, 255, 0.92) !important;
 }
 .lupa-ink-block .border-white\/20 {
-  border-color: rgba(255, 255, 255, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
 }
 
 /* Cards do bloco: fundo preto por padrão; no hover inverte de verdade. */

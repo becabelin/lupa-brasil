@@ -152,7 +152,7 @@ export function HeaderSearch({
         aria-haspopup="listbox"
         aria-controls={listId}
         aria-expanded={showPanel}
-        className={`lupa-search-input w-full border-2 border-black bg-white text-black outline-none transition placeholder:font-normal placeholder:text-[#666] focus:bg-black focus:text-white focus:placeholder:text-white/70 ${
+        className={`lupa-search-input w-full border-2 border-black bg-white text-black outline-none transition placeholder:font-normal placeholder:text-[#666] ${
           wide
             ? `py-3 pl-4 text-base font-semibold ${hasText ? "pr-24" : "pr-14"}`
             : `py-1.5 pl-2.5 text-sm font-semibold ${hasText ? "pr-16" : "pr-9"}`
@@ -199,15 +199,15 @@ export function HeaderSearch({
                   <Link
                     href={hit.href}
                     onClick={() => setOpen(false)}
-                    className="block border-b border-black/15 px-4 py-3 transition last:border-b-0 hover:bg-black hover:text-white"
+                    className="group block border-b border-black/15 px-4 py-3 transition last:border-b-0 hover:bg-black hover:text-white"
                   >
-                    <span className="block text-[10px] font-bold uppercase tracking-[0.16em] opacity-55">
+                    <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-[#666] group-hover:text-white/80">
                       {SEARCH_KIND_LABEL[hit.kind]}
                     </span>
                     <span className="mt-1 block font-[family-name:var(--font-display)] text-lg uppercase leading-none tracking-tight sm:text-xl">
                       {hit.title}
                     </span>
-                    <span className="mt-1.5 block line-clamp-2 text-xs font-medium leading-snug opacity-70">
+                    <span className="mt-1.5 block line-clamp-2 text-xs font-medium leading-snug text-[#555] group-hover:text-white/80">
                       {hit.blurb}
                     </span>
                   </Link>

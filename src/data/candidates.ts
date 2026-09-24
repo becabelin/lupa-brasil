@@ -300,7 +300,7 @@ export const CANDIDATES: Candidate[] = [
     vice: "Fabiana Torquato",
     viceParty: "DC",
     color: "#000000",
-    photo: "/candidatos/clariana-barao.jpg",
+    photo: "/candidatos/clariana-barao-v2.jpg",
     bio: "Advogada de Cuiabá (MT). Formada pelo Centro Universitário de Várzea Grande, com especialização em direito administrativo e gestão pública. Presidiu a Comissão de Solidariedade e Assistência Social da OAB em Várzea Grande e, em 2026, o diretório estadual do DC em Mato Grosso. Disputa a Presidência com Fabiana Torquato na vice. É a primeira vez, desde 1995, que a DC não lança José Maria Eymael à Presidência.",
     education: "Direito (Univag, Várzea Grande/MT); especialização em direito administrativo e gestão pública.",
     career: [

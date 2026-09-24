@@ -231,10 +231,11 @@ export function CompareClient({ candidates, topics, analyses }: Props) {
                 : candidate.id === rightId
                   ? "B"
                   : null;
+            const depth = slice?.depth ?? "ausente";
             const oneLine =
-              !slice || slice.depth === "ausente"
-                ? "Fora do plano"
-                : slice.summary || "Fora do plano";
+              depth === "ausente"
+                ? null
+                : slice?.summary?.trim() || null;
 
             return (
               <button
@@ -278,13 +279,13 @@ export function CompareClient({ candidates, topics, analyses }: Props) {
                     className="mt-1 inline-block border border-current px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider"
                     title={PLAN_DEPTH_LEGEND}
                   >
-                    {slice
-                      ? PLAN_DEPTH_LABEL[slice.depth]
-                      : PLAN_DEPTH_LABEL.ausente}
+                    {PLAN_DEPTH_LABEL[depth]}
                   </span>
-                  <span className="mt-1.5 block line-clamp-1 text-xs font-medium text-[#2a2a2a] group-hover:text-white/80">
-                    {oneLine}
-                  </span>
+                  {oneLine ? (
+                    <span className="mt-1.5 block line-clamp-2 text-xs font-medium text-[#2a2a2a] group-hover:text-white/80">
+                      {oneLine}
+                    </span>
+                  ) : null}
                 </span>
               </button>
             );
@@ -327,36 +328,37 @@ function CompareColumn({
 
   return (
     <article className="lupa-soft flex flex-col overflow-hidden border-2 border-black bg-white">
-      <div className="relative aspect-[4/5] w-full border-b-2 border-black bg-[#ddd]">
-        {candidate.photo ? (
-          <Image
-            src={candidate.photo}
-            alt={candidate.name}
-            fill
-            className="object-cover object-top"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            priority={side === "A"}
-          />
-        ) : (
-          <div className="flex h-full items-center justify-center bg-black font-[family-name:var(--font-display)] text-5xl text-white">
-            {candidate.party.slice(0, 3)}
-          </div>
-        )}
-        <span className="absolute left-3 top-3 border-2 border-black bg-white px-2 py-1 text-[10px] font-bold uppercase tracking-[0.18em]">
-          {side}
-        </span>
-      </div>
-
-      <div className="flex flex-1 flex-col gap-3 p-4 sm:p-5">
-        <div>
+      <div className="flex border-b-2 border-black">
+        <div className="relative h-28 w-24 shrink-0 border-r-2 border-black bg-[#ddd] sm:h-32 sm:w-28">
+          {candidate.photo ? (
+            <Image
+              src={candidate.photo}
+              alt={candidate.name}
+              fill
+              className="object-cover object-top"
+              sizes="112px"
+              priority={side === "A"}
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center bg-black font-[family-name:var(--font-display)] text-2xl text-white">
+              {candidate.party.slice(0, 3)}
+            </div>
+          )}
+        </div>
+        <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5 p-3 sm:p-4">
+          <span className="w-fit border-2 border-black bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.18em]">
+            {side}
+          </span>
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#2a2a2a]">
             {candidate.party}
           </p>
-          <h3 className="mt-1 font-[family-name:var(--font-display)] text-2xl uppercase leading-[1.02] tracking-tight sm:text-3xl">
+          <h3 className="font-[family-name:var(--font-display)] text-xl uppercase leading-[1.02] tracking-tight sm:text-2xl">
             {candidate.name}
           </h3>
         </div>
+      </div>
 
+      <div className="flex flex-1 flex-col gap-3 p-4 sm:p-5">
         {emptyMessage ? (
           <p className="text-sm font-medium text-[#555]">
             {emptyMessage}{" "}

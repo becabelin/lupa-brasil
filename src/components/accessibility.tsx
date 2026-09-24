@@ -30,6 +30,8 @@ type Prefs = {
 };
 
 type Ctx = Prefs & {
+  /** Preferências lidas do aparelho (após hydrate). */
+  prefsReady: boolean;
   setTheme: (t: Theme) => void;
   setFontScale: (s: FontScale) => void;
   setContrast: (c: Contrast) => void;
@@ -98,11 +100,13 @@ export function AccessibilityProvider({
     readingLevel: "simples",
     readingChosen: false,
   });
+  const [prefsReady, setPrefsReady] = useState(false);
 
   useEffect(() => {
     const initial = readStored();
     setPrefs(initial);
     applyDom(initial);
+    setPrefsReady(true);
   }, []);
 
   const commit = useCallback((next: Prefs) => {
@@ -118,11 +122,17 @@ export function AccessibilityProvider({
   const value = useMemo<Ctx>(
     () => ({
       ...prefs,
+      prefsReady,
       setTheme: (theme) => commit({ ...prefs, theme }),
       setFontScale: (fontScale) => commit({ ...prefs, fontScale }),
       setContrast: (contrast) => commit({ ...prefs, contrast }),
-      setReadingLevel: (readingLevel) =>
-        commit({ ...prefs, readingLevel, readingChosen: true }),
+      setReadingLevel: (readingLevel) => {
+        commit({ ...prefs, readingLevel, readingChosen: true });
+        if (typeof document !== "undefined") {
+          delete document.documentElement.dataset.readingGate;
+          delete document.documentElement.dataset.shellLock;
+        }
+      },
       toggleTheme: () =>
         commit({
           ...prefs,
@@ -142,7 +152,7 @@ export function AccessibilityProvider({
         commit({ ...prefs, fontScale: next });
       },
     }),
-    [prefs, commit],
+    [prefs, prefsReady, commit],
   );
 
   return <AccCtx.Provider value={value}>{children}</AccCtx.Provider>;
