@@ -11,6 +11,7 @@ import {
 import { HomeHero } from "@/components/home-hero";
 import { HomeEleicoes } from "@/components/home-eleicoes";
 import { BrandButton, SectionHead } from "@/components/brand-ui";
+import { ArrowRightIcon } from "@/components/icons";
 import { VOICE } from "@/data/voice";
 
 export default async function HomePage() {
@@ -60,14 +61,14 @@ export default async function HomePage() {
                   variant="outline"
                   className="!py-2.5 !px-4 text-xs"
                 >
-                  Ver tudo →
+                  Ver tudo
                 </BrandButton>
               }
             />
             <ul className="grid gap-4 sm:grid-cols-2 sm:gap-5">
               {cases.map((e) => (
                 <li key={e.slug}>
-                  <HomeCard explainer={e} cta="Entrar no caso →" />
+                  <HomeCard explainer={e} cta="Entrar no caso" />
                 </li>
               ))}
             </ul>
@@ -87,7 +88,7 @@ export default async function HomePage() {
                   variant="outline"
                   className="!py-2.5 !px-4 text-xs"
                 >
-                  Ver tudo →
+                  Ver tudo
                 </BrandButton>
               }
             />
@@ -97,7 +98,7 @@ export default async function HomePage() {
             <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5">
               {glossaryFeatured.map((e) => (
                 <li key={e.slug}>
-                  <HomeCard explainer={e} cta="Abrir →" />
+                  <HomeCard explainer={e} cta="Abrir" />
                 </li>
               ))}
             </ul>
@@ -145,8 +146,9 @@ function HomeCard({
         <span className="mt-3 flex-1 text-sm font-medium leading-relaxed text-[#222] group-hover:text-white/90">
           {e.teaser}
         </span>
-        <span className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2">
+        <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2">
           {cta}
+          <ArrowRightIcon size={12} />
         </span>
       </div>
     </Link>

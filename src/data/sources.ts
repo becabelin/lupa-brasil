@@ -153,8 +153,8 @@ export const PHOTO_CREDITS: {
   },
   {
     candidateId: "samara-martins",
-    credit: "Wikimedia Commons · Samara Martins UP",
-    url: "https://commons.wikimedia.org/wiki/File:Samara_Martins_UP.jpg",
+    credit: "L. Barros / Jornal A Verdade (reprodução livre com atribuição)",
+    url: "https://averdade.org.br/2026/07/por-que-as-mulheres-devem-tomar-partido/",
   },
   {
     candidateId: "romeu-zema",
@@ -183,8 +183,8 @@ export const PHOTO_CREDITS: {
   },
   {
     candidateId: "clariana-barao",
-    credit: "Divulgação / campanha · uso editorial no site",
-    url: "https://www.tse.jus.br/comunicacao/noticias/2026/Setembro/eleicoes-2026-tem-12-candidaturas-na-disputa-pela-presidencia-da-republica",
+    credit: "Divulgação / campanha · Poder360 (uso editorial no site)",
+    url: "https://www.poder360.com.br/poder-eleicoes-2026/saiba-quem-e-a-aposta-do-dc-para-substituir-barbosa-e-rebelo/",
   },
   {
     candidateId: "augusto-cury",

@@ -39,6 +39,7 @@ import {
 import { BrasilLoading } from "@/components/brasil-loading";
 import { LinkedText } from "@/components/linked-text";
 import { PersonFace } from "@/components/person-face";
+import { ArrowRightIcon } from "@/components/icons";
 
 const MesaPeopleGallery = dynamic(
   () =>
@@ -636,7 +637,14 @@ export function CaseInvestigationBoard({
     !hubOpen && focus?.kind === "pessoa"
       ? data.people.find((p) => p.id === focus.id) ?? null
       : null;
-  const sideDrawerOpen = Boolean(!hubOpen && focus && focus.kind !== "pessoa");
+  /** Pessoa e chat abrem em tela cheia; o resto usa painel à direita. */
+  const sideDrawerOpen = Boolean(
+    !hubOpen && focus && focus.kind !== "pessoa" && focus.kind !== "chat",
+  );
+  const activeChat =
+    focus?.kind === "chat"
+      ? selectedChat
+      : filteredChats[0] ?? data.chats[0];
 
   const tabCounts = useMemo(
     () =>
@@ -650,8 +658,6 @@ export function CaseInvestigationBoard({
       }) as Record<MesaTab, number>,
     [data],
   );
-
-  const currentTabMeta = TABS.find((t) => t.id === tab) ?? TABS[0];
 
   return (
     <div
@@ -719,27 +725,91 @@ export function CaseInvestigationBoard({
             />
           </div>
         ) : tab === "chats" ? (
-          <div className="relative z-[1] flex h-full items-center justify-center px-6 pb-36 pt-28 sm:pt-28 lg:pl-[280px]">
-            {focus?.kind === "chat" ? (
-              <p className="max-w-sm text-center text-sm leading-relaxed text-white/45">
-                Fio aberto no painel à direita. Troque pela lista ou feche pra
-                voltar.
-              </p>
-            ) : (
-              <div className="w-full max-w-lg">
-                <ChatPane
-                  data={data}
-                  chat={filteredChats[0] ?? data.chats[0]}
-                  reveal={chatReveal}
-                  showGuide
-                  onPickFirst={() => {
-                    const first = filteredChats[0] ?? data.chats[0];
-                    if (first)
-                      selectFocus({ kind: "chat", id: first.id }, "chats");
-                  }}
-                />
-              </div>
-            )}
+          <div className="relative z-[1] h-full min-h-0 overflow-y-auto overscroll-contain px-4 pb-36 pt-28 sm:px-8 sm:pt-28 lg:pl-[280px] lg:pr-8">
+            <div className="mx-auto w-full max-w-lg">
+              {focus?.kind === "chat" ? (
+                <div className="mb-4 flex items-center gap-2">
+                  <p className="min-w-0 flex-1 truncate text-xs">
+                    <span className="font-bold uppercase tracking-wider text-white/45">
+                      {V.lookingAt}:
+                    </span>{" "}
+                    <span className="font-bold">{focusLabel}</span>
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => selectFocus(null)}
+                    className="lupa-soft inline-flex h-9 shrink-0 items-center justify-center border border-white bg-black px-3 text-[9px] font-bold uppercase leading-none tracking-[0.16em] transition hover:bg-white hover:text-black"
+                  >
+                    {V.clearFocus}
+                  </button>
+                </div>
+              ) : null}
+              <ChatPane
+                data={data}
+                chat={activeChat}
+                reveal={chatReveal}
+                showGuide={focus?.kind !== "chat"}
+                onPickFirst={() => {
+                  const first = filteredChats[0] ?? data.chats[0];
+                  if (first)
+                    selectFocus({ kind: "chat", id: first.id }, "chats");
+                }}
+              />
+              {focus?.kind === "chat" ? (
+                <div className="mt-8 border-t border-white/15 pt-5 pb-4">
+                  <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-white/45">
+                    {V.linksTitle}
+                  </p>
+                  <div className="space-y-4">
+                    <LinkGroup
+                      label="Pessoas"
+                      items={related.people.map((p) => ({
+                        id: p.id,
+                        title: p.name,
+                        onClick: () =>
+                          selectFocus({ kind: "pessoa", id: p.id }, "pessoas"),
+                      }))}
+                    />
+                    <LinkGroup
+                      label="Datas"
+                      items={related.events.map((e) => ({
+                        id: e.id,
+                        title: `${e.when} · ${e.title}`,
+                        onClick: () =>
+                          selectFocus({ kind: "evento", id: e.id }, "tempo"),
+                      }))}
+                    />
+                    <LinkGroup
+                      label="Lugares"
+                      items={related.places.map((p) => ({
+                        id: p.id,
+                        title: p.name,
+                        onClick: () =>
+                          selectFocus({ kind: "lugar", id: p.id }, "lugares"),
+                      }))}
+                    />
+                    <LinkGroup
+                      label="Mensagens"
+                      items={related.chats.map((c) => ({
+                        id: c.id,
+                        title: c.title,
+                        onClick: () =>
+                          selectFocus({ kind: "chat", id: c.id }, "chats"),
+                      }))}
+                    />
+                    <LinkGroup
+                      label="Provas"
+                      items={related.evidence.map((v) => ({
+                        id: v.id,
+                        title: v.title,
+                        onClick: () =>
+                          selectFocus({ kind: "prova", id: v.id }, "provas"),
+                      }))}
+                    />
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
         ) : tab === "cruzar" ? (
           <div className="relative z-[1] h-full overflow-y-auto px-4 pb-36 pt-28 sm:px-8 sm:pt-28 lg:pl-[280px] lg:pr-8">
@@ -977,66 +1047,57 @@ export function CaseInvestigationBoard({
         </aside>
       ) : null}
 
-      {/* Barra de abas · bem visível embaixo (some no perfil e no menu) */}
+      {/* Barra de abas · embaixo (some no perfil e no menu) */}
       {!personFocus && !hubOpen ? (
         <nav
           aria-label={V.hubSwitch}
-          className="absolute inset-x-0 bottom-0 z-30 border-t border-white/25 bg-black/90 backdrop-blur-md"
+          className="lupa-mesa-dock absolute inset-x-0 bottom-0 z-30 border-t border-white/20 bg-black"
         >
-          <div className="mx-auto flex max-w-5xl items-stretch gap-1 px-2 py-2 sm:px-4">
+          <div className="flex items-stretch gap-2 px-3 py-2.5 sm:gap-2.5 sm:px-4">
             <button
               type="button"
               onClick={openHubMenu}
-              className="shrink-0 border border-white/40 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.16em] transition hover:bg-white hover:text-black"
+              className="lupa-soft flex w-[4.25rem] shrink-0 items-center justify-center border border-white/50 text-[10px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black"
             >
               {V.hubOpen}
             </button>
-            <div className="min-w-0 flex-1 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              <div className="flex min-w-min gap-1">
-                {TABS.map((t) => {
-                  const on = tab === t.id;
-                  const n = tabCounts[t.id];
-                  return (
-                    <button
-                      key={t.id}
-                      type="button"
-                      onClick={() => changeTab(t.id)}
-                      title={t.hint}
-                      className={`shrink-0 px-3 py-2 text-left transition ${
-                        on
-                          ? "bg-white text-black"
-                          : "text-white/70 hover:bg-white/10 hover:text-white"
+            <div
+              role="tablist"
+              aria-label={V.hubSwitch}
+              className="grid min-w-0 flex-1 grid-cols-6 gap-1"
+            >
+              {TABS.map((t) => {
+                const on = tab === t.id;
+                const n = tabCounts[t.id];
+                return (
+                  <button
+                    key={t.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={on}
+                    onClick={() => changeTab(t.id)}
+                    title={t.hint}
+                    className={`lupa-soft flex min-h-11 min-w-0 flex-col items-center justify-center gap-1 px-0.5 py-1.5 transition ${
+                      on
+                        ? "bg-white text-black"
+                        : "text-white/70 hover:bg-white/10 hover:text-white"
+                    }`}
+                  >
+                    <span className="max-w-full truncate text-[9px] font-bold uppercase leading-none tracking-[0.12em] sm:text-[10px] sm:tracking-[0.14em]">
+                      {t.label}
+                    </span>
+                    <span
+                      className={`text-[9px] leading-none tabular-nums ${
+                        on ? "text-[#666]" : "text-white/40"
                       }`}
                     >
-                      <span className="block text-[10px] font-bold uppercase tracking-[0.16em]">
-                        {t.label}
-                      </span>
-                      {n > 0 ? (
-                        <span
-                          className={`mt-0.5 block text-[9px] tabular-nums ${
-                            on ? "text-black/50" : "text-white/35"
-                          }`}
-                        >
-                          {n}
-                        </span>
-                      ) : (
-                        <span
-                          className={`mt-0.5 block text-[9px] ${
-                            on ? "text-black/50" : "text-white/35"
-                          }`}
-                        >
-                          ·
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
+                      {n > 0 ? n : "—"}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
-          <p className="border-t border-white/10 px-3 py-1.5 text-center text-[9px] font-bold uppercase tracking-[0.18em] text-white/35 sm:px-4">
-            {V.hubNow}: {currentTabMeta.label} · {currentTabMeta.hint}
-          </p>
         </nav>
       ) : null}
 
@@ -1055,7 +1116,7 @@ export function CaseInvestigationBoard({
         />
       ) : null}
 
-      {/* Painel lateral · datas, lugares, msgs, provas (não pessoa) */}
+      {/* Painel lateral · datas, lugares, provas (pessoa e chat: tela cheia) */}
       {sideDrawerOpen && focus ? (
         <>
           <button
@@ -1083,18 +1144,8 @@ export function CaseInvestigationBoard({
                 {V.clearFocus}
               </button>
             </div>
-            <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4">
-              {focus.kind === "chat" ? (
-                <ChatPane
-                  data={data}
-                  chat={selectedChat}
-                  reveal={chatReveal}
-                  showGuide={false}
-                  onPickFirst={() => undefined}
-                />
-              ) : (
-                <DetailPane data={data} focus={focus} fallbackTab={tab} />
-              )}
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4">
+              <DetailPane data={data} focus={focus} fallbackTab={tab} />
               <div className="mt-8 border-t border-white/15 pt-5">
                 <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-white/45">
                   {V.linksTitle}
@@ -1991,8 +2042,9 @@ function MesaHub({
                         cruzar
                       </span>
                     )}
-                    <span className="mt-1 block text-[10px] font-bold uppercase tracking-[0.16em] opacity-40 group-hover:opacity-70">
-                      Abrir →
+                    <span className="mt-1 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.16em] opacity-40 group-hover:opacity-70">
+                      Abrir
+                      <ArrowRightIcon size={10} />
                     </span>
                   </span>
                 </button>
@@ -2101,7 +2153,7 @@ function ChatPane({
   const visible = chat.messages.slice(0, Math.max(1, reveal));
 
   return (
-    <div className="mx-auto flex h-full max-w-lg flex-col">
+    <div className="mx-auto flex w-full max-w-lg flex-col">
       {showGuide ? (
         <p className="mb-3 border border-dashed border-white/25 px-3 py-2 text-[11px] leading-snug text-white/50">
           Escolha um fio na lista à esquerda.{" "}
@@ -2144,7 +2196,7 @@ function ChatPane({
         </p>
       </div>
 
-      <div className="mt-4 flex flex-1 flex-col gap-2.5 overflow-y-auto rounded-sm border border-white/15 bg-[#0a0a0a] p-3 sm:p-4">
+      <div className="mt-4 flex flex-col gap-2.5 rounded-sm border border-white/15 bg-[#0a0a0a] p-3 sm:p-4">
         {visible.map((m, i) => {
           const out = m.side === "out";
           const name = personName(data, m.from);

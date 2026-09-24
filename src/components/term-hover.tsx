@@ -8,6 +8,7 @@ import {
   explainerPath,
   type ExplainerHoverCard,
 } from "@/data/explainers";
+import { ArrowRightIcon } from "@/components/icons";
 
 type Props = {
   explainer: ExplainerHoverCard;
@@ -150,8 +151,9 @@ export function TermHover({ explainer, children }: Props) {
           <span className="mt-2 block break-words text-xs font-medium leading-snug text-[#333]">
             {blurb}
           </span>
-          <span className="mt-2 block text-[10px] font-bold uppercase tracking-wider">
-            Abrir página →
+          <span className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider">
+            Abrir página
+            <ArrowRightIcon size={10} />
           </span>
         </span>
       ) : null}

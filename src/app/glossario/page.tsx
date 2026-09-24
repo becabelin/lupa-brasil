@@ -6,6 +6,7 @@ import {
   type Explainer,
 } from "@/data/explainers";
 import { PageHero } from "@/components/brand-ui";
+import { ArrowRightIcon } from "@/components/icons";
 import { VOICE } from "@/data/voice";
 
 export const metadata = {
@@ -102,8 +103,9 @@ function GlossaryCard({ explainer: e }: { explainer: Explainer }) {
         <span className="mt-3 flex-1 text-sm font-medium leading-relaxed text-[#333] group-hover:text-white/85">
           {e.teaser}
         </span>
-        <span className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2">
-          Abrir →
+        <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2">
+          Abrir
+          <ArrowRightIcon size={12} />
         </span>
       </div>
     </Link>

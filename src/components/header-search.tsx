@@ -225,7 +225,9 @@ export function HeaderSearch({
             className="flex w-full items-center justify-between border-t-2 border-black bg-[#f5f5f5] px-4 py-3 text-left text-[11px] font-bold uppercase tracking-[0.16em] transition hover:bg-black hover:text-white"
           >
             <span>Ver todos em Buscar</span>
-            <span aria-hidden>→</span>
+            <span aria-hidden className="inline-flex">
+              <IconSearchArrow size={wide ? 18 : 16} />
+            </span>
           </button>
         </div>
       ) : null}

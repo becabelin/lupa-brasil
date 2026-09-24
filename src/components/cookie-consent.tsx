@@ -10,8 +10,8 @@ import {
 import { VOICE } from "@/data/voice";
 
 /**
- * Banner de cookies/privacidade. Só na primeira visita, depois do gate de leitura.
- * Depois: link Privacidade no rodapé.
+ * Faixa compacta de cookies. Só na 1ª visita, depois do gate.
+ * Depois: Privacidade no rodapé.
  */
 export function CookieConsent() {
   const { readingChosen } = useAccessibility();
@@ -29,23 +29,16 @@ export function CookieConsent() {
 
   return (
     <div
-      role="dialog"
-      aria-labelledby="lupa-cookie-title"
-      aria-describedby="lupa-cookie-body"
-      className="fixed inset-x-0 bottom-0 z-[70] border-t-2 border-white bg-black text-white"
+      role="region"
+      aria-label={V.eyebrow}
+      className="lupa-cookie-banner pointer-events-none fixed inset-x-0 bottom-0 z-[70] flex justify-center p-3 sm:justify-end sm:p-4"
     >
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-end sm:justify-between sm:gap-8 sm:px-6 sm:py-5">
-        <div className="min-w-0">
-          <p
-            id="lupa-cookie-title"
-            className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/80"
-          >
+      <div className="pointer-events-auto flex w-full max-w-md items-end gap-3 border-2 border-white bg-black p-3 text-white shadow-[var(--shadow-lift)] sm:max-w-sm sm:p-3.5">
+        <div className="min-w-0 flex-1">
+          <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/80">
             {V.eyebrow}
           </p>
-          <p
-            id="lupa-cookie-body"
-            className="mt-2 max-w-2xl text-sm font-medium leading-relaxed text-white/90"
-          >
+          <p className="mt-1 text-xs font-medium leading-snug text-white/90">
             {V.body}{" "}
             <Link href="/privacidade" className="lupa-text-link text-white">
               {V.link}
@@ -59,7 +52,7 @@ export function CookieConsent() {
             acceptCookieConsent();
             setOpen(false);
           }}
-          className="shrink-0 border-2 border-white bg-white px-5 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-black transition hover:bg-black hover:text-white"
+          className="shrink-0 border-2 border-white bg-white px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-black transition hover:bg-black hover:text-white"
         >
           {V.cta}
         </button>

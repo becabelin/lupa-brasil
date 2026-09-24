@@ -3,6 +3,7 @@ import Link from "next/link";
 import { candidatesAlphabetical } from "@/data/candidates";
 import { featuredAgendas } from "@/data/agendas";
 import { Eyebrow, DisplayTitle, MarqueeBar } from "@/components/brand-ui";
+import { ArrowRightIcon } from "@/components/icons";
 import { VOICE } from "@/data/voice";
 
 /**
@@ -155,8 +156,9 @@ function PathCard({
         <span className="lupa-ink-card-body mt-3 flex-1 text-sm font-medium leading-relaxed">
           {blurb}
         </span>
-        <span className="mt-5 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-4">
-          Entrar →
+        <span className="mt-5 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-4">
+          Entrar
+          <ArrowRightIcon size={12} />
         </span>
       </div>
     </Link>

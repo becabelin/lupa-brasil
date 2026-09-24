@@ -38,8 +38,8 @@ export const VOICE = {
 
   cookies: {
     eyebrow: "Privacidade",
-    body: "Guardamos no seu aparelho só o essencial: como você prefere ler, tema e o aviso de cookies. Sem rastrear IP pra isso.",
-    link: "Ver Privacidade",
+    body: "Só o essencial no seu aparelho: leitura, tema e este aviso.",
+    link: "Detalhes",
     cta: "Entendi",
   },
 

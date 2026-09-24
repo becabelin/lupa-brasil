@@ -9,6 +9,7 @@ import type { TopicId } from "@/data/topics";
 import type { AgendaAnalysis, PlanAnalysis, TopicAnalysis } from "@/lib/types";
 import { FilterSelect } from "@/components/ui/fields";
 import { PlanQuoteLine } from "@/components/plan-quotes";
+import { ArrowRightIcon } from "@/components/icons";
 import { PLAN_DEPTH_LABEL, PLAN_DEPTH_LEGEND } from "@/lib/plan-depth";
 
 type Props = {
@@ -426,9 +427,10 @@ function CompareColumn({
 
             <Link
               href={`/candidatos/${candidate.slug}`}
-              className="mt-auto pt-2 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2"
+              className="mt-auto inline-flex items-center gap-1.5 pt-2 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2"
             >
-              Ver ficha →
+              Ver ficha
+              <ArrowRightIcon size={12} />
             </Link>
           </>
         ) : null}

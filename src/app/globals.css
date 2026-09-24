@@ -84,6 +84,7 @@ html[data-font="xl"] {
 html {
   font-size: calc(100% * var(--font-scale));
   scroll-padding-top: 9rem;
+  scroll-behavior: smooth;
 }
 
 /*
@@ -417,6 +418,9 @@ img[data-needs-bw] {
 .group:hover .group-hover\:text-white\/75 {
   color: color-mix(in srgb, var(--paper) 75%, transparent) !important;
 }
+.group:hover .group-hover\:text-white\/80 {
+  color: color-mix(in srgb, var(--paper) 82%, transparent) !important;
+}
 .group:hover .group-hover\:text-white\/85 {
   color: color-mix(in srgb, var(--paper) 85%, transparent) !important;
 }
@@ -661,6 +665,68 @@ html[data-reading-gate="open"] body > footer {
   visibility: hidden;
 }
 
+html[data-intro-splash="open"] body > header,
+html[data-intro-splash="open"] body > main,
+html[data-intro-splash="open"] body > footer {
+  visibility: hidden;
+}
+
+html[data-intro-splash="open"] .lupa-cookie-banner {
+  display: none !important;
+}
+
+/* Mesa: preto/branco reais (não remap de tema). */
+.lupa-mesa-dock {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.lupa-mesa-dock .bg-white {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+.lupa-mesa-dock .text-black {
+  color: #000000 !important;
+}
+.lupa-mesa-dock .border-white\/50 {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+.lupa-mesa-dock button:hover {
+  border-color: #ffffff;
+}
+
+/* Banner de cookies: preto/branco reais (não remap de tema). */
+.lupa-cookie-banner .bg-black {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.lupa-cookie-banner .bg-white {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+.lupa-cookie-banner .border-white {
+  border-color: #ffffff !important;
+}
+.lupa-cookie-banner .text-white,
+.lupa-cookie-banner .text-white\/80,
+.lupa-cookie-banner .text-white\/90 {
+  color: #ffffff !important;
+}
+.lupa-cookie-banner .text-white\/80 {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+.lupa-cookie-banner .text-white\/90 {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+.lupa-cookie-banner .text-black {
+  color: #000000 !important;
+}
+.lupa-cookie-banner button:hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
 /* Bloco invertido (home Eleições): preto/branco reais, sem remap de tema. */
 .lupa-ink-block {
   background-color: #000000 !important;
@@ -702,6 +768,9 @@ html[data-reading-gate="open"] body > footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .hero-rise {
     opacity: 1;
     animation: none;

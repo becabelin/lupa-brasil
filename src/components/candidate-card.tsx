@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Candidate } from "@/data/candidates";
+import { ArrowRightIcon } from "@/components/icons";
 
 export function CandidateCard({ candidate }: { candidate: Candidate }) {
   return (
@@ -37,8 +38,9 @@ export function CandidateCard({ candidate }: { candidate: Candidate }) {
             {candidate.viceParty ? ` (${candidate.viceParty})` : ""}
           </p>
         ) : null}
-        <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2">
-          Ver plano →
+        <p className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2">
+          Ver plano
+          <ArrowRightIcon size={12} />
         </p>
       </div>
     </Link>

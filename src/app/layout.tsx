@@ -3,6 +3,7 @@ import { Bebas_Neue, Space_Grotesk } from "next/font/google";
 import { AccessibilityProvider } from "@/components/accessibility";
 import { CookieConsent } from "@/components/cookie-consent";
 import { ReadingGate } from "@/components/reading-gate";
+import { SiteIntroSplash } from "@/components/site-intro-splash";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import {
   JsonLdScript,
@@ -121,6 +122,7 @@ export default function RootLayout({
           </main>
           <SiteFooter />
           <ReadingGate />
+          <SiteIntroSplash />
           <CookieConsent />
         </AccessibilityProvider>
       </body>

@@ -3,6 +3,7 @@ import {
   fallbackPressLede,
   type PressItem,
 } from "@/lib/press";
+import { ArrowRightIcon } from "@/components/icons";
 
 type Props = {
   items: PressItem[];
@@ -96,8 +97,9 @@ export function PressCoverage({
                     >
                       {item.title}
                     </a>
-                    <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#2a2a2a]">
-                      Ler no {item.outletLabel} →
+                    <p className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#2a2a2a]">
+                      Ler no {item.outletLabel}
+                      <ArrowRightIcon size={10} />
                     </p>
                   </div>
                 </article>

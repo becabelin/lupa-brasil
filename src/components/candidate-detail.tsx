@@ -10,6 +10,7 @@ import {
   explainerPath,
   getExplainer,
 } from "@/data/explainers";
+import { ArrowRightIcon } from "@/components/icons";
 import type {
   AgendaAnalysis,
   PlanAnalysis,
@@ -418,8 +419,9 @@ export function CandidateDetail({
                           <p className="mt-3 line-clamp-2 flex-1 text-sm leading-relaxed text-[#333]">
                             {a.summary}
                           </p>
-                          <p className="mt-auto pt-3 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2 group-hover:bg-black group-hover:text-white group-hover:no-underline">
-                            Ver o que o plano diz →
+                          <p className="mt-auto flex items-center gap-1.5 pt-3 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2 group-hover:bg-black group-hover:text-white group-hover:no-underline">
+                            Ver o que o plano diz
+                            <ArrowRightIcon size={12} />
                           </p>
                         </button>
                       );
@@ -506,9 +508,10 @@ export function CandidateDetail({
           <div className="mt-8">
             <Link
               href="/comparar"
-              className="lupa-soft inline-block border-2 border-black bg-black px-5 py-3 text-[11px] font-bold uppercase tracking-wider text-white transition hover:bg-white hover:text-black"
+              className="lupa-soft inline-flex items-center gap-2 border-2 border-black bg-black px-5 py-3 text-[11px] font-bold uppercase tracking-wider text-white transition hover:bg-white hover:text-black"
             >
-              Comparar planos →
+              Comparar planos
+              <ArrowRightIcon size={12} />
             </Link>
           </div>
         </section>
@@ -543,8 +546,9 @@ export function CandidateDetail({
                         <p className="mt-2 flex-1 text-sm font-medium leading-relaxed text-[#2a2a2a] group-hover:text-white/80">
                           {c.teaser}
                         </p>
-                        <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2 group-hover:no-underline">
-                          Abrir caso →
+                        <p className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2 group-hover:no-underline">
+                          Abrir caso
+                          <ArrowRightIcon size={12} />
                         </p>
                       </Link>
                     </li>

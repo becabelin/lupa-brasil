@@ -19,6 +19,7 @@ import { hasInvestigation } from "@/data/case-investigations";
 import { VOICE } from "@/data/voice";
 import { LinkedText } from "@/components/linked-text";
 import { PersonFace } from "@/components/person-face";
+import { ArrowRightIcon } from "@/components/icons";
 import { useAccessibility } from "@/components/accessibility";
 
 type Props = {
@@ -154,9 +155,9 @@ export function NewsArticle({ explainer: e, related }: Props) {
 
       {/* Capa: foto à esquerda, hero à direita */}
       {e.cover ? (
-        <div className="border-b-2 border-black">
+        <div className="border-b border-black">
           <div className="mx-auto grid max-w-7xl lg:grid-cols-[minmax(280px,42%)_minmax(0,1fr)]">
-            <div className="flex flex-col border-b-2 border-black lg:border-b-0 lg:border-r-2">
+            <div className="flex flex-col lg:border-r border-black">
               <div className="relative aspect-[4/5] w-full flex-1 overflow-hidden bg-[#111] sm:aspect-[3/4] lg:aspect-auto lg:min-h-[520px]">
                 <Image
                   src={e.cover.src}
@@ -170,7 +171,7 @@ export function NewsArticle({ explainer: e, related }: Props) {
                   sizes="(max-width: 1024px) 100vw, 42vw"
                 />
               </div>
-              <p className="shrink-0 px-4 py-2 text-[10px] font-medium text-[#666] sm:px-5">
+              <p className="shrink-0 border-t border-black/25 px-4 py-2 text-[10px] font-medium text-[#666] sm:px-5">
                 Foto:{" "}
                 {e.cover.creditUrl ? (
                   <a
@@ -200,21 +201,22 @@ export function NewsArticle({ explainer: e, related }: Props) {
                 {mesaHref ? (
                   <Link
                     href={mesaHref}
-                    className="lupa-soft inline-block border-2 border-black bg-black px-5 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-black"
+                    className="lupa-soft inline-flex items-center gap-2 border-2 border-black bg-black px-5 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-black"
                   >
-                    {VOICE.mesa.cta} →
+                    {VOICE.mesa.cta}
+                    <ArrowRightIcon />
                   </Link>
                 ) : null}
                 {toc.length > 0 ? (
                   <a
                     href={`#${toc[0].id}`}
-                    className={`lupa-soft inline-block border-2 border-black px-5 py-3 text-xs font-bold uppercase tracking-[0.18em] transition hover:bg-black hover:text-white ${
+                    className={`lupa-soft inline-flex items-center border-2 border-black px-5 py-3 text-xs font-bold uppercase tracking-[0.18em] transition hover:bg-black hover:text-white ${
                       mesaHref
                         ? "bg-white text-black"
                         : "bg-black text-white hover:bg-white hover:text-black"
                     }`}
                   >
-                    Seguir a linha →
+                    Seguir a linha
                   </a>
                 ) : null}
               </div>
@@ -240,9 +242,10 @@ export function NewsArticle({ explainer: e, related }: Props) {
             {mesaHref ? (
               <Link
                 href={mesaHref}
-                className="lupa-soft shrink-0 border-2 border-black bg-black px-4 py-2.5 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black"
+                className="lupa-soft inline-flex shrink-0 items-center justify-center gap-2 border-2 border-black bg-black px-4 py-2.5 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black"
               >
-                Abrir mesa →
+                Abrir mesa
+                <ArrowRightIcon size={12} />
               </Link>
             ) : null}
           </div>
@@ -278,9 +281,10 @@ export function NewsArticle({ explainer: e, related }: Props) {
               {mesaHref ? (
                 <Link
                   href={mesaHref}
-                  className="mt-4 block border-2 border-black bg-black px-3 py-2.5 text-center text-[10px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black"
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 border-2 border-black bg-black px-3 py-2.5 text-center text-[10px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black"
                 >
                   {VOICE.mesa.cta}
+                  <ArrowRightIcon size={12} />
                 </Link>
               ) : null}
               <p className="mt-4 border-t border-black/20 pt-3 text-[10px] font-bold uppercase tracking-[0.16em] text-[#666]">
@@ -440,23 +444,24 @@ export function NewsArticle({ explainer: e, related }: Props) {
                       {nextId ? (
                         <a
                           href={`#${nextId}`}
-                          className="mt-8 inline-block border-2 border-black px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition hover:bg-black hover:text-white"
+                          className="mt-8 inline-flex items-center gap-2 border-2 border-black px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition hover:bg-black hover:text-white"
                         >
-                          Próxima frente →
+                          Próxima frente
+                          <ArrowRightIcon size={12} />
                         </a>
                       ) : e.people?.length ? (
                         <a
                           href="#quem-aparece"
-                          className="mt-8 inline-block border-2 border-black px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition hover:bg-black hover:text-white"
+                          className="mt-8 inline-flex items-center border-2 border-black px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition hover:bg-black hover:text-white"
                         >
-                          Quem aparece →
+                          Quem aparece
                         </a>
                       ) : (
                         <a
                           href="#fontes"
-                          className="mt-8 inline-block border-2 border-black px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition hover:bg-black hover:text-white"
+                          className="mt-8 inline-flex items-center border-2 border-black px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition hover:bg-black hover:text-white"
                         >
-                          Ver fontes →
+                          Ver fontes
                         </a>
                       )}
                     </section>

@@ -2,6 +2,7 @@ import type { TopicAnalysis } from "@/lib/types";
 import { getTopic } from "@/data/topics";
 import { LinkedText } from "@/components/linked-text";
 import { PlanQuoteLine, PlanQuotes } from "@/components/plan-quotes";
+import { ArrowRightIcon } from "@/components/icons";
 import { PLAN_DEPTH_LABEL } from "@/lib/plan-depth";
 
 type Props = {
@@ -113,10 +114,11 @@ export function TopicBlock({ topic, onOpen, variant = "card" }: Props) {
           <PlanQuoteLine quote={previewQuote} />
         </div>
       ) : null}
-      <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2 group-hover:bg-black group-hover:text-white group-hover:no-underline">
+      <p className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2 group-hover:bg-black group-hover:text-white group-hover:no-underline">
         {hasMore || topic.proposals.length > 0 || topic.quotes.length > 0
-          ? "Ver detalhes →"
-          : "Abrir área →"}
+          ? "Ver detalhes"
+          : "Abrir área"}
+        <ArrowRightIcon size={12} />
       </p>
     </button>
   );
