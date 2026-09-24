@@ -548,6 +548,13 @@ export function CaseInvestigationBoard({
         ? data.chats.find((c) => c.id === focus.id)
         : data.chats[0];
     if (!chat) return;
+    const reduce =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setChatReveal(chat.messages.length);
+      return;
+    }
     setChatReveal(0);
     let i = 0;
     const id = window.setInterval(() => {
@@ -624,8 +631,7 @@ export function CaseInvestigationBoard({
       ? data.chats.find((c) => c.id === focus.id)
       : undefined;
 
-  const showListRail =
-    !hubOpen && tab !== "pessoas" && focus?.kind !== "pessoa";
+  const showListRail = !hubOpen && focus?.kind !== "pessoa";
   const personFocus =
     !hubOpen && focus?.kind === "pessoa"
       ? data.people.find((p) => p.id === focus.id) ?? null
@@ -841,6 +847,27 @@ export function CaseInvestigationBoard({
                     eyebrow={e.when}
                     title={e.title}
                     keyMark={e.key}
+                  />
+                ))}
+              </ListPane>
+            ) : null}
+            {tab === "pessoas" ? (
+              <ListPane title={`Quem · ${data.people.length}`}>
+                {data.people.map((p) => (
+                  <ListButton
+                    key={p.id}
+                    active={false}
+                    onClick={() =>
+                      selectFocus({ kind: "pessoa", id: p.id }, "pessoas")
+                    }
+                    eyebrow={p.role.split(";")[0]?.trim()}
+                    title={p.name}
+                    avatar={
+                      p.photo
+                        ? { src: p.photo.src, alt: p.photo.alt }
+                        : undefined
+                    }
+                    initials={p.name.slice(0, 2).toUpperCase()}
                   />
                 ))}
               </ListPane>
@@ -1127,8 +1154,8 @@ export function CaseInvestigationBoard({
 
       {/* Hint discreto quando galeria sem foco */}
       {tab === "pessoas" && !focus && !hubOpen ? (
-        <p className="pointer-events-none absolute bottom-28 left-4 z-20 max-w-[14rem] text-[10px] font-bold uppercase tracking-[0.16em] text-white/35">
-          Arraste · clique pra abrir
+        <p className="pointer-events-none absolute bottom-28 left-4 z-20 max-w-[14rem] text-[10px] font-bold uppercase tracking-[0.16em] text-white/70 sm:left-[calc(240px+2rem)]">
+          Lista à esquerda · arraste ou clique na galeria
         </p>
       ) : null}
 
@@ -1512,7 +1539,6 @@ function PersonFullscreen({
                               alt={g.alt}
                               fill
                               sizes="320px"
-                              quality={90}
                               className="object-cover object-top"
                             />
                           </span>

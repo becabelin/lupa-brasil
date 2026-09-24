@@ -181,10 +181,41 @@ function explainerHit(e: Explainer): SearchHit {
   };
 }
 
-/** Índice estático para a busca do site. */
+function explainerHitLite(e: Explainer): SearchHit {
+  const kind: SearchHitKind =
+    e.kind === "caso" ? "caso" : e.kind === "plano" ? "plano" : "conceito";
+
+  return {
+    id: `exp-${e.slug}`,
+    kind,
+    title: e.title,
+    blurb: e.teaser,
+    href: explainerPath(e),
+    meta: EXPLAINER_KIND_LABEL[e.kind],
+    haystack: joinHay(
+      e.title,
+      e.slug,
+      e.teaser,
+      e.teaserSimple,
+      e.hoverBlurb,
+      ...e.aliases,
+    ),
+  };
+}
+
+/** Índice estático para a busca do site (corpo completo). */
 export function buildSearchIndex(): SearchHit[] {
   const candidates = candidatesAlphabetical().map(candidateHit);
   const pages = EXPLAINERS.map(explainerHit).sort((a, b) =>
+    a.title.localeCompare(b.title, "pt-BR"),
+  );
+  return [...candidates, ...pages];
+}
+
+/** Índice leve pro header: título, teaser e aliases (sem seções/ângulos). */
+export function buildSearchIndexLite(): SearchHit[] {
+  const candidates = candidatesAlphabetical().map(candidateHit);
+  const pages = EXPLAINERS.map(explainerHitLite).sort((a, b) =>
     a.title.localeCompare(b.title, "pt-BR"),
   );
   return [...candidates, ...pages];

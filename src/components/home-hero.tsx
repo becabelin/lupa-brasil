@@ -87,7 +87,6 @@ export function HomeHero({ meta }: Props) {
                       src={c.photo}
                       alt={i < strip.length ? c.name : ""}
                       fill
-                      quality={92}
                       className="object-cover object-top transition duration-500 group-hover:scale-[1.04]"
                       sizes="(max-width: 640px) 32vw, 220px"
                       priority={i < 1}

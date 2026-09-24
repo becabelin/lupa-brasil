@@ -2343,17 +2343,34 @@ export function featuredCases(): Explainer[] {
 }
 
 /** Aliases ordenados do mais longo ao mais curto (evita match parcial). */
+export type ExplainerHoverCard = Pick<
+  Explainer,
+  "slug" | "kind" | "title" | "hoverBlurb" | "hoverBlurbSimple"
+>;
+
+let aliasIndexCache: { alias: string; explainer: ExplainerHoverCard }[] | null =
+  null;
+
 export function explainerAliasIndex(): {
- alias: string;
- explainer: Explainer;
+  alias: string;
+  explainer: ExplainerHoverCard;
 }[] {
- const rows: { alias: string; explainer: Explainer }[] = [];
- for (const e of EXPLAINERS) {
- for (const alias of e.aliases) {
- rows.push({ alias, explainer: e });
- }
- }
- return rows.sort((a, b) => b.alias.length - a.alias.length);
+  if (aliasIndexCache) return aliasIndexCache;
+  const rows: { alias: string; explainer: ExplainerHoverCard }[] = [];
+  for (const e of EXPLAINERS) {
+    const card: ExplainerHoverCard = {
+      slug: e.slug,
+      kind: e.kind,
+      title: e.title,
+      hoverBlurb: e.hoverBlurb,
+      hoverBlurbSimple: e.hoverBlurbSimple,
+    };
+    for (const alias of e.aliases) {
+      rows.push({ alias, explainer: card });
+    }
+  }
+  aliasIndexCache = rows.sort((a, b) => b.alias.length - a.alias.length);
+  return aliasIndexCache;
 }
 
 export const EXPLAINER_KIND_LABEL: Record<ExplainerKind, string> = {

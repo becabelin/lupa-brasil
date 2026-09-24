@@ -3,7 +3,7 @@
 import { Fragment, useMemo } from "react";
 import {
   explainerAliasIndex,
-  type Explainer,
+  type ExplainerHoverCard,
 } from "@/data/explainers";
 import { TermHover } from "@/components/term-hover";
 
@@ -14,7 +14,7 @@ type Props = {
 
 type Segment =
   | { type: "text"; value: string }
-  | { type: "term"; value: string; explainer: Explainer };
+  | { type: "term"; value: string; explainer: ExplainerHoverCard };
 
 function escapeRegExp(s: string) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

@@ -595,7 +595,7 @@ function PeopleGalleryScene({
         </div>
       ) : null}
       {ready && showHint ? (
-        <div className="pointer-events-none absolute bottom-5 left-1/2 z-10 -translate-x-1/2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/35">
+        <div className="pointer-events-none absolute bottom-5 left-1/2 z-10 -translate-x-1/2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
           Arraste pra explorar · clique pra abrir
         </div>
       ) : null}
@@ -644,6 +644,28 @@ export function MesaPeopleGallery({ people, onSelect, className }: Props) {
     <WebGLSurface
       className={cn("h-full min-h-0 w-full", className)}
       label="Galeria de envolvidos"
+      fallback={
+        <ul className="absolute inset-0 z-10 grid auto-rows-min gap-2 overflow-y-auto p-4 sm:grid-cols-2 lg:grid-cols-3">
+          {people.map((p) => (
+            <li key={p.id}>
+              <button
+                type="button"
+                onClick={() => onSelect(p.id)}
+                className="lupa-soft flex w-full items-center gap-3 border border-white/30 bg-black px-3 py-3 text-left transition hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black"
+              >
+                <span className="block min-w-0">
+                  <span className="block font-[family-name:var(--font-display)] text-xl uppercase leading-none">
+                    {p.name}
+                  </span>
+                  <span className="mt-1 block text-[11px] font-medium text-white/70 group-hover:text-black/70">
+                    {p.role.split(";")[0]?.trim()}
+                  </span>
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      }
     >
       <PeopleGalleryScene
         signature={signature}

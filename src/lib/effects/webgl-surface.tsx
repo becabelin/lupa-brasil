@@ -50,6 +50,8 @@ type Props = {
   className?: string;
   style?: CSSProperties;
   label?: string;
+  /** Conteúdo quando WebGL falha (lista acessível etc.). */
+  fallback?: ReactNode;
 };
 
 export function WebGLSurface({
@@ -57,13 +59,14 @@ export function WebGLSurface({
   className,
   style,
   label = "Galeria",
+  fallback: fallbackContent,
 }: Props) {
   const supported = useSyncExternalStore(
     subscribeAvailability,
     supportsWebGL,
     () => false,
   );
-  const fallback = (
+  const fallback = fallbackContent ?? (
     <div
       role="img"
       aria-label={label}
@@ -78,7 +81,7 @@ export function WebGLSurface({
       )}
       style={{ containerType: "size", ...style }}
     >
-      {fallback}
+      {!supported ? fallback : null}
       {supported ? (
         <SurfaceBoundary fallback={fallback}>{children}</SurfaceBoundary>
       ) : null}

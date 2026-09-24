@@ -6,11 +6,11 @@ import { useAccessibility } from "@/components/accessibility";
 import {
   explainerHoverBlurb,
   explainerPath,
-  type Explainer,
+  type ExplainerHoverCard,
 } from "@/data/explainers";
 
 type Props = {
-  explainer: Explainer;
+  explainer: ExplainerHoverCard;
   children: string;
 };
 

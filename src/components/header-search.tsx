@@ -11,9 +11,9 @@ import {
 } from "react";
 import { useRouter } from "next/navigation";
 import {
-  buildSearchIndex,
   SEARCH_KIND_LABEL,
   searchHits,
+  type SearchHit,
 } from "@/lib/search";
 
 type Props = {
@@ -74,11 +74,21 @@ export function HeaderSearch({
   const rootRef = useRef<HTMLFormElement>(null);
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState<SearchHit[] | null>(null);
   const hasText = q.length > 0;
 
-  const index = useMemo(() => buildSearchIndex(), []);
+  const ensureIndex = () => {
+    if (index) return;
+    void import("@/lib/search").then((m) => {
+      setIndex(m.buildSearchIndexLite());
+    });
+  };
+
   const hits = useMemo(
-    () => (q.trim().length >= 2 ? searchHits(index, q).slice(0, 8) : []),
+    () =>
+      index && q.trim().length >= 2
+        ? searchHits(index, q).slice(0, 8)
+        : [],
     [index, q],
   );
   const showPanel = open && q.trim().length >= 2;
@@ -129,8 +139,12 @@ export function HeaderSearch({
         onChange={(e) => {
           setQ(e.target.value);
           setOpen(true);
+          ensureIndex();
         }}
-        onFocus={() => setOpen(true)}
+        onFocus={() => {
+          setOpen(true);
+          ensureIndex();
+        }}
         placeholder={placeholder}
         autoComplete="off"
         enterKeyHint="search"

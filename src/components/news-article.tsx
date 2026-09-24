@@ -163,7 +163,6 @@ export function NewsArticle({ explainer: e, related }: Props) {
                   alt={e.cover.alt}
                   fill
                   priority
-                  quality={90}
                   className="object-cover"
                   style={{
                     objectPosition: e.cover.objectPosition ?? "center top",

@@ -334,7 +334,6 @@ function CompareColumn({
             fill
             className="object-cover object-top"
             sizes="(max-width: 1024px) 100vw, 50vw"
-            quality={90}
             priority={side === "A"}
           />
         ) : (

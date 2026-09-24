@@ -56,7 +56,6 @@ export function HomeEleicoes({ candidateCount }: { candidateCount: number }) {
                       src={c.photo!}
                       alt=""
                       fill
-                      quality={88}
                       className="object-cover object-top"
                       sizes="120px"
                     />
@@ -83,7 +82,6 @@ export function HomeEleicoes({ candidateCount }: { candidateCount: number }) {
                       src={c.photo!}
                       alt=""
                       fill
-                      quality={88}
                       className="object-cover object-top"
                       sizes="200px"
                     />
