@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { VOICE } from "@/data/voice";
+import { useFocusTrap } from "@/lib/use-focus-trap";
 
 const STORAGE_KEY = "lupa-mesa-tutorial-v1";
 
@@ -62,19 +63,17 @@ type Props = {
 export function MesaTutorial({ open, onClose, onFinish }: Props) {
   const [step, setStep] = useState(0);
   const titleId = useId();
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (open) setStep(0);
   }, [open]);
 
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
+  useFocusTrap(open, panelRef, {
+    restoreFocus: true,
+    lockScroll: false,
+    onEscape: onClose,
+  });
 
   if (!open) return null;
 
@@ -88,8 +87,12 @@ export function MesaTutorial({ open, onClose, onFinish }: Props) {
       aria-modal="true"
       aria-labelledby={titleId}
     >
-      <div className="w-full max-w-md border-2 border-white bg-black p-5 shadow-[var(--shadow-lift)] sm:p-7">
-        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/45">
+      <div
+        ref={panelRef}
+        tabIndex={-1}
+        className="w-full max-w-md border-2 border-white bg-black p-5 shadow-[var(--shadow-lift)] outline-none sm:p-7"
+      >
+        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/70">
           {VOICE.mesa.tutEyebrow} · {step + 1}/{STEPS.length}
         </p>
         <h2
@@ -98,7 +101,7 @@ export function MesaTutorial({ open, onClose, onFinish }: Props) {
         >
           {current.title}
         </h2>
-        <p className="mt-4 text-sm font-medium leading-relaxed text-white/75">
+        <p className="mt-4 text-sm font-medium leading-relaxed text-white/85">
           {current.body}
         </p>
 

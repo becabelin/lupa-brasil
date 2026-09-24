@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { HEADER_LINKS } from "@/data/nav";
+import { useFocusTrap } from "@/lib/use-focus-trap";
 
 function linkActive(pathname: string, href: string) {
   if (href === "/eleicoes") {
@@ -53,6 +54,13 @@ export function MainNav() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useFocusTrap(open, panelRef, {
+    restoreFocus: true,
+    lockScroll: true,
+    onEscape: () => setOpen(false),
+  });
 
   useEffect(() => {
     setOpen(false);
@@ -63,24 +71,8 @@ export function MainNav() {
     const onDoc = (e: MouseEvent) => {
       if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
     };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
     document.addEventListener("mousedown", onDoc);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onDoc);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
+    return () => document.removeEventListener("mousedown", onDoc);
   }, [open]);
 
   return (
@@ -112,11 +104,13 @@ export function MainNav() {
 
       {open ? (
         <div
+          ref={panelRef}
           id={panelId}
           role="dialog"
           aria-modal="true"
           aria-label="Menu principal"
-          className="fixed inset-x-0 top-[7.75rem] z-50 border-b-2 border-black bg-white sm:top-[8.25rem] lg:hidden"
+          tabIndex={-1}
+          className="fixed inset-x-0 top-[7.75rem] z-50 border-b-2 border-black bg-white outline-none sm:top-[8.25rem] lg:hidden"
         >
           <nav
             aria-label="Principal"

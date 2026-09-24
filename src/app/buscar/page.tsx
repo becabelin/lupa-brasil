@@ -58,7 +58,7 @@ export default async function SearchPage() {
           { k: String(TOPICS.length), v: "Áreas" },
           { k: String(HOT_AGENDAS.length), v: "Pautas quentes" },
           { k: String(candidates.length), v: "Chapas", href: "/eleicoes" },
-          { k: "A→Z", v: "Sem ranking" },
+          { k: "TSE", v: "Fonte do plano" },
         ]}
       />
       <EleicoesSubnav />

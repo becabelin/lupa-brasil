@@ -56,7 +56,7 @@ export function SiteFooter() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="lupa-nav-link lupa-nav-link-sm text-white/70 hover:text-white"
+                  className="lupa-nav-link lupa-nav-link-sm text-white/80 hover:text-white"
                 >
                   {l.label}
                 </Link>
@@ -80,7 +80,7 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <p className="mt-10 text-[10px] font-bold uppercase tracking-[0.28em] text-white/45">
+        <p className="mt-10 text-[10px] font-bold uppercase tracking-[0.28em] text-white/80">
           {VOICE.disclaimer}
         </p>
       </div>

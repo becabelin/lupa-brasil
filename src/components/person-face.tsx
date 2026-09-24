@@ -66,6 +66,7 @@ export function PersonFace({
           alt={photo.alt || name}
           fill
           priority={priority}
+          quality={90}
           className="object-cover"
           style={{ objectPosition }}
           sizes={sizes}

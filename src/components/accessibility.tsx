@@ -8,6 +8,11 @@ import {
   useMemo,
   useState,
 } from "react";
+import {
+  A11Y_STORAGE_KEY,
+  readPersisted,
+  writePersisted,
+} from "@/lib/client-prefs";
 
 export type Theme = "light" | "dark";
 export type FontScale = "sm" | "md" | "lg" | "xl";
@@ -34,7 +39,6 @@ type Ctx = Prefs & {
   bumpFont: (dir: -1 | 1) => void;
 };
 
-const STORAGE_KEY = "lupa-a11y";
 const FONT_STEPS: FontScale[] = ["sm", "md", "lg", "xl"];
 
 const AccCtx = createContext<Ctx | null>(null);
@@ -49,17 +53,14 @@ function readStored(): Prefs {
   };
   if (typeof window === "undefined") return fallback;
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = readPersisted(A11Y_STORAGE_KEY);
     if (!raw) {
       const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)",
       ).matches;
       return { ...fallback, theme: prefersDark ? "dark" : "light" };
     }
-    const parsed = JSON.parse(raw) as Partial<Prefs> & {
-      readingLevel?: string;
-      readingChosen?: boolean;
-    };
+    const parsed = JSON.parse(raw) as Partial<Prefs>;
     const level: ReadingLevel =
       parsed.readingLevel === "completo" ? "completo" : "simples";
     return {
@@ -108,7 +109,7 @@ export function AccessibilityProvider({
     setPrefs(next);
     applyDom(next);
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      writePersisted(A11Y_STORAGE_KEY, JSON.stringify(next));
     } catch {
       /* ignore */
     }

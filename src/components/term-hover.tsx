@@ -47,24 +47,30 @@ export function TermHover({ explainer, children }: Props) {
       const vw = window.innerWidth;
       const vh = window.innerHeight;
       const width = Math.min(tipRect.width || 288, vw - pad * 2);
+      const tipH = tipRect.height || 120;
 
       let left = rect.left + rect.width / 2 - width / 2;
       left = Math.max(pad, Math.min(left, vw - width - pad));
 
-      const spaceAbove = rect.top;
-      const spaceBelow = vh - rect.bottom;
-      const need = tipRect.height + gap;
-      const placeAbove = spaceAbove >= need || spaceAbove >= spaceBelow;
+      const spaceAbove = rect.top - pad;
+      const spaceBelow = vh - rect.bottom - pad;
+      const need = tipH + gap;
 
+      // Preferir abaixo quando em cima cobriria o título / topo da tela
+      // (clamp em pad deixava o card por cima do nome da pessoa).
       let top: number;
-      if (placeAbove) {
-        top = rect.top - tipRect.height - gap;
-        if (top < pad) top = pad;
-      } else {
+      const fitsAbove = spaceAbove >= need;
+      const fitsBelow = spaceBelow >= need;
+
+      if (fitsBelow && (!fitsAbove || spaceBelow >= spaceAbove)) {
         top = rect.bottom + gap;
-        if (top + tipRect.height > vh - pad) {
-          top = Math.max(pad, vh - tipRect.height - pad);
-        }
+      } else if (fitsAbove) {
+        top = rect.top - tipH - gap;
+      } else if (spaceBelow >= spaceAbove) {
+        top = Math.min(rect.bottom + gap, vh - tipH - pad);
+        top = Math.max(pad, top);
+      } else {
+        top = Math.max(pad, rect.top - tipH - gap);
       }
 
       setPos({

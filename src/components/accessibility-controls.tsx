@@ -12,6 +12,8 @@ const FONT_LABEL: Record<FontScale, string> = {
 type Props = {
   /** Mostra o bloco de leitura (simples / completo). */
   showReading?: boolean;
+  /** Só a grade A− / A / A+ / A++ (sem botões +/- duplicados). */
+  compactFont?: boolean;
   className?: string;
 };
 
@@ -21,6 +23,7 @@ type Props = {
  */
 export function AccessibilityControls({
   showReading = true,
+  compactFont = false,
   className = "",
 }: Props) {
   const {
@@ -110,45 +113,49 @@ export function AccessibilityControls({
         <legend className="text-[11px] font-bold uppercase tracking-wider">
           Tamanho do texto
         </legend>
-        <div className="mt-2 flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => bumpFont(-1)}
-            disabled={fontScale === "sm"}
-            className="border-2 border-black px-3 py-2 text-sm font-bold transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
-            aria-label="Diminuir texto"
-          >
-            A−
-          </button>
-          <p className="flex-1 text-center text-xs font-bold uppercase tracking-wider">
-            {FONT_LABEL[fontScale]}
-          </p>
-          <button
-            type="button"
-            onClick={() => bumpFont(1)}
-            disabled={fontScale === "xl"}
-            className="border-2 border-black px-3 py-2 text-sm font-bold transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
-            aria-label="Aumentar texto"
-          >
-            A+
-          </button>
-        </div>
-        <div className="mt-2 grid grid-cols-4 gap-1">
-          {(["sm", "md", "lg", "xl"] as FontScale[]).map((s) => (
+        {compactFont ? (
+          <div className="mt-2 grid grid-cols-4 gap-1">
+            {(["sm", "md", "lg", "xl"] as FontScale[]).map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => setFontScale(s)}
+                aria-pressed={fontScale === s}
+                className={`border-2 border-black py-2 text-xs font-bold uppercase tracking-wider ${
+                  fontScale === s
+                    ? "bg-black text-white"
+                    : "bg-white hover:bg-black hover:text-white"
+                }`}
+              >
+                {FONT_LABEL[s]}
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-2 flex items-center gap-2">
             <button
-              key={s}
               type="button"
-              onClick={() => setFontScale(s)}
-              className={`border border-black py-1 text-[10px] font-bold uppercase tracking-wider ${
-                fontScale === s
-                  ? "bg-black text-white"
-                  : "bg-white hover:bg-black hover:text-white"
-              }`}
+              onClick={() => bumpFont(-1)}
+              disabled={fontScale === "sm"}
+              className="border-2 border-black px-3 py-2 text-sm font-bold transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+              aria-label="Diminuir texto"
             >
-              {FONT_LABEL[s]}
+              A−
             </button>
-          ))}
-        </div>
+            <p className="flex-1 text-center text-xs font-bold uppercase tracking-wider">
+              {FONT_LABEL[fontScale]}
+            </p>
+            <button
+              type="button"
+              onClick={() => bumpFont(1)}
+              disabled={fontScale === "xl"}
+              className="border-2 border-black px-3 py-2 text-sm font-bold transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+              aria-label="Aumentar texto"
+            >
+              A+
+            </button>
+          </div>
+        )}
       </fieldset>
 
       <fieldset>

@@ -14,6 +14,7 @@ export function CandidateCard({ candidate }: { candidate: Candidate }) {
             src={candidate.photo}
             alt={candidate.name}
             fill
+            quality={90}
             className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
@@ -25,14 +26,14 @@ export function CandidateCard({ candidate }: { candidate: Candidate }) {
       </div>
 
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#666] group-hover:text-white/55">
+        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#666] group-hover:text-white/80">
           {candidate.party}
         </p>
         <h3 className="mt-2 font-[family-name:var(--font-display)] text-2xl leading-[1.02] uppercase tracking-tight sm:text-[1.75rem]">
           {candidate.name}
         </h3>
         {candidate.vice ? (
-          <p className="mt-3 text-sm font-medium text-[#444] group-hover:text-white/75">
+          <p className="mt-3 text-sm font-medium text-[#444] group-hover:text-white/85">
             Vice: {candidate.vice}
             {candidate.viceParty ? ` (${candidate.viceParty})` : ""}
           </p>

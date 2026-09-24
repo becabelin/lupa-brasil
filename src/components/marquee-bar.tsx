@@ -64,12 +64,14 @@ export function MarqueeBar({
   );
 
   return (
-    <div className={`border-y-2 border-black bg-black text-white ${className}`}>
+    <div
+      className={`lupa-marquee border-y-2 border-black bg-black text-white ${className}`}
+    >
       <p className="sr-only">{list.join(" · ")}</p>
       <div className="overflow-hidden py-3" aria-hidden>
         <div
           ref={trackRef}
-          className="hero-marquee flex w-max whitespace-nowrap text-xs font-bold uppercase tracking-[0.35em]"
+          className="hero-marquee flex w-max whitespace-nowrap text-xs font-bold uppercase tracking-[0.35em] text-white"
         >
           {renderTape("a")}
           {renderTape("b")}

@@ -7,13 +7,14 @@ export const HEADER_LINKS = [
   { href: "/glossario", label: "Glossário" },
 ] as const;
 
-/** Links do rodapé (lista completa + Fontes + Buscar). */
+/** Links do rodapé (lista completa + Fontes + Privacidade + Buscar). */
 export const FOOTER_LINKS = [
   { href: "/", label: "Início" },
   { href: "/eleicoes", label: "Eleições 2026" },
   { href: "/noticias", label: "Casos" },
   { href: "/glossario", label: "Glossário" },
   { href: "/fontes", label: "Fontes" },
+  { href: "/privacidade", label: "Privacidade" },
   { href: "/pesquisa", label: "Buscar" },
 ] as const;
 

@@ -117,6 +117,13 @@ export const PRESS_OUTLETS = [
     homeUrl: "https://revistaforum.com.br",
   },
   {
+    id: "brasil-247",
+    label: "Brasil 247",
+    domain: "brasil247.com",
+    siteQuery: "site:brasil247.com",
+    homeUrl: "https://www.brasil247.com",
+  },
+  {
     id: "agencia-brasil",
     label: "Agência Brasil",
     domain: "agenciabrasil.ebc.com.br",
@@ -175,6 +182,8 @@ export function matchOutlet(
   if (hay.includes("nexo")) return PRESS_OUTLETS.find((o) => o.id === "nexo")!;
   if (hay.includes("fórum") || hay.includes("forum"))
     return PRESS_OUTLETS.find((o) => o.id === "revista-forum")!;
+  if (hay.includes("brasil 247") || hay.includes("brasil247"))
+    return PRESS_OUTLETS.find((o) => o.id === "brasil-247")!;
   if (hay.includes("agência brasil") || hay.includes("agencia brasil") || hay.includes("ebc"))
     return PRESS_OUTLETS.find((o) => o.id === "agencia-brasil")!;
   if (hay.includes("senado"))

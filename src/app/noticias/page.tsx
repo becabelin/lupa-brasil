@@ -48,14 +48,9 @@ export default function NoticiasIndexPage() {
             Nenhum caso publicado ainda.
           </p>
         ) : (
-          <ul className="grid gap-0 sm:grid-cols-2">
-            {cases.map((e, i) => (
-              <li
-                key={e.slug}
-                className={`border-2 border-black ${
-                  i > 0 ? "-mt-[2px] sm:mt-0" : ""
-                } ${i % 2 === 1 ? "sm:-ml-[2px]" : ""}`}
-              >
+          <ul className="grid gap-4 sm:grid-cols-2 sm:gap-5">
+            {cases.map((e) => (
+              <li key={e.slug}>
                 <CaseCard explainer={e} />
               </li>
             ))}
@@ -88,7 +83,7 @@ function CaseCard({ explainer: e }: { explainer: Explainer }) {
   return (
     <Link
       href={`/noticias/${e.slug}`}
-      className="group flex h-full flex-col overflow-hidden bg-white transition hover:bg-black hover:text-white"
+      className="group lupa-soft flex h-full flex-col overflow-hidden border-2 border-black bg-white transition hover:bg-black hover:text-white"
     >
       {e.cover ? (
         <div className="relative aspect-[4/3] w-full overflow-hidden border-b-2 border-black bg-[#ddd]">
@@ -103,7 +98,7 @@ function CaseCard({ explainer: e }: { explainer: Explainer }) {
         </div>
       ) : null}
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#666] group-hover:text-white/60">
+        <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#333] group-hover:text-white/80">
           Caso em aberto
           {e.angles && e.angles.length > 0
             ? ` · ${e.angles.length} frentes`
@@ -112,7 +107,7 @@ function CaseCard({ explainer: e }: { explainer: Explainer }) {
         <span className="mt-2 font-[family-name:var(--font-display)] text-2xl uppercase leading-none tracking-tight sm:text-3xl">
           {e.title}
         </span>
-        <span className="mt-3 flex-1 text-sm font-medium leading-relaxed text-[#333] group-hover:text-white/85">
+        <span className="mt-3 flex-1 text-sm font-medium leading-relaxed text-[#222] group-hover:text-white/90">
           {e.teaser}
         </span>
         <span className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2">

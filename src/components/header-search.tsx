@@ -124,6 +124,7 @@ export function HeaderSearch({
         id={id}
         type="search"
         name="q"
+        role="combobox"
         value={q}
         onChange={(e) => {
           setQ(e.target.value);
@@ -134,7 +135,8 @@ export function HeaderSearch({
         autoComplete="off"
         enterKeyHint="search"
         aria-autocomplete="list"
-        aria-controls={showPanel ? listId : undefined}
+        aria-haspopup="listbox"
+        aria-controls={listId}
         aria-expanded={showPanel}
         className={`lupa-search-input w-full border-2 border-black bg-white text-black outline-none transition placeholder:font-normal placeholder:text-[#888] focus:bg-black focus:text-white focus:placeholder:text-white/50 ${
           wide

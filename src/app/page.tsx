@@ -9,6 +9,7 @@ import {
   type Explainer,
 } from "@/data/explainers";
 import { HomeHero } from "@/components/home-hero";
+import { HomeEleicoes } from "@/components/home-eleicoes";
 import { BrandButton, SectionHead } from "@/components/brand-ui";
 import { VOICE } from "@/data/voice";
 
@@ -21,7 +22,6 @@ export default async function HomePage() {
   return (
     <div>
       <HomeHero
-        candidateCount={CANDIDATES.length}
         meta={[
           {
             k: String(CANDIDATES.length),
@@ -46,43 +46,7 @@ export default async function HomePage() {
         ]}
       />
 
-      <section className="border-b-2 border-black">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16">
-          <SectionHead
-            eyebrow={VOICE.homeSections.eleicoesEyebrow}
-            title={
-              <>
-                Eleições
-                <br />
-                2026
-              </>
-            }
-            aside={
-              <BrandButton
-                href="/eleicoes"
-                variant="solid"
-                className="!py-2.5 !px-4 text-xs"
-              >
-                Entrar →
-              </BrandButton>
-            }
-          />
-          <p className="max-w-xl text-base font-medium leading-relaxed text-[#333]">
-            {VOICE.homeSections.eleicoesBlurb}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <BrandButton href="/eleicoes" variant="outline">
-              Candidatos
-            </BrandButton>
-            <BrandButton href="/comparar" variant="outline">
-              Comparar planos
-            </BrandButton>
-            <BrandButton href="/buscar" variant="outline">
-              Por área
-            </BrandButton>
-          </div>
-        </div>
-      </section>
+      <HomeEleicoes candidateCount={CANDIDATES.length} />
 
       {cases.length > 0 ? (
         <section className="border-b-2 border-black bg-[#f0f0f0]">
@@ -100,14 +64,9 @@ export default async function HomePage() {
                 </BrandButton>
               }
             />
-            <ul className="grid gap-0 sm:grid-cols-2 sm:gap-0">
-              {cases.map((e, i) => (
-                <li
-                  key={e.slug}
-                  className={`border-2 border-black bg-white ${
-                    i > 0 ? "-mt-[2px] sm:mt-0" : ""
-                  } ${i % 2 === 1 ? "sm:-ml-[2px]" : ""}`}
-                >
+            <ul className="grid gap-4 sm:grid-cols-2 sm:gap-5">
+              {cases.map((e) => (
+                <li key={e.slug}>
                   <HomeCard explainer={e} cta="Entrar no caso →" />
                 </li>
               ))}
@@ -135,16 +94,9 @@ export default async function HomePage() {
             <p className="mb-6 max-w-xl text-sm font-medium leading-relaxed text-[#444]">
               Conceitos e planos públicos para ler o debate sem ficar no escuro.
             </p>
-            <ul className="grid gap-0 sm:grid-cols-2 lg:grid-cols-3">
-              {glossaryFeatured.map((e, i) => (
-                <li
-                  key={e.slug}
-                  className={`border-2 border-black ${
-                    i > 0 ? "-mt-[2px] sm:mt-0" : ""
-                  } ${i % 2 === 1 ? "sm:-ml-[2px]" : ""} ${
-                    i % 3 === 1 || i % 3 === 2 ? "lg:-ml-[2px]" : ""
-                  }`}
-                >
+            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5">
+              {glossaryFeatured.map((e) => (
+                <li key={e.slug}>
                   <HomeCard explainer={e} cta="Abrir →" />
                 </li>
               ))}
@@ -166,7 +118,7 @@ function HomeCard({
   return (
     <Link
       href={explainerPath(e)}
-      className="group flex h-full flex-col overflow-hidden bg-white transition hover:bg-black hover:text-white"
+      className="group lupa-soft flex h-full flex-col overflow-hidden border-2 border-black bg-white transition hover:bg-black hover:text-white"
     >
       {e.cover ? (
         <div className="relative aspect-[4/3] w-full overflow-hidden border-b-2 border-black bg-[#ddd]">
@@ -181,7 +133,7 @@ function HomeCard({
         </div>
       ) : null}
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#666] group-hover:text-white/60">
+        <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#333] group-hover:text-white/80">
           {EXPLAINER_KIND_LABEL[e.kind]}
           {e.angles && e.angles.length > 0
             ? ` · ${e.angles.length} frentes`
@@ -190,7 +142,7 @@ function HomeCard({
         <span className="mt-2 font-[family-name:var(--font-display)] text-2xl uppercase leading-none tracking-tight sm:text-3xl">
           {e.title}
         </span>
-        <span className="mt-3 flex-1 text-sm font-medium leading-relaxed text-[#333] group-hover:text-white/85">
+        <span className="mt-3 flex-1 text-sm font-medium leading-relaxed text-[#222] group-hover:text-white/90">
           {e.teaser}
         </span>
         <span className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2">

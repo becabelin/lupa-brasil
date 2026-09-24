@@ -93,7 +93,7 @@ function GlossaryCard({ explainer: e }: { explainer: Explainer }) {
         </div>
       ) : null}
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#666] group-hover:text-white/60">
+        <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#666] group-hover:text-white/80">
           {EXPLAINER_KIND_LABEL[e.kind]}
         </span>
         <span className="mt-2 font-[family-name:var(--font-display)] text-2xl uppercase leading-none tracking-tight">

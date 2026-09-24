@@ -76,21 +76,21 @@ type MetaItem = { k: string; v: string; href?: string };
 /** Grade de meta (números + rótulos), como no hero. */
 export function MetaStrip({ items }: { items: MetaItem[] }) {
   return (
-    <div className="grid grid-cols-2 border-b-2 border-black sm:grid-cols-4">
+    <div className="lupa-meta-strip grid grid-cols-2 border-b-2 border-black sm:grid-cols-4">
       {items.map((item, i) => {
         const isLastCol = (i + 1) % 4 === 0;
         const isLastMobile = (i + 1) % 2 === 0;
         const inner = (
           <>
-            <p className="font-[family-name:var(--font-display)] text-3xl uppercase leading-none sm:text-4xl">
+            <p className="lupa-meta-k font-[family-name:var(--font-display)] text-3xl uppercase leading-none sm:text-4xl">
               {item.k}
             </p>
-            <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#666] group-hover:text-white/70">
+            <p className="lupa-meta-v mt-2 text-[10px] font-bold uppercase tracking-[0.2em] group-hover:text-white">
               {item.v}
             </p>
           </>
         );
-        const className = `group block border-black px-4 py-5 sm:px-6 transition hover:bg-black hover:text-white border-r-2 ${
+        const className = `group block border-black bg-white px-4 py-5 sm:px-6 transition hover:bg-black hover:text-white border-r-2 ${
           isLastMobile ? "max-sm:border-r-0" : ""
         } ${isLastCol ? "sm:border-r-0" : ""}`;
         return item.href ? (
@@ -98,7 +98,12 @@ export function MetaStrip({ items }: { items: MetaItem[] }) {
             {inner}
           </Link>
         ) : (
-          <div key={item.v} className={className.replace("group ", "").replace("hover:bg-black hover:text-white ", "")}>
+          <div
+            key={item.v}
+            className={className
+              .replace("group ", "")
+              .replace("hover:bg-black hover:text-white ", "")}
+          >
             {inner}
           </div>
         );

@@ -10,16 +10,19 @@ export type InvestigationEntityKind =
   | "chat"
   | "evidence";
 
-/** Foto de galeria / ambientação no perfil-dossiê. */
+/** Foto no perfil: a pessoa do dossiê aparece na imagem (sozinha ou com alguém do caso). */
 export type InvestigationGalleryPhoto = {
   src: string;
   alt: string;
   credit?: string;
-  /** Legenda curta sob a foto. */
+  /** Legenda curta sob a foto (cena, data, contexto). */
   caption?: string;
-  /** Se definido, clique abre essa pessoa. */
-  personId?: string;
-  /** Se definido, clique abre esse lugar. */
+  /**
+   * Outras pessoas do caso visíveis no quadro.
+   * Clique em “com …” abre o perfil delas. Não use para empurrar retrato alheio.
+   */
+  withPersonIds?: string[];
+  /** Lugar do caso ligado à cena (opcional). */
   placeId?: string;
 };
 
@@ -27,6 +30,7 @@ export type InvestigationPerson = {
   id: string;
   name: string;
   role: string;
+  /** Retrato principal do perfil (hero). */
   photo?: {
     src: string;
     alt: string;
@@ -44,7 +48,11 @@ export type InvestigationPerson = {
   whyHere?: string[];
   /** Ficha rápida: o essencial visível sem rolar. */
   keyFacts?: { label: string; value: string }[];
-  /** Galeria relacionada (rostos, lugares, ambientação). */
+  /**
+   * Fotos em que ESTA pessoa aparece no caso (com alguém do dossiê, em cena,
+   * registro policial etc.). Banco em /public/noticias/casos/{caso}/…
+   * Sem foto dela no quadro → não entra. Sem fallback de rostos de terceiros.
+   */
   gallery?: InvestigationGalleryPhoto[];
 };
 

@@ -33,7 +33,33 @@ export const VOICE = {
     blurb:
       "O Lupa mostra o Brasil como ele é: o que está acontecendo, o que está no papel e de onde veio cada informação. Você decide.",
     sources:
-      "Tudo com origem listada em Fontes. TSE, imprensa e documentos citáveis.",
+      "Origem listada em Fontes. TSE, documentos e reportagens quando cabem. O texto conta o fato.",
+  },
+
+  cookies: {
+    eyebrow: "Privacidade",
+    body: "Guardamos no seu aparelho só o essencial: como você prefere ler, tema e o aviso de cookies. Sem rastrear IP pra isso.",
+    link: "Ver Privacidade",
+    cta: "Entendi",
+  },
+
+  privacidade: {
+    eyebrow: "O que fica no seu aparelho",
+    lede: "Preferências de leitura e o aviso de cookies. Sem anúncio. Sem venda de dado. Sem guardar IP pra lembrar quem você é.",
+    sections: [
+      {
+        title: "O que salvamos",
+        body: "No seu navegador (cookie e armazenamento local): tom de leitura (mais simples ou mais completo), tema claro/escuro, tamanho do texto, contraste e se você já viu o aviso de cookies. Serve pra não perguntar de novo no mesmo aparelho.",
+      },
+      {
+        title: "O que não fazemos",
+        body: "Não usamos IP pra identificar visita. Não vendemos lista. Não temos banner de anúncio de terceiros. Preferências ficam no aparelho; se você limpar os cookies do site, o Lupa pergunta de novo.",
+      },
+      {
+        title: "Como mudar",
+        body: "Leitura, tema, texto e contraste: botão Aa no rodapé. Detalhes desta página: link Privacidade no rodapé.",
+      },
+    ],
   },
 
   eleicoes: {
@@ -42,8 +68,8 @@ export const VOICE = {
     marquee: [
       "Chapas deferidas",
       "Planos do TSE",
-      "Ordem A a Z",
       "Mesma lente pra todo mundo",
+      "Você lê o PDF",
     ],
   },
 
@@ -83,8 +109,8 @@ export const VOICE = {
     cta: "Abrir mesa de investigação",
     ctaBack: "Voltar ao dossiê",
     disclaimer:
-      "Trechos da imprensa. Não é o arquivo da PF. Não é veredicto.",
-    how: "Tela cheia pra explorar. As abas ficam no canto. Clique pra abrir o detalhe.",
+      "Síntese do que está documentado. Não é o arquivo da PF. Não é veredicto.",
+    how: "Comece pelo menu. Escolha uma aba. Depois troque pela barra embaixo.",
     stepPick: "1 · Explore a tela",
     stepRead: "2 · Abra alguém ou algo",
     stepLinks: "3 · Siga as ligações",
@@ -92,10 +118,14 @@ export const VOICE = {
     clearFocus: "Fechar",
     closePerson: "Voltar à galeria",
     personLinks: "No mapa desta pessoa",
-    personWhy: "Por que aparece",
-    personFacts: "Ficha rápida",
-    personGallery: "Fotos relacionadas",
-    personThread: "No fio",
+    personWhy: "Ligação com o caso",
+    personFacts: "Informações",
+    personWho: "Quem é",
+    personVersion: "Versão",
+    personGallery: "Onde aparece",
+    personGalleryHint: "Fotos desta pessoa no caso. Só entra se ela estiver no quadro.",
+    personThread: "No fio desta pessoa",
+    personThreadHint: "Só datas em que ela entra de fato. Sem evento de terceiro.",
     linksTitle: "Ligado a isto",
     linksEmpty:
       "Clique em alguém ou algo na tela. Aqui aparece o que se conecta.",
@@ -106,6 +136,13 @@ export const VOICE = {
     startPeople: "Começar por quem aparece",
     startChat: "Ver uma mensagem",
     startTime: "Ver a linha do tempo",
+    hubEyebrow: "Mesa · escolha uma aba",
+    hubTitle: "Por onde entrar",
+    hubBody:
+      "Seis portas pro mesmo caso. Clique numa. Embaixo fica a barra pra trocar quando quiser.",
+    hubOpen: "Menu",
+    hubNow: "Você está em",
+    hubSwitch: "Trocar de aba",
     crossHow:
       "Escolha duas pessoas (ou uma pessoa e um lugar). A mesa mostra o que os dois têm em comum.",
     tabTempo: "Datas",
@@ -119,16 +156,16 @@ export const VOICE = {
     tutSkip: "Pular",
     tutBack: "Voltar",
     tutNext: "Próximo",
-    tutDone: "Entendi · começar",
+    tutDone: "Entendi · ver menu",
     tutWelcomeTitle: "O que é esta mesa",
     tutWelcomeBody:
-      "É um mapa do caso em tela cheia: pessoas, datas, lugares, mensagens e provas que a imprensa já publicou. Você explora, clica e segue as ligações. Sem veredicto nosso.",
-    tutTabsTitle: "Abas no canto",
+      "É um mapa do caso em tela cheia: pessoas, datas, lugares, mensagens e provas. Você explora, clica e segue as ligações. Sem veredicto nosso.",
+    tutTabsTitle: "Menu na entrada",
     tutTabsBody:
-      "Datas, Quem, Onde, Msgs, Provas e A×B. Cada uma troca a tela inteira. Quem abre a galeria imersiva.",
+      "Na abertura você vê só as abas. Escolhe uma porta. Depois a barra embaixo troca Datas, Quem, Onde, Msgs, Provas e A×B.",
     tutListTitle: "Explore a tela",
     tutListBody:
-      "Arraste a galeria, role a linha do tempo ou escolha na lista flutuante. Toque pra focar.",
+      "Arraste a galeria, role a linha do tempo ou escolha na lista. Toque pra focar.",
     tutDetailTitle: "Painel: leia",
     tutDetailBody:
       "Ao clicar, abre o detalhe: quem é, o que aconteceu, o chat, a prova. Um item por vez.",
@@ -150,7 +187,7 @@ export const VOICE = {
 
     fontes: {
     eyebrow: "De onde vem cada coisa",
-    lede: "Lista completa aqui. TSE primeiro. Imprensa ampla com link. Fotos com banco e crédito. Nas outras páginas, só o atalho.",
+    lede: "Lista completa aqui. TSE primeiro. Links originais. Fotos com banco e crédito. Nas outras páginas, o fato no texto e o atalho pra cá.",
   },
 
   leitura: {
@@ -168,7 +205,7 @@ export const VOICE = {
     a11yTitle: "Acessibilidade",
     a11yLede: "Tema, tamanho do texto e contraste. Vale pra o site inteiro.",
     cta: "Entrar no Lupa",
-    footnote: "Imparcial nos dois. Sem favorito. Aa fica no rodapé.",
+    footnote: "Imparcial nos dois. Sem favorito. Dá pra mudar depois no Aa do rodapé.",
   },
 
   homeSections: {
@@ -176,6 +213,9 @@ export const VOICE = {
     eleicoesTitle: "Eleições 2026",
     eleicoesBlurb:
       "As chapas, os PDFs do TSE e a comparação por área.",
+    eleicoesCandidatos: "As 12 chapas deferidas pelo TSE.",
+    eleicoesComparar: "Dois planos lado a lado, na mesma pauta.",
+    eleicoesAreas: "Saúde, segurança, educação e o resto do PDF.",
     noticiasEyebrow: "Fora da urna também",
     noticiasTitle: "Casos",
   },

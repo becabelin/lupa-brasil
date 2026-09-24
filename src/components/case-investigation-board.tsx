@@ -11,6 +11,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { useFocusTrap } from "@/lib/use-focus-trap";
+
 import type {
   CaseInvestigation,
   InvestigationChat,
@@ -175,7 +177,16 @@ function linksForFocus(
   if (focus.kind === "pessoa") {
     const p = byP.get(focus.id);
     if (!p) return emptyLinks();
-    const events = pick(p.eventIds, byE);
+    // Fonte da verdade: a pessoa precisa estar em event.personIds.
+    // eventIds na ficha só ordena; não inventa ligação.
+    const linked = data.events.filter((e) => e.personIds?.includes(focus.id));
+    const order = new Map((p.eventIds ?? []).map((id, i) => [id, i]));
+    const events = [...linked].sort((a, b) => {
+      const ai = order.has(a.id) ? order.get(a.id)! : 9999;
+      const bi = order.has(b.id) ? order.get(b.id)! : 9999;
+      if (ai !== bi) return ai - bi;
+      return 0;
+    });
     const chats = pick(p.chatIds, byC);
     const evidence = pick(p.evidenceIds, byV);
     const places = uniqueById([
@@ -388,6 +399,8 @@ type Props = {
   data: CaseInvestigation;
   initialTab: MesaTab;
   initialFocus: MesaFocus | null;
+  /** Sem aba/foco na URL: abre o menu de portas primeiro. */
+  openHub?: boolean;
   dossierHref: string;
   ctaBack: string;
   disclaimer: string;
@@ -399,6 +412,7 @@ export function CaseInvestigationBoard({
   data,
   initialTab,
   initialFocus,
+  openHub: initialHub = false,
   dossierHref,
   ctaBack,
   disclaimer,
@@ -407,12 +421,15 @@ export function CaseInvestigationBoard({
   const shellRef = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState<MesaTab>(initialTab);
   const [focus, setFocus] = useState<MesaFocus | null>(initialFocus);
+  const [hubOpen, setHubOpen] = useState(initialHub && !initialFocus);
   const [crossA, setCrossA] = useState<string>("");
   const [crossB, setCrossB] = useState<string>("");
   const [chatReveal, setChatReveal] = useState(0);
   const [tutorialOpen, setTutorialOpen] = useState(false);
   /** Monta a galeria Quem na 1ª visita e mantém viva (sem reload ao mudar de aba). */
-  const [peopleMounted, setPeopleMounted] = useState(initialTab === "pessoas");
+  const [peopleMounted, setPeopleMounted] = useState(
+    !initialHub && initialTab === "pessoas",
+  );
 
   useEffect(() => {
     if (!wasMesaTutorialSeen()) setTutorialOpen(true);
@@ -441,7 +458,11 @@ export function CaseInvestigationBoard({
     (next: MesaFocus | null, nextTab?: MesaTab) => {
       const t = nextTab ?? tab;
       setFocus(next);
+      setHubOpen(false);
       if (nextTab) setTab(nextTab);
+      if (nextTab === "pessoas" || (!nextTab && t === "pessoas")) {
+        setPeopleMounted(true);
+      }
       syncUrl(t, next);
     },
     [syncUrl, tab],
@@ -450,10 +471,29 @@ export function CaseInvestigationBoard({
   const changeTab = useCallback(
     (next: MesaTab) => {
       setTab(next);
+      setHubOpen(false);
+      if (next === "pessoas") setPeopleMounted(true);
       syncUrl(next, focus);
     },
     [focus, syncUrl],
   );
+
+  const enterFromHub = useCallback(
+    (next: MesaTab) => {
+      setFocus(null);
+      setTab(next);
+      setHubOpen(false);
+      if (next === "pessoas") setPeopleMounted(true);
+      syncUrl(next, null);
+    },
+    [syncUrl],
+  );
+
+  const openHubMenu = useCallback(() => {
+    setFocus(null);
+    setHubOpen(true);
+    syncUrl(tab, null);
+  }, [syncUrl, tab]);
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -466,22 +506,37 @@ export function CaseInvestigationBoard({
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "Escape") return;
+      if (tutorialOpen) return;
       if (focus) {
         e.preventDefault();
-        // Pessoa: volta à galeria (aba Quem). Outros: só tira o foco.
         if (focus.kind === "pessoa") selectFocus(null, "pessoas");
         else selectFocus(null);
         return;
       }
-      router.push(dossierHref);
+      if (hubOpen) {
+        e.preventDefault();
+        router.push(dossierHref);
+        return;
+      }
+      e.preventDefault();
+      openHubMenu();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [dossierHref, focus, router, selectFocus]);
+  }, [
+    dossierHref,
+    focus,
+    hubOpen,
+    openHubMenu,
+    router,
+    selectFocus,
+    tutorialOpen,
+  ]);
 
-  useEffect(() => {
-    shellRef.current?.focus();
-  }, []);
+  useFocusTrap(!tutorialOpen, shellRef, {
+    restoreFocus: false,
+    lockScroll: false,
+  });
 
   useEffect(() => {
     if (tab !== "chats" && focus?.kind !== "chat") {
@@ -569,12 +624,28 @@ export function CaseInvestigationBoard({
       ? data.chats.find((c) => c.id === focus.id)
       : undefined;
 
-  const showListRail = tab !== "pessoas" && focus?.kind !== "pessoa";
+  const showListRail =
+    !hubOpen && tab !== "pessoas" && focus?.kind !== "pessoa";
   const personFocus =
-    focus?.kind === "pessoa"
+    !hubOpen && focus?.kind === "pessoa"
       ? data.people.find((p) => p.id === focus.id) ?? null
       : null;
-  const sideDrawerOpen = Boolean(focus && focus.kind !== "pessoa");
+  const sideDrawerOpen = Boolean(!hubOpen && focus && focus.kind !== "pessoa");
+
+  const tabCounts = useMemo(
+    () =>
+      ({
+        tempo: data.events.length,
+        pessoas: data.people.length,
+        lugares: data.places.length,
+        chats: data.chats.length,
+        provas: data.evidence.length,
+        cruzar: 0,
+      }) as Record<MesaTab, number>,
+    [data],
+  );
+
+  const currentTabMeta = TABS.find((t) => t.id === tab) ?? TABS[0];
 
   return (
     <div
@@ -591,11 +662,29 @@ export function CaseInvestigationBoard({
           markMesaTutorialSeen();
           setTutorialOpen(false);
         }}
-        onFinish={() => setTutorialOpen(false)}
+        onFinish={() => {
+          markMesaTutorialSeen();
+          setTutorialOpen(false);
+          if (!initialFocus) setHubOpen(true);
+        }}
       />
 
+      {/* Menu de abas · primeira tela (e quando pede Menu) */}
+      {hubOpen ? (
+        <MesaHub
+          title={data.title}
+          caseTitle={caseTitle}
+          counts={tabCounts}
+          onPick={enterFromHub}
+          onTutorial={() => setTutorialOpen(true)}
+        />
+      ) : null}
+
       {/* Stage em tela cheia */}
-      <div className="absolute inset-0">
+      <div
+        className={`absolute inset-0 ${hubOpen ? "invisible pointer-events-none" : ""}`}
+        aria-hidden={hubOpen}
+      >
         {/* Quem: monta na 1ª visita e mantém viva (sem reload a cada troca de aba) */}
         {peopleMounted ? (
           <div
@@ -616,7 +705,7 @@ export function CaseInvestigationBoard({
           </div>
         ) : null}
         {tab === "pessoas" ? null : tab === "tempo" ? (
-          <div className="relative z-[1] h-full overflow-y-auto px-4 pb-28 pt-20 sm:px-8 lg:pl-[280px] lg:pr-8">
+          <div className="relative z-[1] h-full overflow-y-auto px-4 pb-36 pt-28 sm:px-8 sm:pt-28 lg:pl-[280px] lg:pr-8">
             <TimelinePane
               events={filteredEvents}
               focusId={focus?.kind === "evento" ? focus.id : null}
@@ -624,20 +713,30 @@ export function CaseInvestigationBoard({
             />
           </div>
         ) : tab === "chats" ? (
-          <div className="relative z-[1] h-full overflow-y-auto px-4 pb-28 pt-20 sm:px-8 lg:pl-[280px] lg:pr-8">
-            <ChatPane
-              data={data}
-              chat={selectedChat ?? filteredChats[0] ?? data.chats[0]}
-              reveal={chatReveal}
-              showGuide={!selectedChat && !focus}
-              onPickFirst={() => {
-                const first = filteredChats[0] ?? data.chats[0];
-                if (first) selectFocus({ kind: "chat", id: first.id }, "chats");
-              }}
-            />
+          <div className="relative z-[1] flex h-full items-center justify-center px-6 pb-36 pt-28 sm:pt-28 lg:pl-[280px]">
+            {focus?.kind === "chat" ? (
+              <p className="max-w-sm text-center text-sm leading-relaxed text-white/45">
+                Fio aberto no painel à direita. Troque pela lista ou feche pra
+                voltar.
+              </p>
+            ) : (
+              <div className="w-full max-w-lg">
+                <ChatPane
+                  data={data}
+                  chat={filteredChats[0] ?? data.chats[0]}
+                  reveal={chatReveal}
+                  showGuide
+                  onPickFirst={() => {
+                    const first = filteredChats[0] ?? data.chats[0];
+                    if (first)
+                      selectFocus({ kind: "chat", id: first.id }, "chats");
+                  }}
+                />
+              </div>
+            )}
           </div>
         ) : tab === "cruzar" ? (
-          <div className="relative z-[1] h-full overflow-y-auto px-4 pb-28 pt-20 sm:px-8 lg:pl-[280px] lg:pr-8">
+          <div className="relative z-[1] h-full overflow-y-auto px-4 pb-36 pt-28 sm:px-8 sm:pt-28 lg:pl-[280px] lg:pr-8">
             <CrossPane
               hits={crossHits}
               onSelect={(f) => {
@@ -656,14 +755,14 @@ export function CaseInvestigationBoard({
             />
           </div>
         ) : tab === "lugares" || tab === "provas" ? (
-          <div className="relative z-[1] flex h-full items-center justify-center px-6 pb-28 pt-20 lg:pl-[280px]">
+          <div className="relative z-[1] flex h-full items-center justify-center px-6 pb-36 pt-28 sm:pt-28 lg:pl-[280px]">
             <p className="max-w-sm text-center text-sm leading-relaxed text-white/45">
               Escolha um item na lista à esquerda. O detalhe e as ligações abrem
               no painel.
             </p>
           </div>
         ) : (
-          <div className="relative z-[1] h-full overflow-y-auto px-4 pb-28 pt-20 sm:px-8">
+          <div className="relative z-[1] h-full overflow-y-auto px-4 pb-36 pt-28 sm:px-8 sm:pt-28">
             <StartGuide
               onPeople={() => changeTab("pessoas")}
               onChat={() => {
@@ -682,39 +781,50 @@ export function CaseInvestigationBoard({
         )}
       </div>
 
-      {/* Chrome mínimo no topo */}
-      <header className="pointer-events-none absolute inset-x-0 top-0 z-30 flex items-start justify-between gap-3 p-3 sm:p-4">
-        <div className="pointer-events-auto max-w-[min(100%,28rem)] border border-white/20 bg-black/75 px-3 py-2 backdrop-blur-sm">
-          <p className="text-[9px] font-bold uppercase tracking-[0.28em] text-white/50">
-            Lupa · Mesa
-          </p>
-          <h1 className="truncate font-[family-name:var(--font-display)] text-xl uppercase leading-none tracking-tight sm:text-2xl">
-            {data.title}
-          </h1>
-          <p className="mt-1 truncate text-[10px] text-white/40">{caseTitle}</p>
-        </div>
-        <div className="pointer-events-auto flex shrink-0 items-center gap-1.5">
-          <button
-            type="button"
-            onClick={() => setTutorialOpen(true)}
-            className="inline-flex h-9 items-center justify-center border border-white/40 bg-black/75 px-3 text-[9px] font-bold uppercase leading-none tracking-[0.16em] backdrop-blur-sm transition hover:bg-white hover:text-black"
-            aria-label={V.tutHelp}
-          >
-            {V.tutHelp}
-          </button>
+      {/* Chrome · barra única no topo (não flutua em cima da lista) */}
+      {!hubOpen ? (
+        <header className="absolute inset-x-0 top-0 z-30 flex items-center justify-between gap-3 border-b border-white/20 bg-black/90 px-3 py-2.5 backdrop-blur-md sm:px-4">
+          <div className="min-w-0 flex-1">
+            <p className="text-[9px] font-bold uppercase tracking-[0.28em] text-white/50">
+              Lupa · Mesa
+            </p>
+            <h1 className="truncate font-[family-name:var(--font-display)] text-lg uppercase leading-none tracking-tight sm:text-xl">
+              {data.title}
+            </h1>
+          </div>
+          <div className="flex shrink-0 items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setTutorialOpen(true)}
+              className="lupa-soft inline-flex h-9 items-center justify-center border border-white bg-black px-3 text-[9px] font-bold uppercase leading-none tracking-[0.16em] transition hover:bg-white hover:text-black"
+              aria-label={V.tutHelp}
+            >
+              {V.tutHelp}
+            </button>
+            <Link
+              href={dossierHref}
+              aria-label={ctaBack}
+              className="lupa-soft inline-flex h-9 items-center justify-center border border-white bg-black px-3 text-[9px] font-bold uppercase leading-none tracking-[0.16em] transition hover:bg-white hover:text-black"
+            >
+              {ctaBack}
+            </Link>
+          </div>
+        </header>
+      ) : (
+        <header className="absolute inset-x-0 top-0 z-[45] flex items-center justify-end gap-3 px-3 py-2.5 sm:px-4">
           <Link
             href={dossierHref}
             aria-label={ctaBack}
-            className="inline-flex h-9 items-center justify-center border border-white bg-black/75 px-3 text-[9px] font-bold uppercase leading-none tracking-[0.16em] backdrop-blur-sm transition hover:bg-white hover:text-black"
+            className="lupa-soft inline-flex h-9 items-center justify-center border border-white bg-black px-3 text-[9px] font-bold uppercase leading-none tracking-[0.16em] transition hover:bg-white hover:text-black"
           >
             {ctaBack}
           </Link>
-        </div>
-      </header>
+        </header>
+      )}
 
       {/* Lista flutuante (abas que não são a galeria) */}
       {showListRail ? (
-        <aside className="absolute bottom-24 left-3 top-20 z-20 w-[min(100%-1.5rem,240px)] overflow-hidden border border-white/20 bg-black/80 backdrop-blur-md sm:left-4 lg:bottom-6">
+        <aside className="absolute bottom-32 left-3 top-14 z-20 w-[min(100%-1.5rem,240px)] overflow-hidden border border-white/20 bg-black/80 backdrop-blur-md sm:left-4 sm:top-14 lg:bottom-28">
           <div className="h-full overflow-y-auto">
             <p className="border-b border-white/10 px-3 py-1.5 text-[10px] text-white/35">
               {V.listHint}
@@ -840,30 +950,66 @@ export function CaseInvestigationBoard({
         </aside>
       ) : null}
 
-      {/* Abas compactas · canto inferior direito (some no perfil de pessoa) */}
-      {!personFocus ? (
+      {/* Barra de abas · bem visível embaixo (some no perfil e no menu) */}
+      {!personFocus && !hubOpen ? (
         <nav
-          aria-label="Abas da mesa"
-          className="absolute bottom-3 right-3 z-30 flex flex-col gap-1 border border-white/25 bg-black/85 p-1.5 backdrop-blur-md sm:bottom-4 sm:right-4"
+          aria-label={V.hubSwitch}
+          className="absolute inset-x-0 bottom-0 z-30 border-t border-white/25 bg-black/90 backdrop-blur-md"
         >
-          {TABS.map((t) => {
-            const on = tab === t.id;
-            return (
-              <button
-                key={t.id}
-                type="button"
-                onClick={() => changeTab(t.id)}
-                title={t.hint}
-                className={`min-w-[4.5rem] px-2.5 py-1.5 text-left text-[9px] font-bold uppercase tracking-[0.18em] transition ${
-                  on
-                    ? "bg-white text-black"
-                    : "text-white/65 hover:bg-white/10 hover:text-white"
-                }`}
-              >
-                {t.label}
-              </button>
-            );
-          })}
+          <div className="mx-auto flex max-w-5xl items-stretch gap-1 px-2 py-2 sm:px-4">
+            <button
+              type="button"
+              onClick={openHubMenu}
+              className="shrink-0 border border-white/40 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.16em] transition hover:bg-white hover:text-black"
+            >
+              {V.hubOpen}
+            </button>
+            <div className="min-w-0 flex-1 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <div className="flex min-w-min gap-1">
+                {TABS.map((t) => {
+                  const on = tab === t.id;
+                  const n = tabCounts[t.id];
+                  return (
+                    <button
+                      key={t.id}
+                      type="button"
+                      onClick={() => changeTab(t.id)}
+                      title={t.hint}
+                      className={`shrink-0 px-3 py-2 text-left transition ${
+                        on
+                          ? "bg-white text-black"
+                          : "text-white/70 hover:bg-white/10 hover:text-white"
+                      }`}
+                    >
+                      <span className="block text-[10px] font-bold uppercase tracking-[0.16em]">
+                        {t.label}
+                      </span>
+                      {n > 0 ? (
+                        <span
+                          className={`mt-0.5 block text-[9px] tabular-nums ${
+                            on ? "text-black/50" : "text-white/35"
+                          }`}
+                        >
+                          {n}
+                        </span>
+                      ) : (
+                        <span
+                          className={`mt-0.5 block text-[9px] ${
+                            on ? "text-black/50" : "text-white/35"
+                          }`}
+                        >
+                          ·
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          <p className="border-t border-white/10 px-3 py-1.5 text-center text-[9px] font-bold uppercase tracking-[0.18em] text-white/35 sm:px-4">
+            {V.hubNow}: {currentTabMeta.label} · {currentTabMeta.hint}
+          </p>
         </nav>
       ) : null}
 
@@ -871,6 +1017,7 @@ export function CaseInvestigationBoard({
       {personFocus && focus?.kind === "pessoa" ? (
         <PersonFullscreen
           person={personFocus}
+          people={data.people}
           related={related}
           onClose={() => selectFocus(null, "pessoas")}
           onPerson={(id) => selectFocus({ kind: "pessoa", id }, "pessoas")}
@@ -904,7 +1051,7 @@ export function CaseInvestigationBoard({
               <button
                 type="button"
                 onClick={() => selectFocus(null)}
-                className="inline-flex h-8 shrink-0 items-center justify-center border border-white px-2.5 text-[10px] font-bold uppercase leading-none tracking-wider transition hover:bg-white hover:text-black"
+                className="lupa-soft inline-flex h-9 shrink-0 items-center justify-center border border-white bg-black px-3 text-[9px] font-bold uppercase leading-none tracking-[0.16em] transition hover:bg-white hover:text-black"
               >
                 {V.clearFocus}
               </button>
@@ -979,8 +1126,8 @@ export function CaseInvestigationBoard({
       ) : null}
 
       {/* Hint discreto quando galeria sem foco */}
-      {tab === "pessoas" && !focus ? (
-        <p className="pointer-events-none absolute bottom-4 left-4 z-20 max-w-[14rem] text-[10px] font-bold uppercase tracking-[0.16em] text-white/35">
+      {tab === "pessoas" && !focus && !hubOpen ? (
+        <p className="pointer-events-none absolute bottom-28 left-4 z-20 max-w-[14rem] text-[10px] font-bold uppercase tracking-[0.16em] text-white/35">
           Arraste · clique pra abrir
         </p>
       ) : null}
@@ -1157,7 +1304,7 @@ function TimelinePane({
                   {e.title}
                 </span>
                 <span className="mt-2 block text-sm leading-relaxed text-white/70">
-                  {e.text}
+                  <LinkedText text={e.text} />
                 </span>
               </button>
             </li>
@@ -1170,6 +1317,7 @@ function TimelinePane({
 
 function PersonFullscreen({
   person,
+  people,
   related,
   onClose,
   onPerson,
@@ -1179,6 +1327,7 @@ function PersonFullscreen({
   onEvidence,
 }: {
   person: InvestigationPerson;
+  people: InvestigationPerson[];
   related: Links;
   onClose: () => void;
   onPerson: (id: string) => void;
@@ -1188,6 +1337,10 @@ function PersonFullscreen({
   onEvidence: (id: string) => void;
 }) {
   const panelRef = useRef<HTMLDivElement>(null);
+  const peopleById = useMemo(
+    () => new Map(people.map((p) => [p.id, p])),
+    [people],
+  );
 
   useEffect(() => {
     panelRef.current?.focus();
@@ -1205,19 +1358,8 @@ function PersonFullscreen({
     },
   ].filter((c) => c.n > 0);
 
-  const gallery: InvestigationGalleryPhoto[] = useMemo(() => {
-    if (person.gallery && person.gallery.length > 0) return person.gallery;
-    return related.people
-      .filter((p) => p.photo?.src)
-      .slice(0, 8)
-      .map((p) => ({
-        src: p.photo!.src,
-        alt: p.photo!.alt || p.name,
-        credit: p.photo!.credit,
-        caption: p.name,
-        personId: p.id,
-      }));
-  }, [person.gallery, related.people]);
+  /** Só fotos em que ESTA pessoa aparece. Sem fallback de rostos de terceiros. */
+  const gallery: InvestigationGalleryPhoto[] = person.gallery ?? [];
 
   return (
     <div
@@ -1253,7 +1395,7 @@ function PersonFullscreen({
               <PersonFace
                 name={person.name}
                 photo={person.photo}
-                sizes="(max-width: 1024px) 100vw, 40vw"
+                sizes="(max-width: 1024px) 70vw, 420px"
                 className="absolute inset-0"
               />
             </div>
@@ -1285,6 +1427,9 @@ function PersonFullscreen({
               {person.name}
             </h2>
             <p className="mt-4 max-w-2xl text-sm font-medium leading-relaxed text-white/80 sm:text-base">
+              <span className="mb-1 block text-[10px] font-bold uppercase tracking-[0.2em] text-white/45">
+                {V.personWho ?? "Quem é"}
+              </span>
               <LinkedText text={person.role} />
             </p>
 
@@ -1332,7 +1477,7 @@ function PersonFullscreen({
             {person.response ? (
               <div className="mt-5 border border-white/25 p-4 sm:p-5">
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/45">
-                  O que diz
+                  {V.personVersion ?? "Versão"}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-white/75">
                   <LinkedText text={person.response} />
@@ -1345,51 +1490,69 @@ function PersonFullscreen({
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/45">
                   {V.personGallery}
                 </p>
+                {V.personGalleryHint ? (
+                  <p className="mt-1 max-w-md text-[11px] leading-snug text-white/40">
+                    {V.personGalleryHint}
+                  </p>
+                ) : null}
                 <ul className="mt-3 flex gap-3 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                   {gallery.map((g) => {
-                    const clickable = Boolean(g.personId || g.placeId);
-                    const inner = (
-                      <>
-                        <span className="relative block aspect-[4/5] w-full overflow-hidden bg-white/5">
-                          <Image
-                            src={g.src}
-                            alt={g.alt}
-                            fill
-                            sizes="160px"
-                            className="object-cover grayscale"
-                          />
-                        </span>
-                        {g.caption ? (
-                          <span className="mt-2 block text-[11px] font-bold leading-snug">
-                            {g.caption}
-                          </span>
-                        ) : null}
-                        {g.credit ? (
-                          <span className="mt-0.5 block text-[9px] text-white/35">
-                            {g.credit}
-                          </span>
-                        ) : null}
-                      </>
-                    );
+                    const withPeople = (g.withPersonIds ?? [])
+                      .map((id) => peopleById.get(id))
+                      .filter(Boolean) as InvestigationPerson[];
                     return (
                       <li
                         key={`${g.src}-${g.caption ?? g.alt}`}
                         className="w-[9.5rem] shrink-0 sm:w-40"
                       >
-                        {clickable ? (
-                          <button
-                            type="button"
-                            onClick={() => {
-                              if (g.personId) onPerson(g.personId);
-                              else if (g.placeId) onPlace(g.placeId);
-                            }}
-                            className="w-full text-left transition hover:opacity-90"
-                          >
-                            {inner}
-                          </button>
-                        ) : (
-                          <div className="w-full">{inner}</div>
-                        )}
+                        <div className="w-full">
+                          <span className="relative block aspect-[4/5] w-full overflow-hidden bg-white/5">
+                            <Image
+                              src={g.src}
+                              alt={g.alt}
+                              fill
+                              sizes="320px"
+                              quality={90}
+                              className="object-cover object-top"
+                            />
+                          </span>
+                          {g.caption ? (
+                            <span className="mt-2 block text-[11px] font-bold leading-snug">
+                              {g.caption}
+                            </span>
+                          ) : null}
+                          {withPeople.length > 0 ? (
+                            <span className="mt-1 block text-[10px] leading-snug text-white/55">
+                              com{" "}
+                              {withPeople.map((p, i) => (
+                                <span key={p.id}>
+                                  {i > 0 ? ", " : null}
+                                  <button
+                                    type="button"
+                                    onClick={() => onPerson(p.id)}
+                                    className="underline underline-offset-2 hover:text-white"
+                                  >
+                                    {p.name}
+                                  </button>
+                                </span>
+                              ))}
+                            </span>
+                          ) : null}
+                          {g.placeId ? (
+                            <button
+                              type="button"
+                              onClick={() => onPlace(g.placeId!)}
+                              className="mt-1 block text-[10px] text-white/45 underline underline-offset-2 hover:text-white"
+                            >
+                              Ver lugar
+                            </button>
+                          ) : null}
+                          {g.credit ? (
+                            <span className="mt-0.5 block text-[9px] text-white/35">
+                              {g.credit}
+                            </span>
+                          ) : null}
+                        </div>
                       </li>
                     );
                   })}
@@ -1422,6 +1585,11 @@ function PersonFullscreen({
                 <h3 className="font-[family-name:var(--font-display)] text-2xl uppercase tracking-tight">
                   {V.personThread}
                 </h3>
+                {V.personThreadHint ? (
+                  <p className="mt-1 max-w-lg text-[11px] leading-snug text-white/40">
+                    {V.personThreadHint}
+                  </p>
+                ) : null}
                 <ul className="mt-3 space-y-2">
                   {related.events.map((e) => (
                     <li key={e.id}>
@@ -1438,7 +1606,7 @@ function PersonFullscreen({
                           {e.title}
                         </span>
                         <span className="mt-2 block text-xs leading-relaxed opacity-75">
-                          {e.text}
+                          <LinkedText text={e.text} />
                         </span>
                       </button>
                     </li>
@@ -1739,6 +1907,86 @@ function DetailPane({
   return null;
 }
 
+function MesaHub({
+  title,
+  caseTitle,
+  counts,
+  onPick,
+  onTutorial,
+}: {
+  title: string;
+  caseTitle: string;
+  counts: Record<MesaTab, number>;
+  onPick: (tab: MesaTab) => void;
+  onTutorial: () => void;
+}) {
+  return (
+    <div className="absolute inset-0 z-40 flex flex-col overflow-y-auto bg-black px-4 pb-10 pt-16 sm:px-8 sm:pt-20">
+      <div className="mx-auto w-full max-w-3xl">
+        <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-white/45">
+          {V.hubEyebrow}
+        </p>
+        <h1 className="mt-2 font-[family-name:var(--font-display)] text-[clamp(2.75rem,10vw,5rem)] uppercase leading-[0.88] tracking-tight">
+          {V.hubTitle}
+        </h1>
+        <p className="mt-2 font-[family-name:var(--font-display)] text-2xl uppercase leading-none tracking-tight text-white/55 sm:text-3xl">
+          {title}
+        </p>
+        <p className="mt-1 text-xs text-white/35">{caseTitle}</p>
+        <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/60">
+          {V.hubBody}
+        </p>
+
+        <ul className="mt-8 grid gap-2 sm:grid-cols-2">
+          {TABS.map((t) => {
+            const n = counts[t.id];
+            return (
+              <li key={t.id}>
+                <button
+                  type="button"
+                  onClick={() => onPick(t.id)}
+                  className="lupa-soft group flex w-full items-start justify-between gap-3 border-2 border-white/30 bg-black px-4 py-4 text-left transition hover:border-white hover:bg-white hover:text-black"
+                >
+                  <span className="min-w-0">
+                    <span className="block font-[family-name:var(--font-display)] text-3xl uppercase leading-none tracking-tight sm:text-4xl">
+                      {t.label}
+                    </span>
+                    <span className="mt-2 block text-xs leading-snug text-white/50 group-hover:text-black/55">
+                      {t.hint}
+                    </span>
+                  </span>
+                  <span className="shrink-0 text-right">
+                    {n > 0 ? (
+                      <span className="block font-[family-name:var(--font-display)] text-2xl uppercase leading-none tabular-nums">
+                        {n}
+                      </span>
+                    ) : (
+                      <span className="block text-[10px] font-bold uppercase tracking-wider opacity-40">
+                        cruzar
+                      </span>
+                    )}
+                    <span className="mt-1 block text-[10px] font-bold uppercase tracking-[0.16em] opacity-40 group-hover:opacity-70">
+                      Abrir →
+                    </span>
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+
+        <button
+          type="button"
+          onClick={onTutorial}
+          className="mt-8 text-[10px] font-bold uppercase tracking-[0.18em] text-white/40 underline underline-offset-4 transition hover:text-white"
+        >
+          {V.tutHelp} de novo
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function StartGuide({
   onPeople,
   onChat,
@@ -1895,7 +2143,9 @@ function ChatPane({
                   {name}
                   {m.when ? ` · ${m.when}` : ""}
                 </p>
-                <p className="mt-0.5 text-sm leading-snug">{m.text}</p>
+                <p className="mt-0.5 text-sm leading-snug">
+                  <LinkedText text={m.text} />
+                </p>
               </div>
             </div>
           );

@@ -224,11 +224,28 @@ function titleMentionsCandidate(title: string, candidateName: string) {
 }
 
 /** Só o que pesa na urna: pesquisa, polêmica, investigação, ato com repercussão. */
+function isPollPress(title: string, snippet: string, lede = "") {
+  const hay = foldHay(title, `${snippet} ${lede}`);
+  return /pesquisa|intencao|intencoes|datafolha|ipec|quaest|atlas|bloomberg|segundo turno|1o turno|2o turno|% das inten/.test(
+    hay,
+  );
+}
+
 export function selectPressForDisplay(
   items: PressItem[],
   limit = 8,
+  opts?: { excludePolls?: boolean },
 ): PressItem[] {
+  const excludePolls = opts?.excludePolls ?? false;
   const scored = items
+    .filter((item) => {
+      if (!excludePolls) return true;
+      return !isPollPress(
+        item.title,
+        item.snippet || "",
+        item.lede || "",
+      );
+    })
     .map((item) => ({
       item,
       score: pressSalience(item.title, item.snippet || item.lede || ""),
@@ -325,7 +342,8 @@ export async function fetchPressForCandidate(params: {
 /** Lede mínimo quando a IA não está disponível. */
 export function fallbackPressLede(outletLabel: string, title: string) {
   const t = title.trim().replace(/\.$/, "");
-  return `Segundo ${outletLabel}, ${t.charAt(0).toLowerCase()}${t.slice(1)}.`;
+  if (!t) return outletLabel;
+  return `${t.charAt(0).toUpperCase()}${t.slice(1)}.`;
 }
 
 /**
@@ -373,7 +391,7 @@ export async function enrichPressLedes(
 
 PAPEL
 - Para cada manchete, 1 ou 2 frases concretas (número, fato, quem falou).
-- Atribua ao veículo ("Segundo o g1…", "A Folha informa que…").
+- Escreva o fato direto. NÃO comece com "Segundo o g1" nem "A Folha informa". O nome do veículo já aparece no card.
 - Priorize o que pesa no voto: pesquisa com %, denúncia, polêmica, decisão judicial, proposta de impacto.
 - NÃO diga se a denúncia é verdadeira. NÃO opine. NÃO endosse.
 - NÃO invente além da manchete (e nota_rss, se houver).

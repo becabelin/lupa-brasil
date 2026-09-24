@@ -73,7 +73,7 @@ export function CandidatesGrid({ candidates }: Props) {
       </div>
 
       <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#555]">
-        {filtered.length} de {candidates.length} · ordem alfabética
+        {filtered.length} de {candidates.length} chapas
       </p>
 
       {filtered.length === 0 ? (

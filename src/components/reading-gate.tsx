@@ -10,8 +10,8 @@ import { useFocusTrap } from "@/lib/use-focus-trap";
 import { VOICE } from "@/data/voice";
 
 /**
- * Primeira visita: leitura + tema, texto e contraste.
- * Depois, dá pra mudar no rodapé (Aa).
+ * Primeira visita: tela preta + modal. Só depois abre o site.
+ * Tema/texto/contraste escolhidos aqui valem no rodapé (Aa).
  */
 export function ReadingGate() {
   const { setReadingLevel, readingChosen, readingLevel } = useAccessibility();
@@ -24,11 +24,20 @@ export function ReadingGate() {
   useFocusTrap(open, panelRef, {
     restoreFocus: false,
     initialFocusRef: primaryCtaRef,
+    lockScroll: true,
   });
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    document.documentElement.dataset.readingGate = "open";
+    return () => {
+      delete document.documentElement.dataset.readingGate;
+    };
+  }, [open]);
 
   if (!open) return null;
 
@@ -41,17 +50,17 @@ export function ReadingGate() {
 
   return (
     <div
-      className="fixed inset-0 z-[90] flex items-end justify-center bg-black/50 p-4 sm:items-center"
+      className="lupa-reading-gate fixed inset-0 z-[90] flex items-end justify-center p-4 sm:items-center"
       role="presentation"
     >
       <div
         ref={panelRef}
-        className="max-h-[min(92vh,44rem)] w-full max-w-lg overflow-y-auto border-2 border-black bg-white p-6 shadow-[var(--shadow-lift)] sm:p-8"
+        className="lupa-reading-gate-panel max-h-[min(92vh,44rem)] w-full max-w-lg overflow-y-auto border-2 p-6 sm:p-8"
         role="dialog"
         aria-modal="true"
         aria-labelledby="leitura-titulo"
       >
-        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#666]">
+        <p className="lupa-reading-gate-muted text-[10px] font-bold uppercase tracking-[0.22em]">
           {V.eyebrow}
         </p>
         <h2
@@ -60,86 +69,36 @@ export function ReadingGate() {
         >
           {V.title}
         </h2>
-        <p className="mt-3 text-sm font-medium leading-relaxed text-[#333]">
+        <p className="lupa-reading-gate-body mt-3 text-sm font-medium leading-relaxed">
           {V.lede}
         </p>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          <button
-            type="button"
+          <ToneCard
+            pressed={active === "simples"}
             onClick={() => setPicked("simples")}
-            aria-pressed={active === "simples"}
-            className={`group border-2 border-black px-4 py-4 text-left transition ${
-              active === "simples"
-                ? "bg-black text-white"
-                : "bg-white text-black hover:bg-black hover:text-white"
-            }`}
-          >
-            <span
-              className={`block text-[10px] font-bold uppercase tracking-[0.18em] ${
-                active === "simples"
-                  ? "text-white/70"
-                  : "text-[#666] group-hover:text-white/70"
-              }`}
-            >
-              {V.simplesTag}
-            </span>
-            <span className="mt-1 block font-[family-name:var(--font-display)] text-2xl uppercase leading-none">
-              {V.simplesTitle}
-            </span>
-            <span
-              className={`mt-2 block text-xs font-medium leading-snug ${
-                active === "simples"
-                  ? "text-white/90"
-                  : "text-[#333] group-hover:text-white/90"
-              }`}
-            >
-              {V.simplesBlurb}
-            </span>
-          </button>
-          <button
-            type="button"
+            tag={V.simplesTag}
+            title={V.simplesTitle}
+            blurb={V.simplesBlurb}
+          />
+          <ToneCard
+            pressed={active === "completo"}
             onClick={() => setPicked("completo")}
-            aria-pressed={active === "completo"}
-            className={`group border-2 border-black px-4 py-4 text-left transition ${
-              active === "completo"
-                ? "bg-black text-white"
-                : "bg-white text-black hover:bg-black hover:text-white"
-            }`}
-          >
-            <span
-              className={`block text-[10px] font-bold uppercase tracking-[0.18em] ${
-                active === "completo"
-                  ? "text-white/70"
-                  : "text-[#666] group-hover:text-white/70"
-              }`}
-            >
-              {V.completoTag}
-            </span>
-            <span className="mt-1 block font-[family-name:var(--font-display)] text-2xl uppercase leading-none">
-              {V.completoTitle}
-            </span>
-            <span
-              className={`mt-2 block text-xs font-medium leading-snug ${
-                active === "completo"
-                  ? "text-white/90"
-                  : "text-[#333] group-hover:text-white/90"
-              }`}
-            >
-              {V.completoBlurb}
-            </span>
-          </button>
+            tag={V.completoTag}
+            title={V.completoTitle}
+            blurb={V.completoBlurb}
+          />
         </div>
 
-        <div className="mt-8 border-t-2 border-black pt-6">
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#666]">
+        <div className="lupa-reading-gate-rule mt-8 border-t-2 pt-6">
+          <p className="lupa-reading-gate-muted text-[10px] font-bold uppercase tracking-[0.2em]">
             {V.a11yTitle}
           </p>
-          <p className="mt-1 text-[11px] font-medium leading-snug text-[#666]">
+          <p className="lupa-reading-gate-muted mt-1 text-[11px] font-medium leading-snug">
             {V.a11yLede}
           </p>
           <div className="mt-4">
-            <AccessibilityControls showReading={false} />
+            <AccessibilityControls showReading={false} compactFont />
           </div>
         </div>
 
@@ -147,12 +106,49 @@ export function ReadingGate() {
           ref={primaryCtaRef}
           type="button"
           onClick={() => enter(active)}
-          className="mt-6 w-full border-2 border-black bg-black px-4 py-3.5 text-sm font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black"
+          className="lupa-reading-gate-cta mt-6 w-full border-2 px-4 py-3.5 text-sm font-bold uppercase tracking-[0.16em] transition"
         >
           {V.cta}
         </button>
-        <p className="mt-3 text-[11px] font-medium text-[#666]">{V.footnote}</p>
+        <p className="lupa-reading-gate-muted mt-3 text-[11px] font-medium">
+          {V.footnote}
+        </p>
       </div>
     </div>
+  );
+}
+
+function ToneCard({
+  pressed,
+  onClick,
+  tag,
+  title,
+  blurb,
+}: {
+  pressed: boolean;
+  onClick: () => void;
+  tag: string;
+  title: string;
+  blurb: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={pressed}
+      className={`lupa-reading-gate-tone group border-2 px-4 py-4 text-left transition ${
+        pressed ? "is-on" : ""
+      }`}
+    >
+      <span className="lupa-reading-gate-tone-tag block text-[10px] font-bold uppercase tracking-[0.18em]">
+        {tag}
+      </span>
+      <span className="mt-1 block font-[family-name:var(--font-display)] text-2xl uppercase leading-none">
+        {title}
+      </span>
+      <span className="lupa-reading-gate-tone-blurb mt-2 block text-xs font-medium leading-snug">
+        {blurb}
+      </span>
+    </button>
   );
 }

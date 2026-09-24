@@ -1,8 +1,14 @@
-import { selectPressForDisplay, type PressItem } from "@/lib/press";
+import {
+  selectPressForDisplay,
+  fallbackPressLede,
+  type PressItem,
+} from "@/lib/press";
 
 type Props = {
   items: PressItem[];
   updatedAt?: string;
+  /** Na ficha do candidato: sem pesquisas eleitorais. */
+  excludePolls?: boolean;
 };
 
 function pressBadge(item: PressItem): string | null {
@@ -15,29 +21,31 @@ function pressBadge(item: PressItem): string | null {
   ) {
     return "Pesquisa";
   }
-  if (/polêmica|polemica|escândalo|escandalo|áudio|audio|vazamento|repercute/.test(hay)) {
-    return "Polêmica";
-  }
   return null;
 }
 
-export function PressCoverage({ items, updatedAt }: Props) {
-  const shown = selectPressForDisplay(items, 8);
+export function PressCoverage({
+  items,
+  updatedAt,
+  excludePolls = false,
+}: Props) {
+  const shown = selectPressForDisplay(items, 8, { excludePolls });
 
   return (
     <section>
       <div className="mb-6 border-b-2 border-black pb-4">
         <h3 className="font-[family-name:var(--font-display)] text-[clamp(2rem,5vw,3rem)] uppercase leading-[0.9] tracking-tight">
-          O que a imprensa publicou
+          Na cobertura
         </h3>
-        <p className="mt-2 max-w-xl text-sm font-medium leading-relaxed text-[#555]">
-          Pesquisa, polêmica e fato com repercussão. Cada card aponta a matéria
-          original.
+        <p className="mt-2 max-w-xl text-sm font-medium leading-relaxed text-[#2a2a2a]">
+          {excludePolls
+            ? "Fatos e investigações com repercussão ligados a esta chapa. Cada card leva à matéria original."
+            : "Fatos e investigações com repercussão. Cada card leva à matéria original."}
         </p>
       </div>
 
       {shown.length === 0 ? (
-        <p className="border-2 border-dashed border-black p-6 text-sm font-medium text-[#666]">
+        <p className="lupa-soft border-2 border-dashed border-black p-6 text-sm font-medium text-[#2a2a2a]">
           Ainda não há manchetes de peso listadas para esta chapa.
         </p>
       ) : (
@@ -45,13 +53,13 @@ export function PressCoverage({ items, updatedAt }: Props) {
           {shown.map((item) => {
             const lede =
               item.lede?.trim() ||
-              `Segundo ${item.outletLabel}, a matéria trata de: ${item.title}`;
-            const badge = pressBadge(item);
+              fallbackPressLede(item.outletLabel, item.title);
+            const badge = excludePolls ? (item.watchlist ? "Investigação" : null) : pressBadge(item);
             return (
               <li key={item.id} className="mb-4 break-inside-avoid">
-                <article className="flex h-full flex-col border-2 border-black bg-white p-5">
+                <article className="lupa-soft flex h-full flex-col border-2 border-black bg-white p-5">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#666]">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#2a2a2a]">
                       {badge ? (
                         <span className="mr-2 inline-block border border-black px-1.5 py-0.5 text-black">
                           {badge}
@@ -79,16 +87,16 @@ export function PressCoverage({ items, updatedAt }: Props) {
                     {lede}
                   </p>
 
-                  <div className="mt-auto border-t border-black/20 pt-4">
+                  <div className="mt-4 border-t border-black/15 pt-4">
                     <a
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="lupa-text-link block text-sm font-semibold leading-snug"
+                      className="lupa-text-link text-sm font-bold leading-snug"
                     >
                       {item.title}
                     </a>
-                    <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.18em]">
+                    <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#2a2a2a]">
                       Ler no {item.outletLabel} →
                     </p>
                   </div>
@@ -99,9 +107,17 @@ export function PressCoverage({ items, updatedAt }: Props) {
         </ul>
       )}
 
-      {updatedAt && shown.length > 0 ? (
-        <p className="mt-4 text-[11px] font-medium text-[#666]">
-          Atualizado em {new Date(updatedAt).toLocaleString("pt-BR")}
+      {updatedAt ? (
+        <p className="mt-4 text-[10px] font-medium text-[#2a2a2a]">
+          Lista atualizada em{" "}
+          {new Date(updatedAt).toLocaleString("pt-BR", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+          .
         </p>
       ) : null}
     </section>

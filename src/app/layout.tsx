@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Space_Grotesk } from "next/font/google";
 import { AccessibilityProvider } from "@/components/accessibility";
+import { CookieConsent } from "@/components/cookie-consent";
 import { ReadingGate } from "@/components/reading-gate";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import {
@@ -55,12 +56,28 @@ export const metadata: Metadata = {
     title: "Lupa do Brasil · O Brasil de perto",
     description:
       "Comparar planos de governo 2026, casos e glossário. Fonte na mão. Você decide.",
+    images: [
+      {
+        url: "/brand/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Lupa do Brasil · O Brasil de perto",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lupa do Brasil · O Brasil de perto",
     description:
       "Comparar planos de governo 2026, casos e glossário. Fonte na mão. Você decide.",
+    images: ["/brand/og.jpg"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/brand/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/brand/apple-icon.png", sizes: "180x180" }],
   },
   alternates: {
     canonical: "/",
@@ -104,6 +121,7 @@ export default function RootLayout({
           </main>
           <SiteFooter />
           <ReadingGate />
+          <CookieConsent />
         </AccessibilityProvider>
       </body>
     </html>

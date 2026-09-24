@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { CaseInvestigationBoard } from "@/components/case-investigation-board";
+import { CaseInvestigationBoardLazy } from "@/components/case-investigation-board-lazy";
 import {
   getInvestigation,
   investigationSlugs,
@@ -39,12 +39,13 @@ export default async function CasoMesaPage({ params, searchParams }: Props) {
   if (!e || !inv || !isCaseKind(e.kind)) notFound();
 
   return (
-    <CaseInvestigationBoard
+    <CaseInvestigationBoardLazy
       slug={slug}
       caseTitle={e.title}
       data={inv}
       initialTab={parseTab(sp.aba)}
       initialFocus={parseFocus(sp.foco)}
+      openHub={!sp.aba && !sp.foco}
       dossierHref={`/noticias/${slug}`}
       ctaBack={VOICE.mesa.ctaBack}
       disclaimer={VOICE.mesa.disclaimer}

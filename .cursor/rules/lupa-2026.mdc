@@ -27,7 +27,7 @@ alwaysApply: true
 - **Fontes**: lista completa em **`/fontes`** (e `src/data/sources.ts` / dados por página). Nas fichas, casos e glossário: atalho para Fontes, sem repetir a lista inteira.
 - **Casos** (`/noticias`): dossiês imersivos com frentes, linha do tempo, quem aparece; links originais em Fontes; sem veredicto.
 - **Glossário** (`/glossario`): conceitos e planos/políticas para consulta; sem veredicto.
-- **Imprensa nos candidatos**: importar manchetes (`npm run press:fetch`) só dos veículos em `press-outlets.ts` (lista ampla: G1, Folha, Estadão, O Globo, UOL, Metrópoles, piauí, Valor, etc.). O Lupa escreve extrato factual (`lede`) e cita o veículo. Não é só lista de links. `npm run press:enrich` regenera ledes.
+- **Imprensa nos candidatos**: importar manchetes (`npm run press:fetch`) só dos veículos em `press-outlets.ts`. O Lupa escreve extrato factual (`lede`) sem “segundo o veículo” (o nome já vai no card). `npm run press:enrich` regenera ledes.
 - **Fotos**: bancos em `IMAGE_SOURCE_BANKS` (Commons, Agência Senado/Câmara, Agência Brasil, Planalto, Flickr Commons, tribunais). Critério em `IMAGE_SOURCE_RULES`. Créditos em `/fontes#fotos`. Sempre P&B; preferir alta resolução nativa.
 - **Ficha da pessoa** (`src/data/candidates.ts`): bio, formação, trajetória e casos ligados. Fatos públicos com `bioSources` (listados em `/fontes#fichas`). Nunca repetir o resumo do plano na lateral. Sem juízo de valor.
 - Manter link **Fontes** no footer (e atalho nas fichas/casos/glossário). Não precisa no header.
@@ -61,7 +61,8 @@ Exemplos que passam: **maioridade penal** (glossário), **modelo El Salvador** (
 - Header **sem** botão Admin. Admin só em `/admin` (URL direta).
 - Nav principal no header: **Eleições 2026** · **Casos** · **Glossário**. Logo = Início. **Barra de busca** em faixa própria sob o nav (sticky). Sem Início, Fontes nem Aa no header.
 - **Fontes** e **Aa** (acessibilidade) ficam no **footer**. Busca global em `/pesquisa` (não confundir com `/buscar`, áreas do plano).
-- **Leitura**: na primeira visita (`ReadingGate`), escolher **Mais simples** ou **Mais completo** e também tema, texto e contraste. Preferência em `lupa-a11y`; depois, menu Aa no rodapé. `teaserSimple` / `hoverBlurbSimple` quando existirem.
+- **Leitura**: na primeira visita (`ReadingGate`), escolher **Mais simples** ou **Mais completo** e também tema, texto e contraste. Preferência em cookie + `lupa-a11y` (até ~400 dias no aparelho; sem IP). Depois, menu Aa no rodapé. `teaserSimple` / `hoverBlurbSimple` quando existirem.
+- **Cookies / privacidade**: banner `CookieConsent` só na 1ª visita (depois do gate). Página `/privacidade` + link no footer. Consentimento em `lupa-consent`.
 - No mobile: Menu (links). Busca fica na faixa sob o nav em todos os tamanhos.
 - A Presidência é o foco atual dentro de `/eleicoes` (candidatos, comparar, áreas), mas o site não é só eleição: `/noticias` cobre casos; `/glossario` cobre conceitos.
 - `/entender` redireciona para `/glossario` (slugs de caso vão para `/noticias`).
@@ -74,6 +75,15 @@ Exemplos que passam: **maioridade penal** (glossário), **modelo El Salvador** (
 - Evitar jargão de produto: “linguagem clara”, “sem favoritos”, “dossiê factual”, “extrato factual”, “imparcial” em loop.
 - Sem travessão (—). Frases curtas.
 - O conteúdo factual (planos, casos, fontes) continua neutro e rastreável; a voz vale para como o site fala com o usuário.
+
+## Narrativa independente (obrigatório)
+
+- Contar o fato. Não encher o texto de “segundo a imprensa”, “conforme o podcast”, “o portal X disse”.
+- Fontes ficam na seção Fontes / `/fontes` e nos campos `sources`. No corpo, citar veículo ou instituição **só quando for necessário** (número exclusivo, versão da própria pessoa, ato formal de PF/Coaf/TSE/STF).
+- Preferir: “O Master tinha R$ 16 bi em precatórios.” Evitar: “Segundo o Estadão, o Master tinha…”.
+- Instituição como sujeito quando ela age: “O Coaf registra…”, “A PF apreendeu…”. Não: “A imprensa diz que o Coaf…”.
+- Versões de defesa e negações continuam atribuídas à pessoa (“Nicolas nega”, “em nota, o ministro afirma”).
+- Sem veredicto. Sem inventar. Independência editorial ≠ omitir origem.
 
 ## Identidade visual
 

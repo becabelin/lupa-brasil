@@ -201,7 +201,7 @@ export function NewsArticle({ explainer: e, related }: Props) {
                 {mesaHref ? (
                   <Link
                     href={mesaHref}
-                    className="inline-block border-2 border-black bg-black px-5 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-black"
+                    className="lupa-soft inline-block border-2 border-black bg-black px-5 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-black"
                   >
                     {VOICE.mesa.cta} →
                   </Link>
@@ -209,7 +209,7 @@ export function NewsArticle({ explainer: e, related }: Props) {
                 {toc.length > 0 ? (
                   <a
                     href={`#${toc[0].id}`}
-                    className={`inline-block border-2 border-black px-5 py-3 text-xs font-bold uppercase tracking-[0.18em] transition hover:bg-black hover:text-white ${
+                    className={`lupa-soft inline-block border-2 border-black px-5 py-3 text-xs font-bold uppercase tracking-[0.18em] transition hover:bg-black hover:text-white ${
                       mesaHref
                         ? "bg-white text-black"
                         : "bg-black text-white hover:bg-white hover:text-black"
@@ -220,6 +220,32 @@ export function NewsArticle({ explainer: e, related }: Props) {
                 ) : null}
               </div>
             </div>
+          </div>
+        </div>
+      ) : null}
+
+      {(angles.length > 0 || mesaHref) ? (
+        <div className="border-b-2 border-black bg-[#f5f5f5]">
+          <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div className="max-w-2xl">
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#2a2a2a]">
+                Como investigar este caso
+              </p>
+              <p className="mt-1 text-sm font-medium leading-relaxed text-[#222]">
+                {angles.length > 0
+                  ? `${angles.length} frentes no texto. Linha do tempo, quem aparece e o que cada lado diz. A mesa abre o mapa completo.`
+                  : "Abra a mesa para cruzar pessoas, datas, lugares e provas."}{" "}
+                Sem veredicto nosso. Fontes no fim e em /fontes.
+              </p>
+            </div>
+            {mesaHref ? (
+              <Link
+                href={mesaHref}
+                className="lupa-soft shrink-0 border-2 border-black bg-black px-4 py-2.5 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black"
+              >
+                Abrir mesa →
+              </Link>
+            ) : null}
           </div>
         </div>
       ) : null}
@@ -449,14 +475,14 @@ export function NewsArticle({ explainer: e, related }: Props) {
                   {e.people.map((p, i) => (
                     <li
                       key={p.name}
-                      className="lupa-quem-card group flex flex-col overflow-hidden border-2 border-black bg-white transition duration-200 hover:bg-black hover:text-white"
+                      className="lupa-quem-card lupa-soft group flex flex-col overflow-hidden border-2 border-black bg-white transition duration-200 hover:bg-black hover:text-white"
                       style={{ animationDelay: `${Math.min(i, 12) * 55}ms` }}
                     >
                       <div className="relative aspect-[4/5] w-full overflow-hidden border-b-2 border-black bg-[#ddd]">
                         <PersonFace
                           name={p.name}
                           photo={p.photo}
-                          sizes="(max-width: 640px) 100vw, 40vw"
+                          sizes="(max-width: 640px) 50vw, 280px"
                           className="transition duration-500 group-hover:scale-[1.03]"
                           fallbackClassName="group-hover:bg-white group-hover:text-black"
                         />

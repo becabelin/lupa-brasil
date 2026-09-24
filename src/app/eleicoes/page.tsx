@@ -10,7 +10,7 @@ import { VOICE } from "@/data/voice";
 export const metadata = {
   title: "Eleições 2026 · Candidatos à Presidência",
   description:
-    "Doze chapas deferidas pelo TSE. Planos de governo oficiais, ordem A a Z, sem ranking. Compare propostas e leia as fichas.",
+    "Doze chapas deferidas pelo TSE. Planos de governo oficiais. Compare propostas e leia as fichas.",
   alternates: { canonical: "/eleicoes" },
   openGraph: {
     title: "Eleições 2026 · Candidatos à Presidência · Lupa do Brasil",
@@ -62,7 +62,7 @@ export default async function EleicoesPage() {
         className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16"
       >
         <p className="mb-6 text-xs font-bold uppercase tracking-[0.22em] text-[#666]">
-          Candidatos · A a Z · {CANDIDATES.length} chapas
+          Candidatos · {CANDIDATES.length} chapas
         </p>
         <CandidatesGrid candidates={CANDIDATES} />
       </section>

@@ -120,11 +120,11 @@ export default function FontesPage() {
 
       <section className="mt-8">
         <h2 className="font-[family-name:var(--font-display)] text-2xl uppercase tracking-tight sm:text-3xl">
-          Chapas no site (ordem alfabética)
+          Chapas no site
         </h2>
         <p className="mt-2 text-sm font-medium text-[#555]">
-          Listagem pública em A→Z para não priorizar nenhuma chapa. A ordem da
-          notícia do TSE está na fonte acima.
+          As 12 chapas deferidas pelo TSE. A ordem da notícia oficial está na
+          fonte acima.
         </p>
         <div className="mt-6 overflow-x-auto border-2 border-black">
           <table className="w-full min-w-[640px] text-left text-sm">

@@ -220,7 +220,7 @@ export function SiteSearch({ index, initialQuery = "" }: Props) {
                     href={hit.href}
                     className="group block bg-white p-4 transition hover:bg-black hover:text-white sm:p-5"
                   >
-                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#666] group-hover:text-white/60">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#666] group-hover:text-white/80">
                       {hit.meta}
                     </p>
                     <p className="mt-1 font-[family-name:var(--font-display)] text-xl uppercase leading-none tracking-tight sm:text-2xl">
@@ -269,7 +269,7 @@ function AskAnswerCard({ result }: { result: AskResult }) {
                     href={c.href}
                     className="group flex flex-col gap-0.5 bg-white px-3 py-3 transition hover:bg-black hover:text-white sm:px-4"
                   >
-                    <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#666] group-hover:text-white/60">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#666] group-hover:text-white/80">
                       {c.note}
                     </span>
                     <span className="font-[family-name:var(--font-display)] text-lg uppercase tracking-tight sm:text-xl">

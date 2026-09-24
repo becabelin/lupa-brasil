@@ -563,6 +563,140 @@ select.appearance-none {
   animation: hero-marquee 36s linear infinite;
 }
 
+/* Faixa preta: não deixar tema/remap lavar o contraste. */
+.lupa-marquee {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.lupa-marquee .hero-marquee,
+.lupa-marquee span {
+  color: #ffffff !important;
+}
+
+/* Meta strip: números e rótulos sempre legíveis no papel. */
+.lupa-meta-strip .lupa-meta-k {
+  color: var(--ink) !important;
+}
+.lupa-meta-strip .lupa-meta-v {
+  color: var(--ink) !important;
+  opacity: 0.72;
+}
+.lupa-meta-strip .group:hover .lupa-meta-k,
+.lupa-meta-strip .group:hover .lupa-meta-v {
+  color: var(--paper) !important;
+  opacity: 1;
+}
+
+/* Gate de leitura: tela preta sólida + painel branco fixo (sem remap de tema). */
+.lupa-reading-gate {
+  background-color: #000000 !important;
+  color: #000000 !important;
+}
+.lupa-reading-gate-panel {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+.lupa-reading-gate-muted {
+  color: #555555 !important;
+}
+.lupa-reading-gate-body {
+  color: #222222 !important;
+}
+.lupa-reading-gate-rule {
+  border-color: #000000 !important;
+}
+.lupa-reading-gate-tone {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+.lupa-reading-gate-tone:hover,
+.lupa-reading-gate-tone.is-on {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.lupa-reading-gate-tone-tag {
+  color: #666666 !important;
+}
+.lupa-reading-gate-tone:hover .lupa-reading-gate-tone-tag,
+.lupa-reading-gate-tone.is-on .lupa-reading-gate-tone-tag {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.lupa-reading-gate-tone-blurb {
+  color: #333333 !important;
+}
+.lupa-reading-gate-tone:hover .lupa-reading-gate-tone-blurb,
+.lupa-reading-gate-tone.is-on .lupa-reading-gate-tone-blurb {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.lupa-reading-gate-cta {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+.lupa-reading-gate-cta:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+/* Controles Aa dentro do gate: P&B reais. */
+.lupa-reading-gate .border-black {
+  border-color: #000000 !important;
+}
+.lupa-reading-gate .bg-black {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.lupa-reading-gate .bg-white {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+.lupa-reading-gate .text-\[\#666\],
+.lupa-reading-gate .text-\[\#666666\] {
+  color: #666666 !important;
+}
+html[data-reading-gate="open"] body > header,
+html[data-reading-gate="open"] body > main,
+html[data-reading-gate="open"] body > footer {
+  visibility: hidden;
+}
+
+/* Bloco invertido (home Eleições): preto/branco reais, sem remap de tema. */
+.lupa-ink-block {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Cards do bloco: fundo preto por padrão; no hover inverte de verdade. */
+.lupa-ink-block .lupa-ink-card {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+.lupa-ink-block .lupa-ink-card:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+.lupa-ink-block .lupa-ink-card .lupa-ink-card-muted {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+.lupa-ink-block .lupa-ink-card:hover .lupa-ink-card-muted {
+  color: rgba(0, 0, 0, 0.72) !important;
+}
+.lupa-ink-block .lupa-ink-card .lupa-ink-card-body {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+.lupa-ink-block .lupa-ink-card:hover .lupa-ink-card-body {
+  color: rgba(0, 0, 0, 0.88) !important;
+}
+.lupa-ink-block .lupa-ink-card .lupa-ink-card-media {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+.lupa-ink-block .lupa-ink-card:hover .lupa-ink-card-media {
+  border-color: #000000 !important;
+}
+
 .hero-film {
   animation: hero-film 55s linear infinite;
 }
