@@ -938,27 +938,6 @@ export function CaseInvestigationBoard({
                 ))}
               </ListPane>
             ) : null}
-            {tab === "pessoas" ? (
-              <ListPane title={`Quem · ${data.people.length}`}>
-                {data.people.map((p) => (
-                  <ListButton
-                    key={p.id}
-                    active={false}
-                    onClick={() =>
-                      selectFocus({ kind: "pessoa", id: p.id }, "pessoas")
-                    }
-                    eyebrow={p.role.split(";")[0]?.trim()}
-                    title={p.name}
-                    avatar={
-                      p.photo
-                        ? { src: p.photo.src, alt: p.photo.alt }
-                        : undefined
-                    }
-                    initials={p.name.slice(0, 2).toUpperCase()}
-                  />
-                ))}
-              </ListPane>
-            ) : null}
             {tab === "lugares" ? (
               <ListPane title={`Onde · ${filteredPlaces.length}`}>
                 {filteredPlaces.map((p) => (
