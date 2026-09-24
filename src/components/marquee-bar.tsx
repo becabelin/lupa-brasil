@@ -55,7 +55,7 @@ export function MarqueeBar({
           className="mx-6 inline-flex items-center gap-6"
         >
           <span>{label}</span>
-          <span className="text-white/40" aria-hidden>
+          <span className="text-white/75" aria-hidden>
             ◆
           </span>
         </span>

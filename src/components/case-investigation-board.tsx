@@ -632,7 +632,9 @@ export function CaseInvestigationBoard({
       ? data.chats.find((c) => c.id === focus.id)
       : undefined;
 
-  const showListRail = !hubOpen && focus?.kind !== "pessoa";
+  const showListRail = !hubOpen && focus?.kind !== "pessoa" && tab !== "pessoas";
+  /** No celular: lista some quando há item aberto (o detalhe é a tela). */
+  const listRailMobileHidden = Boolean(focus) || tab === "tempo";
   const personFocus =
     !hubOpen && focus?.kind === "pessoa"
       ? data.people.find((p) => p.id === focus.id) ?? null
@@ -666,7 +668,7 @@ export function CaseInvestigationBoard({
       role="dialog"
       aria-modal="true"
       aria-label={`Mesa de investigação · ${data.title}`}
-      className="fixed inset-0 z-[100] bg-black text-white outline-none"
+      className="lupa-on-dark fixed inset-0 z-[100] bg-black text-white outline-none"
     >
       <MesaTutorial
         open={tutorialOpen}
@@ -717,7 +719,7 @@ export function CaseInvestigationBoard({
           </div>
         ) : null}
         {tab === "pessoas" ? null : tab === "tempo" ? (
-          <div className="relative z-[1] h-full overflow-y-auto px-4 pb-36 pt-28 sm:px-8 sm:pt-28 lg:pl-[280px] lg:pr-8">
+          <div className="relative z-[1] h-full overflow-y-auto px-3 pb-32 pt-24 sm:px-8 sm:pb-36 sm:pt-28 lg:pl-[280px] lg:pr-8">
             <TimelinePane
               events={filteredEvents}
               focusId={focus?.kind === "evento" ? focus.id : null}
@@ -725,7 +727,11 @@ export function CaseInvestigationBoard({
             />
           </div>
         ) : tab === "chats" ? (
-          <div className="relative z-[1] h-full min-h-0 overflow-y-auto overscroll-contain px-4 pb-36 pt-28 sm:px-8 sm:pt-28 lg:pl-[280px] lg:pr-8">
+          <div
+            className={`relative z-[1] h-full min-h-0 overflow-y-auto overscroll-contain px-3 pb-32 pt-24 sm:px-8 sm:pb-36 sm:pt-28 lg:pl-[280px] lg:pr-8 ${
+              focus?.kind !== "chat" ? "max-lg:hidden" : ""
+            }`}
+          >
             <div className="mx-auto w-full max-w-lg">
               {focus?.kind === "chat" ? (
                 <div className="mb-4 flex items-center gap-2">
@@ -812,7 +818,7 @@ export function CaseInvestigationBoard({
             </div>
           </div>
         ) : tab === "cruzar" ? (
-          <div className="relative z-[1] h-full overflow-y-auto px-4 pb-36 pt-28 sm:px-8 sm:pt-28 lg:pl-[280px] lg:pr-8">
+          <div className="relative z-[1] hidden h-full overflow-y-auto px-3 pb-32 pt-24 sm:px-8 sm:pb-36 sm:pt-28 lg:block lg:pl-[280px] lg:pr-8">
             <CrossPane
               hits={crossHits}
               onSelect={(f) => {
@@ -831,10 +837,15 @@ export function CaseInvestigationBoard({
             />
           </div>
         ) : tab === "lugares" || tab === "provas" ? (
-          <div className="relative z-[1] flex h-full items-center justify-center px-6 pb-36 pt-28 sm:pt-28 lg:pl-[280px]">
+          <div
+            className={`relative z-[1] flex h-full items-center justify-center px-4 pb-32 pt-24 sm:px-6 sm:pb-36 sm:pt-28 lg:pl-[280px] ${
+              !focus ? "max-lg:hidden" : ""
+            }`}
+          >
             <p className="max-w-sm text-center text-sm leading-relaxed text-white/45">
-              Escolha um item na lista à esquerda. O detalhe e as ligações abrem
-              no painel.
+              Escolha um item na lista
+              <span className="hidden lg:inline"> à esquerda</span>. O detalhe e
+              as ligações abrem no painel.
             </p>
           </div>
         ) : (
@@ -859,7 +870,7 @@ export function CaseInvestigationBoard({
 
       {/* Chrome · barra única no topo (não flutua em cima da lista) */}
       {!hubOpen ? (
-        <header className="absolute inset-x-0 top-0 z-30 flex items-center justify-between gap-3 border-b border-white/20 bg-black/90 px-3 py-2.5 backdrop-blur-md sm:px-4">
+        <header className="absolute inset-x-0 top-0 z-30 flex items-center justify-between gap-3 border-b border-white/20 bg-black px-3 py-2.5 sm:px-4">
           <div className="min-w-0 flex-1">
             <p className="text-[9px] font-bold uppercase tracking-[0.28em] text-white/50">
               Lupa · Mesa
@@ -872,17 +883,19 @@ export function CaseInvestigationBoard({
             <button
               type="button"
               onClick={() => setTutorialOpen(true)}
-              className="lupa-soft inline-flex h-9 items-center justify-center border border-white bg-black px-3 text-[9px] font-bold uppercase leading-none tracking-[0.16em] transition hover:bg-white hover:text-black"
+              className="lupa-soft inline-flex h-9 items-center justify-center border border-white bg-black px-2.5 text-[9px] font-bold uppercase leading-none tracking-[0.14em] transition hover:bg-white hover:text-black sm:px-3 sm:tracking-[0.16em]"
               aria-label={V.tutHelp}
             >
-              {V.tutHelp}
+              <span className="sm:hidden">?</span>
+              <span className="hidden sm:inline">{V.tutHelp}</span>
             </button>
             <Link
               href={dossierHref}
               aria-label={ctaBack}
-              className="lupa-soft inline-flex h-9 items-center justify-center border border-white bg-black px-3 text-[9px] font-bold uppercase leading-none tracking-[0.16em] transition hover:bg-white hover:text-black"
+              className="lupa-soft inline-flex h-9 items-center justify-center border border-white bg-black px-2.5 text-[9px] font-bold uppercase leading-none tracking-[0.14em] transition hover:bg-white hover:text-black sm:px-3 sm:tracking-[0.16em]"
             >
-              {ctaBack}
+              <span className="sm:hidden">Sair</span>
+              <span className="hidden sm:inline">{ctaBack}</span>
             </Link>
           </div>
         </header>
@@ -898,10 +911,14 @@ export function CaseInvestigationBoard({
         </header>
       )}
 
-      {/* Lista flutuante (abas que não são a galeria) */}
+      {/* Lista: no desktop flutua à esquerda; no celular ocupa a tela até abrir um item */}
       {showListRail ? (
-        <aside className="absolute bottom-32 left-3 top-14 z-20 w-[min(100%-1.5rem,240px)] overflow-hidden border border-white/20 bg-black/80 backdrop-blur-md sm:left-4 sm:top-14 lg:bottom-28">
-          <div className="h-full overflow-y-auto">
+        <aside
+          className={`absolute z-20 overflow-hidden border border-white/20 bg-black backdrop-blur-md max-lg:inset-x-0 max-lg:bottom-[4.75rem] max-lg:top-14 max-lg:w-full max-lg:rounded-none max-lg:border-x-0 lg:bottom-28 lg:left-4 lg:top-14 lg:w-60 ${
+            listRailMobileHidden ? "max-lg:hidden" : ""
+          }`}
+        >
+          <div className="h-full overflow-y-auto overscroll-contain">
             <p className="border-b border-white/10 px-3 py-1.5 text-[10px] text-white/35">
               {V.listHint}
             </p>
@@ -1041,6 +1058,24 @@ export function CaseInvestigationBoard({
                     </span>
                   </label>
                 </div>
+                <div className="border-t border-white/15 p-3 lg:hidden">
+                  <CrossPane
+                    hits={crossHits}
+                    onSelect={(f) => {
+                      const nextTab =
+                        f.kind === "pessoa"
+                          ? "pessoas"
+                          : f.kind === "evento"
+                            ? "tempo"
+                            : f.kind === "chat"
+                              ? "chats"
+                              : f.kind === "lugar"
+                                ? "lugares"
+                                : "provas";
+                      selectFocus(f, nextTab);
+                    }}
+                  />
+                </div>
               </ListPane>
             ) : null}
           </div>
@@ -1051,20 +1086,20 @@ export function CaseInvestigationBoard({
       {!personFocus && !hubOpen ? (
         <nav
           aria-label={V.hubSwitch}
-          className="lupa-mesa-dock absolute inset-x-0 bottom-0 z-30 border-t border-white/20 bg-black"
+          className="lupa-mesa-dock absolute inset-x-0 bottom-0 z-30 border-t border-white/20 bg-black pb-[env(safe-area-inset-bottom)]"
         >
-          <div className="flex items-stretch gap-2 px-3 py-2.5 sm:gap-2.5 sm:px-4">
+          <div className="flex items-stretch gap-1.5 px-2 py-2 sm:gap-2 sm:px-4 sm:py-2.5">
             <button
               type="button"
               onClick={openHubMenu}
-              className="lupa-soft flex w-[4.25rem] shrink-0 items-center justify-center border border-white/50 text-[10px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-black"
+              className="lupa-soft flex w-12 shrink-0 items-center justify-center border border-white/50 text-[9px] font-bold uppercase tracking-[0.12em] text-white transition hover:bg-white hover:text-black sm:w-[4.25rem] sm:text-[10px] sm:tracking-[0.16em]"
             >
               {V.hubOpen}
             </button>
             <div
               role="tablist"
               aria-label={V.hubSwitch}
-              className="grid min-w-0 flex-1 grid-cols-6 gap-1"
+              className="flex min-w-0 flex-1 gap-1 overflow-x-auto overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] sm:grid sm:grid-cols-6 sm:overflow-visible [&::-webkit-scrollbar]:hidden"
             >
               {TABS.map((t) => {
                 const on = tab === t.id;
@@ -1077,13 +1112,13 @@ export function CaseInvestigationBoard({
                     aria-selected={on}
                     onClick={() => changeTab(t.id)}
                     title={t.hint}
-                    className={`lupa-soft flex min-h-11 min-w-0 flex-col items-center justify-center gap-1 px-0.5 py-1.5 transition ${
+                    className={`lupa-soft flex min-h-11 min-w-[3.35rem] flex-col items-center justify-center gap-1 px-2 py-1.5 transition sm:min-w-0 sm:flex-1 sm:px-0.5 ${
                       on
                         ? "bg-white text-black"
                         : "text-white/70 hover:bg-white/10 hover:text-white"
                     }`}
                   >
-                    <span className="max-w-full truncate text-[9px] font-bold uppercase leading-none tracking-[0.12em] sm:text-[10px] sm:tracking-[0.14em]">
+                    <span className="max-w-full truncate text-[9px] font-bold uppercase leading-none tracking-[0.1em] sm:text-[10px] sm:tracking-[0.14em]">
                       {t.label}
                     </span>
                     <span
@@ -1126,7 +1161,7 @@ export function CaseInvestigationBoard({
             onClick={() => selectFocus(null)}
           />
           <aside
-            className="lupa-on-dark absolute inset-y-0 right-0 z-50 flex w-full max-w-md flex-col border-l border-white/25 bg-black shadow-[-16px_0_40px_rgba(0,0,0,0.5)] sm:max-w-lg"
+            className="lupa-on-dark absolute inset-y-0 right-0 z-50 flex w-full max-w-none flex-col border-l border-white/25 bg-black shadow-[-16px_0_40px_rgba(0,0,0,0.5)] sm:max-w-lg"
             aria-label={`${V.lookingAt}: ${focusLabel ?? ""}`}
           >
             <div className="flex shrink-0 items-center gap-2 border-b border-white/20 px-4 py-3">
@@ -1256,7 +1291,7 @@ function ListButton({
     <button
       type="button"
       onClick={onClick}
-      className={`flex w-full items-start gap-3 border-b border-white/10 px-3 py-3 text-left transition ${
+      className={`flex w-full items-start gap-3 border-b border-white/15 bg-transparent px-3 py-3 text-left text-white transition ${
         active ? "bg-white text-black" : "hover:bg-white/10"
       }`}
     >
@@ -2196,7 +2231,7 @@ function ChatPane({
         </p>
       </div>
 
-      <div className="mt-4 flex flex-col gap-2.5 rounded-sm border border-white/15 bg-[#0a0a0a] p-3 sm:p-4">
+      <div className="mt-4 flex flex-col gap-2.5 rounded-sm border border-white/15 bg-black p-3 sm:p-4">
         {visible.map((m, i) => {
           const out = m.side === "out";
           const name = personName(data, m.from);

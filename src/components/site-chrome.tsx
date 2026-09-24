@@ -31,7 +31,7 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t-2 border-black bg-black text-white">
+    <footer className="lupa-on-dark mt-auto border-t-2 border-black bg-black text-white">
       <MarqueeBar
         className="border-x-0 border-t-0 border-b border-white/20"
         items={[...VOICE.marquee]}

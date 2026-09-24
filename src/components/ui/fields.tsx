@@ -40,7 +40,7 @@ export function FilterInput({
         <input
           id={id}
           {...props}
-          className={`lupa-search-input ${fieldClass} placeholder:font-normal placeholder:text-[#888] focus:placeholder:text-white/50 ${
+          className={`lupa-search-input ${fieldClass} placeholder:font-normal placeholder:text-[#666] focus:placeholder:text-white/70 ${
             isSearch ? (hasText ? "pr-11" : "") : ""
           } ${props.className ?? ""}`}
         />
@@ -262,7 +262,7 @@ export function FilterSelect({
                   onKeyDown={onListKeyDown}
                   placeholder={searchPlaceholder}
                   autoComplete="off"
-                  className="lupa-search-input w-full border-2 border-black bg-white px-3 py-2 text-sm font-semibold outline-none placeholder:font-normal placeholder:text-[#888] focus:bg-black focus:text-white focus:placeholder:text-white/50"
+                  className="lupa-search-input w-full border-2 border-black bg-white px-3 py-2 text-sm font-semibold outline-none placeholder:font-normal placeholder:text-[#666] focus:bg-black focus:text-white focus:placeholder:text-white/70"
                 />
               </div>
             ) : null}

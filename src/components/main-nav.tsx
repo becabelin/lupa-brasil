@@ -110,21 +110,21 @@ export function MainNav() {
           aria-modal="true"
           aria-label="Menu principal"
           tabIndex={-1}
-          className="fixed inset-x-0 top-[7.75rem] z-50 border-b-2 border-black bg-white outline-none sm:top-[8.25rem] lg:hidden"
+          className="fixed inset-x-0 top-[6.75rem] z-50 max-h-[min(70vh,calc(100dvh-7rem))] overflow-y-auto border-b-2 border-black bg-white outline-none sm:top-[7.5rem] lg:hidden"
         >
           <nav
             aria-label="Principal"
-            className="mx-auto max-w-7xl px-4 py-4 sm:px-6"
+            className="mx-auto max-w-7xl px-4 py-3 sm:px-6 sm:py-4"
           >
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col">
               {HEADER_LINKS.map((l) => (
-                <li key={l.href}>
+                <li key={l.href} className="border-b border-black/10 last:border-b-0">
                   <NavLink
                     href={l.href}
                     label={l.label}
                     active={linkActive(pathname, l.href)}
                     onNavigate={() => setOpen(false)}
-                    className="block w-full py-3 text-base tracking-[0.14em]"
+                    className="block w-full py-3.5 text-base tracking-[0.14em]"
                   />
                 </li>
               ))}

@@ -5,10 +5,10 @@
   --wash: #f0f0f0;
   --ink: #000000;
   --ink-soft: #1a1a1a;
-  --muted: #555555;
-  --muted-2: #4a4a4a;
-  --muted-3: #3d3d3d;
-  --muted-4: #2a2a2a;
+  --muted: #4a4a4a;
+  --muted-2: #3d3d3d;
+  --muted-3: #333333;
+  --muted-4: #222222;
   --line: #000000;
   --accent: #000000;
   --accent-soft: #e8e8e8;
@@ -43,7 +43,23 @@ html[data-theme="dark"] {
   color-scheme: dark;
 }
 
+/* Tema claro explícito (não depender só do :root ao sair do escuro). */
 html[data-theme="light"] {
+  --paper: #ffffff;
+  --wash: #f0f0f0;
+  --ink: #000000;
+  --ink-soft: #1a1a1a;
+  --muted: #4a4a4a;
+  --muted-2: #3d3d3d;
+  --muted-3: #333333;
+  --muted-4: #222222;
+  --line: #000000;
+  --accent: #000000;
+  --accent-soft: #e8e8e8;
+  --invert-on-ink: #ffffff;
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --shadow-hard: #000000;
   color-scheme: light;
 }
 
@@ -384,14 +400,75 @@ img[data-needs-bw] {
 }
 .text-\[\#333\],
 .text-\[\#333333\],
-.text-\[\#222\] {
+.text-\[\#222\],
+.text-\[\#222222\],
+.text-\[\#2a2a2a\],
+.text-\[\#1a1a1a\] {
   color: var(--muted-4) !important;
+}
+.text-\[\#888\],
+.text-\[\#888888\] {
+  color: var(--muted) !important;
+}
+.placeholder\:text-\[\#666\]::placeholder,
+.placeholder\:text-\[\#666666\]::placeholder,
+.placeholder\:text-\[\#888\]::placeholder,
+.placeholder\:text-\[\#888888\]::placeholder {
+  color: var(--muted) !important;
+  opacity: 1;
 }
 .bg-\[\#f0f0f0\],
 .bg-\[\#f5f5f5\],
 .bg-\[\#ddd\],
-.bg-\[\#111\] {
+.bg-\[\#dddddd\],
+.bg-\[\#111\],
+.bg-\[\#111111\] {
   background-color: var(--wash) !important;
+}
+.bg-\[\#222\],
+.bg-\[\#222222\] {
+  background-color: var(--ink-soft) !important;
+}
+.bg-\[\#0a0a0a\] {
+  background-color: color-mix(in srgb, var(--ink) 92%, var(--paper)) !important;
+}
+
+/*
+  Gradiente em foto: preto REAL.
+  from-black/via-black no tema escuro viram tinta clara e lavavam a legenda.
+*/
+.from-black {
+  --tw-gradient-from: #000000 var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-from), var(--tw-gradient-to)) !important;
+}
+.via-black {
+  --tw-gradient-via: #000000 var(--tw-gradient-via-position) !important;
+  --tw-gradient-via-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to) !important;
+  --tw-gradient-stops: var(--tw-gradient-via-stops) !important;
+}
+.via-black\/70 {
+  --tw-gradient-via: rgb(0 0 0 / 0.7) var(--tw-gradient-via-position) !important;
+  --tw-gradient-via-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to) !important;
+  --tw-gradient-stops: var(--tw-gradient-via-stops) !important;
+}
+.via-black\/75 {
+  --tw-gradient-via: rgb(0 0 0 / 0.75) var(--tw-gradient-via-position) !important;
+  --tw-gradient-via-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to) !important;
+  --tw-gradient-stops: var(--tw-gradient-via-stops) !important;
+}
+.via-black\/80 {
+  --tw-gradient-via: rgb(0 0 0 / 0.8) var(--tw-gradient-via-position) !important;
+  --tw-gradient-via-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to) !important;
+  --tw-gradient-stops: var(--tw-gradient-via-stops) !important;
+}
+.from-black\/40 {
+  --tw-gradient-from: rgb(0 0 0 / 0.4) var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-from), var(--tw-gradient-to)) !important;
+}
+.from-40\% {
+  --tw-gradient-from-position: 40% !important;
 }
 
 /* Hover invertido: precisa vencer os !important dos cinzas acima */
@@ -406,29 +483,32 @@ img[data-needs-bw] {
   color: var(--ink) !important;
 }
 .group:hover .group-hover\:text-white\/55 {
-  color: color-mix(in srgb, var(--paper) 55%, transparent) !important;
+  color: color-mix(in srgb, var(--paper) 85%, transparent) !important;
 }
 .group:hover .group-hover\:text-white\/60 {
-  color: color-mix(in srgb, var(--paper) 60%, transparent) !important;
+  color: color-mix(in srgb, var(--paper) 88%, transparent) !important;
 }
 .group:hover .group-hover\:text-white\/65,
 .group:hover .group-hover\:text-white\/70 {
-  color: color-mix(in srgb, var(--paper) 70%, transparent) !important;
-}
-.group:hover .group-hover\:text-white\/75 {
-  color: color-mix(in srgb, var(--paper) 75%, transparent) !important;
-}
-.group:hover .group-hover\:text-white\/80 {
-  color: color-mix(in srgb, var(--paper) 82%, transparent) !important;
-}
-.group:hover .group-hover\:text-white\/85 {
-  color: color-mix(in srgb, var(--paper) 85%, transparent) !important;
-}
-.group:hover .group-hover\:text-white\/90 {
   color: color-mix(in srgb, var(--paper) 90%, transparent) !important;
 }
+.group:hover .group-hover\:text-white\/75 {
+  color: color-mix(in srgb, var(--paper) 90%, transparent) !important;
+}
+.group:hover .group-hover\:text-white\/80 {
+  color: color-mix(in srgb, var(--paper) 92%, transparent) !important;
+}
+.group:hover .group-hover\:text-white\/85 {
+  color: color-mix(in srgb, var(--paper) 92%, transparent) !important;
+}
+.group:hover .group-hover\:text-white\/90 {
+  color: color-mix(in srgb, var(--paper) 95%, transparent) !important;
+}
+.group:hover .group-hover\:text-black\/55 {
+  color: color-mix(in srgb, var(--ink) 72%, transparent) !important;
+}
 .group:hover .group-hover\:text-black\/60 {
-  color: color-mix(in srgb, var(--ink) 60%, transparent) !important;
+  color: color-mix(in srgb, var(--ink) 72%, transparent) !important;
 }
 .group:hover .group-hover\:text-black\/80 {
   color: color-mix(in srgb, var(--ink) 80%, transparent) !important;
@@ -567,6 +647,23 @@ select.appearance-none {
   animation: hero-marquee 36s linear infinite;
 }
 
+/* Busca: 16px no celular evita zoom automático no iOS. */
+@media (max-width: 639px) {
+  .lupa-search-input {
+    font-size: 16px !important;
+  }
+}
+
+/* Legenda sobre foto: branco real (text-white no tema escuro vira papel escuro). */
+.lupa-photo-caption {
+  color: #ffffff !important;
+}
+.lupa-photo-caption .text-white,
+.lupa-photo-caption p,
+.lupa-photo-caption span {
+  color: #ffffff !important;
+}
+
 /* Faixa preta: não deixar tema/remap lavar o contraste. */
 .lupa-marquee {
   background-color: #000000 !important;
@@ -576,14 +673,17 @@ select.appearance-none {
 .lupa-marquee span {
   color: #ffffff !important;
 }
+.lupa-marquee .text-white\/40 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
 
 /* Meta strip: números e rótulos sempre legíveis no papel. */
 .lupa-meta-strip .lupa-meta-k {
   color: var(--ink) !important;
 }
 .lupa-meta-strip .lupa-meta-v {
-  color: var(--ink) !important;
-  opacity: 0.72;
+  color: var(--muted-2) !important;
+  opacity: 1;
 }
 .lupa-meta-strip .group:hover .lupa-meta-k,
 .lupa-meta-strip .group:hover .lupa-meta-v {
@@ -591,73 +691,88 @@ select.appearance-none {
   opacity: 1;
 }
 
-/* Gate de leitura: tela preta sólida + painel branco fixo (sem remap de tema). */
+/* Gate de leitura: painel segue o tema (Claro/Escuro). Fundo sempre escuro. */
 .lupa-reading-gate {
   background-color: #000000 !important;
-  color: #000000 !important;
+  color: var(--ink) !important;
 }
 .lupa-reading-gate-panel {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border-color: #000000 !important;
+  background-color: var(--paper) !important;
+  color: var(--ink) !important;
+  border-color: var(--ink) !important;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 .lupa-reading-gate-muted {
-  color: #555555 !important;
+  color: var(--muted) !important;
 }
 .lupa-reading-gate-body {
-  color: #222222 !important;
+  color: var(--muted-4) !important;
 }
 .lupa-reading-gate-rule {
-  border-color: #000000 !important;
+  border-color: color-mix(in srgb, var(--ink) 25%, transparent) !important;
 }
 .lupa-reading-gate-tone {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border-color: #000000 !important;
+  background-color: var(--paper) !important;
+  color: var(--ink) !important;
+  border-color: var(--ink) !important;
 }
 .lupa-reading-gate-tone:hover,
 .lupa-reading-gate-tone.is-on {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+  background-color: var(--ink) !important;
+  color: var(--paper) !important;
 }
 .lupa-reading-gate-tone-tag {
-  color: #666666 !important;
+  color: var(--muted) !important;
 }
 .lupa-reading-gate-tone:hover .lupa-reading-gate-tone-tag,
 .lupa-reading-gate-tone.is-on .lupa-reading-gate-tone-tag {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: color-mix(in srgb, var(--paper) 75%, transparent) !important;
 }
 .lupa-reading-gate-tone-blurb {
-  color: #333333 !important;
+  color: var(--muted-4) !important;
 }
 .lupa-reading-gate-tone:hover .lupa-reading-gate-tone-blurb,
 .lupa-reading-gate-tone.is-on .lupa-reading-gate-tone-blurb {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: color-mix(in srgb, var(--paper) 90%, transparent) !important;
 }
 .lupa-reading-gate-cta {
-  background-color: #000000 !important;
-  color: #ffffff !important;
-  border-color: #000000 !important;
+  background-color: var(--ink) !important;
+  color: var(--paper) !important;
+  border-color: var(--ink) !important;
 }
 .lupa-reading-gate-cta:hover {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+  background-color: var(--paper) !important;
+  color: var(--ink) !important;
+  border-color: var(--ink) !important;
 }
-/* Controles Aa dentro do gate: P&B reais. */
+/* Controles Aa no gate: acompanham o tema (black/white = tinta/papel). */
 .lupa-reading-gate .border-black {
-  border-color: #000000 !important;
+  border-color: var(--ink) !important;
 }
 .lupa-reading-gate .bg-black {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+  background-color: var(--ink) !important;
+  color: var(--paper) !important;
 }
 .lupa-reading-gate .bg-white {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+  background-color: var(--paper) !important;
+  color: var(--ink) !important;
+}
+.lupa-reading-gate .text-white {
+  color: var(--paper) !important;
+}
+.lupa-reading-gate .text-black {
+  color: var(--ink) !important;
+}
+.lupa-reading-gate .hover\:bg-black:hover {
+  background-color: var(--ink) !important;
+  color: var(--paper) !important;
+}
+.lupa-reading-gate .hover\:text-white:hover {
+  color: var(--paper) !important;
 }
 .lupa-reading-gate .text-\[\#666\],
 .lupa-reading-gate .text-\[\#666666\] {
-  color: #666666 !important;
+  color: var(--muted) !important;
 }
 html[data-reading-gate="open"] body > header,
 html[data-reading-gate="open"] body > main,
@@ -675,11 +790,111 @@ html[data-intro-splash="open"] .lupa-cookie-banner {
   display: none !important;
 }
 
+/* Superfície preta real (mesa, rodapé, overlays): contraste AA sem remap de tema. */
+.lupa-on-dark {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.lupa-on-dark .bg-black,
+.lupa-on-dark .bg-black\/80,
+.lupa-on-dark .bg-black\/90,
+.lupa-on-dark .bg-black\/95 {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.lupa-on-dark .bg-black\/80 {
+  background-color: rgba(0, 0, 0, 0.92) !important;
+}
+.lupa-on-dark .bg-black\/90 {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+}
+.lupa-on-dark .bg-black\/95 {
+  background-color: rgba(0, 0, 0, 0.97) !important;
+}
+.lupa-on-dark .bg-white\/5,
+.lupa-on-dark .bg-white\/10,
+.lupa-on-dark .bg-white\/\[0\.03\] {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+.lupa-on-dark .bg-white {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+.lupa-on-dark .text-white {
+  color: #ffffff !important;
+}
+.lupa-on-dark .text-black {
+  color: #000000 !important;
+}
+/* Piso de opacidade: white/35–60 falhava AA em texto pequeno no preto. */
+.lupa-on-dark .text-white\/35,
+.lupa-on-dark .text-white\/40 {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+.lupa-on-dark .text-white\/45,
+.lupa-on-dark .text-white\/50 {
+  color: rgba(255, 255, 255, 0.84) !important;
+}
+.lupa-on-dark .text-white\/55,
+.lupa-on-dark .text-white\/60 {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.lupa-on-dark .text-white\/70,
+.lupa-on-dark .text-white\/75 {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.lupa-on-dark .text-white\/80,
+.lupa-on-dark .text-white\/85 {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+.lupa-on-dark .text-white\/90 {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+.lupa-on-dark .text-black\/50,
+.lupa-on-dark .text-black\/55 {
+  color: rgba(0, 0, 0, 0.68) !important;
+}
+.lupa-on-dark .text-\[\#666\],
+.lupa-on-dark .text-\[\#666666\] {
+  color: #555555 !important;
+}
+.lupa-on-dark .border-white,
+.lupa-on-dark .border-white\/50,
+.lupa-on-dark .border-white\/40,
+.lupa-on-dark .border-white\/30,
+.lupa-on-dark .border-white\/25,
+.lupa-on-dark .border-white\/20,
+.lupa-on-dark .border-white\/15,
+.lupa-on-dark .border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+.lupa-on-dark .border-white {
+  border-color: #ffffff !important;
+}
+.lupa-on-dark .border-white\/50 {
+  border-color: rgba(255, 255, 255, 0.55) !important;
+}
+.lupa-on-dark .hover\:bg-white:hover,
+.lupa-on-dark .hover\:bg-white:hover.text-black,
+.lupa-on-dark button:hover.hover\:bg-white {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+.lupa-on-dark .hover\:text-black:hover {
+  color: #000000 !important;
+}
+.lupa-on-dark .hover\:text-white:hover {
+  color: #ffffff !important;
+}
+.lupa-on-dark .hover\:bg-white\/10:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
 /* Mesa: preto/branco reais (não remap de tema). */
 .lupa-mesa-dock {
   background-color: #000000 !important;
   color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
 }
 .lupa-mesa-dock .bg-white {
   background-color: #ffffff !important;
@@ -689,10 +904,17 @@ html[data-intro-splash="open"] .lupa-cookie-banner {
   color: #000000 !important;
 }
 .lupa-mesa-dock .border-white\/50 {
-  border-color: rgba(255, 255, 255, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
 }
 .lupa-mesa-dock button:hover {
   border-color: #ffffff;
+}
+.lupa-mesa-dock .text-white\/40,
+.lupa-mesa-dock .text-white\/70 {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+.lupa-mesa-dock .text-\[\#666\] {
+  color: #555555 !important;
 }
 
 /* Banner de cookies: preto/branco reais (não remap de tema). */
@@ -731,6 +953,19 @@ html[data-intro-splash="open"] .lupa-cookie-banner {
 .lupa-ink-block {
   background-color: #000000 !important;
   color: #ffffff !important;
+}
+.lupa-ink-block .text-white {
+  color: #ffffff !important;
+}
+.lupa-ink-block .text-white\/80,
+.lupa-ink-block .text-white\/85 {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.lupa-ink-block .text-white\/70 {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+.lupa-ink-block .border-white\/20 {
+  border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
 /* Cards do bloco: fundo preto por padrão; no hover inverte de verdade. */

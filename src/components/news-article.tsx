@@ -337,8 +337,8 @@ export function NewsArticle({ explainer: e, related }: Props) {
                           <span
                             className={`shrink-0 ${
                               active
-                                ? "text-white/60"
-                                : "text-[#666] group-hover:text-white/60"
+                                ? "text-white/80"
+                                : "text-[#666] group-hover:text-white/80"
                             }`}
                           >
                             {String(i + 1).padStart(2, "0")}

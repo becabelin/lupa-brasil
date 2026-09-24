@@ -193,19 +193,17 @@ export const VOICE = {
   leitura: {
     eyebrow: "Antes de começar",
     title: "Como você prefere ler?",
-    lede: "Escolhe o tom e, se quiser, ajusta tema, texto e contraste. Dá pra mudar depois no rodapé.",
-    simplesTag: "Se política parece difícil",
+    lede: "Escolhe o tom. Tema e texto dá pra ajustar aqui ou depois no Aa.",
+    simplesTag: "Se parece difícil",
     simplesTitle: "Mais simples",
-    simplesBlurb:
-      "Frases curtas, menos jargão. Termos difíceis ganham explicação no hover.",
-    completoTag: "Se você já acompanha",
+    simplesBlurb: "Frases curtas. Menos jargão.",
+    completoTag: "Se já acompanha",
     completoTitle: "Mais completo",
-    completoBlurb:
-      "Mais detalhe, números e nomes técnicos. Ainda com link pro glossário.",
+    completoBlurb: "Mais detalhe e nomes técnicos.",
     a11yTitle: "Acessibilidade",
     a11yLede: "Tema, tamanho do texto e contraste. Vale pra o site inteiro.",
     cta: "Entrar no Lupa",
-    footnote: "Imparcial nos dois. Sem favorito. Dá pra mudar depois no Aa do rodapé.",
+    footnote: "Dá pra mudar depois no Aa do rodapé.",
   },
 
   homeSections: {

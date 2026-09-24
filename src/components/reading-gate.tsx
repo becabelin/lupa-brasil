@@ -10,7 +10,7 @@ import { useFocusTrap } from "@/lib/use-focus-trap";
 import { VOICE } from "@/data/voice";
 
 /**
- * Primeira visita: tela preta + modal. Só depois abre o site.
+ * Primeira visita: tela preta + modal compacto (sem scroll).
  * Tema/texto/contraste escolhidos aqui valem no rodapé (Aa).
  */
 export function ReadingGate() {
@@ -50,30 +50,30 @@ export function ReadingGate() {
 
   return (
     <div
-      className="lupa-reading-gate fixed inset-0 z-[90] flex items-end justify-center p-4 sm:items-center"
+      className="lupa-reading-gate fixed inset-0 z-[90] flex items-center justify-center p-3 sm:p-4"
       role="presentation"
     >
       <div
         ref={panelRef}
-        className="lupa-reading-gate-panel max-h-[min(92vh,44rem)] w-full max-w-lg overflow-y-auto border-2 p-6 sm:p-8"
+        className="lupa-reading-gate-panel flex max-h-[min(100dvh-1.5rem,36rem)] w-full max-w-lg flex-col overflow-y-auto border-2 p-4 sm:p-5"
         role="dialog"
         aria-modal="true"
         aria-labelledby="leitura-titulo"
       >
-        <p className="lupa-reading-gate-muted text-[10px] font-bold uppercase tracking-[0.22em]">
+        <p className="lupa-reading-gate-muted text-[9px] font-bold uppercase tracking-[0.22em]">
           {V.eyebrow}
         </p>
         <h2
           id="leitura-titulo"
-          className="mt-2 font-[family-name:var(--font-display)] text-3xl uppercase leading-[0.92] tracking-tight sm:text-4xl"
+          className="mt-1 font-[family-name:var(--font-display)] text-[1.75rem] uppercase leading-[0.9] tracking-tight sm:text-3xl"
         >
           {V.title}
         </h2>
-        <p className="lupa-reading-gate-body mt-3 text-sm font-medium leading-relaxed">
+        <p className="lupa-reading-gate-body mt-1.5 text-xs font-medium leading-snug sm:text-[13px]">
           {V.lede}
         </p>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <div className="mt-4 grid grid-cols-2 gap-2">
           <ToneCard
             pressed={active === "simples"}
             onClick={() => setPicked("simples")}
@@ -90,15 +90,16 @@ export function ReadingGate() {
           />
         </div>
 
-        <div className="lupa-reading-gate-rule mt-8 border-t-2 pt-6">
-          <p className="lupa-reading-gate-muted text-[10px] font-bold uppercase tracking-[0.2em]">
+        <div className="lupa-reading-gate-rule mt-4 border-t pt-3">
+          <p className="lupa-reading-gate-muted text-[9px] font-bold uppercase tracking-[0.2em]">
             {V.a11yTitle}
           </p>
-          <p className="lupa-reading-gate-muted mt-1 text-[11px] font-medium leading-snug">
-            {V.a11yLede}
-          </p>
-          <div className="mt-4">
-            <AccessibilityControls showReading={false} compactFont />
+          <div className="mt-2">
+            <AccessibilityControls
+              showReading={false}
+              compactFont
+              dense
+            />
           </div>
         </div>
 
@@ -106,11 +107,11 @@ export function ReadingGate() {
           ref={primaryCtaRef}
           type="button"
           onClick={() => enter(active)}
-          className="lupa-reading-gate-cta mt-6 w-full border-2 px-4 py-3.5 text-sm font-bold uppercase tracking-[0.16em] transition"
+          className="lupa-reading-gate-cta mt-4 w-full border-2 px-4 py-3 text-xs font-bold uppercase tracking-[0.16em] transition sm:text-sm"
         >
           {V.cta}
         </button>
-        <p className="lupa-reading-gate-muted mt-3 text-[11px] font-medium">
+        <p className="lupa-reading-gate-muted mt-2 text-center text-[10px] font-medium leading-snug">
           {V.footnote}
         </p>
       </div>
@@ -136,17 +137,17 @@ function ToneCard({
       type="button"
       onClick={onClick}
       aria-pressed={pressed}
-      className={`lupa-reading-gate-tone group border-2 px-4 py-4 text-left transition ${
+      className={`lupa-reading-gate-tone group border-2 px-2.5 py-2.5 text-left transition sm:px-3 sm:py-3 ${
         pressed ? "is-on" : ""
       }`}
     >
-      <span className="lupa-reading-gate-tone-tag block text-[10px] font-bold uppercase tracking-[0.18em]">
+      <span className="lupa-reading-gate-tone-tag block text-[8px] font-bold uppercase leading-tight tracking-[0.14em] sm:text-[9px]">
         {tag}
       </span>
-      <span className="mt-1 block font-[family-name:var(--font-display)] text-2xl uppercase leading-none">
+      <span className="mt-1 block font-[family-name:var(--font-display)] text-xl uppercase leading-none sm:text-2xl">
         {title}
       </span>
-      <span className="lupa-reading-gate-tone-blurb mt-2 block text-xs font-medium leading-snug">
+      <span className="lupa-reading-gate-tone-blurb mt-1.5 block text-[10px] font-medium leading-snug sm:text-[11px]">
         {blurb}
       </span>
     </button>

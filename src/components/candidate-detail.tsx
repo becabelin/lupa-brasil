@@ -704,7 +704,7 @@ function HighlightList({
         {items.length === 0 ? (
           <li
             className={`text-sm ${
-              emphasize ? "text-white/60" : "text-[#2a2a2a]"
+              emphasize ? "text-white/85" : "text-[#2a2a2a]"
             }`}
           >
             Sem itens

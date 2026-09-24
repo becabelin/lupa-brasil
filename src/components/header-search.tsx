@@ -66,7 +66,7 @@ function IconSearchArrow({ size = 16 }: { size?: number }) {
 export function HeaderSearch({
   wide = false,
   className = "",
-  placeholder = "Buscar candidato, caso, conceito…",
+  placeholder = "Buscar no Lupa…",
 }: Props) {
   const router = useRouter();
   const id = useId();
@@ -152,7 +152,7 @@ export function HeaderSearch({
         aria-haspopup="listbox"
         aria-controls={listId}
         aria-expanded={showPanel}
-        className={`lupa-search-input w-full border-2 border-black bg-white text-black outline-none transition placeholder:font-normal placeholder:text-[#888] focus:bg-black focus:text-white focus:placeholder:text-white/50 ${
+        className={`lupa-search-input w-full border-2 border-black bg-white text-black outline-none transition placeholder:font-normal placeholder:text-[#666] focus:bg-black focus:text-white focus:placeholder:text-white/70 ${
           wide
             ? `py-3 pl-4 text-base font-semibold ${hasText ? "pr-24" : "pr-14"}`
             : `py-1.5 pl-2.5 text-sm font-semibold ${hasText ? "pr-16" : "pr-9"}`
