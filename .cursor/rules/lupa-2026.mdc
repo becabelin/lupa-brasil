@@ -1,0 +1,90 @@
+---
+description: Fontes TSE, imparcialidade e identidade P&B do Lupa do Brasil
+alwaysApply: true
+---
+
+# Lupa do Brasil: regras do projeto
+
+## Fonte primária: TSE (obrigatório)
+
+- **Lista de candidaturas, vices, partidos e status de registro** vêm do TSE.
+- Referência atual das 12 chapas deferidas (11/09/2026):
+  https://www.tse.jus.br/comunicacao/noticias/2026/Setembro/eleicoes-2026-tem-12-candidaturas-na-disputa-pela-presidencia-da-republica
+- **Planos de governo** vêm dos Dados Abertos TSE (ver `src/data/tse-plans.ts` e `src/data/sources.ts`).
+- Não usar assessoria, imprensa ou redes como fonte definitiva de quem está na disputa; cruzar sempre com o TSE.
+- Se o TSE atualizar a lista, atualizar `src/data/candidates.ts` e a página `/fontes`.
+
+## Imparcialidade (obrigatório)
+
+- Não endossar, ranquear, “favoritos” ou linguagem que privilegie um candidato.
+- Tratar todas as chapas deferidas com o mesmo peso visual e editorial.
+- Listagens públicas em **ordem alfabética** (A→Z / Z→A). Nunca ordenar por “relevância”, pesquisa ou preferência editorial.
+- Análises por IA: factuais, neutras, baseadas só no texto do plano oficial.
+- Não inventar números, trechos ou atribuições sem documento correspondente.
+
+## Fontes visíveis
+
+- **Fontes**: lista completa em **`/fontes`** (e `src/data/sources.ts` / dados por página). Nas fichas, casos e glossário: atalho para Fontes, sem repetir a lista inteira.
+- **Casos** (`/noticias`): dossiês imersivos com frentes, linha do tempo, quem aparece; links originais em Fontes; sem veredicto.
+- **Glossário** (`/glossario`): conceitos e planos/políticas para consulta; sem veredicto.
+- **Imprensa nos candidatos**: importar manchetes (`npm run press:fetch`) só dos veículos em `press-outlets.ts` (lista ampla: G1, Folha, Estadão, O Globo, UOL, Metrópoles, piauí, Valor, etc.). O Lupa escreve extrato factual (`lede`) e cita o veículo. Não é só lista de links. `npm run press:enrich` regenera ledes.
+- **Fotos**: bancos em `IMAGE_SOURCE_BANKS` (Commons, Agência Senado/Câmara, Agência Brasil, Planalto, Flickr Commons, tribunais). Critério em `IMAGE_SOURCE_RULES`. Créditos em `/fontes#fotos`. Sempre P&B; preferir alta resolução nativa.
+- **Ficha da pessoa** (`src/data/candidates.ts`): bio, formação, trajetória e casos ligados. Fatos públicos com `bioSources` (listados em `/fontes#fichas`). Nunca repetir o resumo do plano na lateral. Sem juízo de valor.
+- Manter link **Fontes** no footer (e atalho nas fichas/casos/glossário). Não precisa no header.
+
+## Critério para abrir página
+
+Antes de criar conceito/plano/caso novo, conferir `NEWS_PAGE_CRITERIA` e `NEWS_PAGE_DEPTH` em `src/data/sources.ts` (também em `/fontes`):
+
+**Abrir quando for necessário.** Se o tema aparece nos planos ou no debate e não se explica sozinho, criar a página. Não deixar o leitor só com hover ou link seco.
+
+Entrada (precisa passar):
+1. Planos TSE (idealmente mais de uma chapa), **ou** conceito institucional com fonte primária, **ou** caso público com várias frentes documentadas.
+2. Fontes rastreáveis. Sem fonte, não abre.
+3. Conceito/caso durável. Slogan de campanha não basta.
+4. Sem ranquear chapas. Sem veredicto.
+5. Caso ≠ conceito: caso vai para `/noticias`; conceito/plano vai para `/glossario`.
+
+Profundidade (a página tem que entregar):
+1. O que é.
+2. Por que aparece agora.
+3. O essencial destrinchado (números, regras, frentes, timeline). Não stub.
+4. Como ler com cuidado.
+5. Como ler com cuidado.
+6. Origem rastreável (lista completa em `/fontes`; atalho na página).
+7. Casos: várias frentes + versões públicas lado a lado quando existirem. Dá pra seguir o fio.
+
+Exemplos que passam: **maioridade penal** (glossário), **modelo El Salvador** (glossário), **caso Vorcaro** (notícias).
+
+## Navegação pública
+
+- Header **sem** botão Admin. Admin só em `/admin` (URL direta).
+- Nav principal no header: **Eleições 2026** · **Casos** · **Glossário**. Logo = Início. **Barra de busca** em faixa própria sob o nav (sticky). Sem Início, Fontes nem Aa no header.
+- **Fontes** e **Aa** (acessibilidade) ficam no **footer**. Busca global em `/pesquisa` (não confundir com `/buscar`, áreas do plano).
+- **Leitura**: na primeira visita (`ReadingGate`), escolher **Mais simples** ou **Mais completo** e também tema, texto e contraste. Preferência em `lupa-a11y`; depois, menu Aa no rodapé. `teaserSimple` / `hoverBlurbSimple` quando existirem.
+- No mobile: Menu (links). Busca fica na faixa sob o nav em todos os tamanhos.
+- A Presidência é o foco atual dentro de `/eleicoes` (candidatos, comparar, áreas), mas o site não é só eleição: `/noticias` cobre casos; `/glossario` cobre conceitos.
+- `/entender` redireciona para `/glossario` (slugs de caso vão para `/noticias`).
+
+## Tom de voz (comunicação do site)
+
+- Tagline: **O Brasil de perto**.
+- Textos de interface em `src/data/voice.ts` (hero, páginas, footer). Não inventar tom paralelo.
+- Direto, brasileiro, concreto. Mostrar o país como ele é. Sem partido.
+- Evitar jargão de produto: “linguagem clara”, “sem favoritos”, “dossiê factual”, “extrato factual”, “imparcial” em loop.
+- Sem travessão (—). Frases curtas.
+- O conteúdo factual (planos, casos, fontes) continua neutro e rastreável; a voz vale para como o site fala com o usuário.
+
+## Identidade visual
+
+- Maximalista: tipografia grande, bold, uppercase onde fizer sentido.
+- Display: **Bebas Neue** (`--font-display`). Corpo: Space Grotesk.
+- **Preto e branco apenas**. Bordas finas (`1px`) e cantos levemente arredondados (`--radius-soft`). Sem o traço grosso brutalista; alto contraste volta a `2px`.
+- Cards: **foto grande em cima**, textos embaixo. Classe utilitária `lupa-soft` quando precisar forçar o raio.
+- **Links**: navegação usa `lupa-nav-link` (traço embaixo no hover/ativo, sem caixinha). Texto no corpo usa `lupa-text-link` (sublinhado que engrossa). Invert P&B fica pra botões e cards.
+- Tipografia: **Bebas Neue** (títulos) + **Space Grotesk** (corpo). Não misturar outras famílias.
+- Fotos coloridas → converter para P&B antes de publicar.
+- Nome do produto: **Lupa do Brasil**.
+- **Identidade do hero** como referência de todo o site: títulos enormes (`PageHero` / `DisplayTitle`), faixa marquee preta (`MarqueeBar`), meta strip com números (`MetaStrip`), hover invertido P&B, eyebrow com tracking largo. Reutilizar `src/components/brand-ui.tsx`.
+- **Sem travessão (—)** nos textos da interface e do conteúdo; use vírgula, dois-pontos, ponto ou · .
+- **Componentes de formulário customizados** (`FilterInput` / `FilterSelect` em `src/components/ui/fields.tsx`): sem seta nativa do browser; seta custom com padding (`pr-12` + área de 48px). Não usar `<select>`/`<input>` crus em páginas públicas.

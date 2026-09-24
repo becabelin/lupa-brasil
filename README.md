@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lupa do Brasil
 
-## Getting Started
+Site para visualizar candidatos à Presidência e comparar análises dos planos de governo, geradas por IA.
 
-First, run the development server:
+## O que tem
+
+- Lista de candidatos 2026
+- Página de cada candidato com análise por área
+- Comparativo lado a lado
+- Busca por tema / palavra-chave
+- Painel admin (só quem tem senha sobe PDF e dispara análise)
+
+## Como rodar
 
 ```bash
+cd planos-governo-2026
+cp .env.example .env.local
+# edite .env.local: ADMIN_PASSWORD e OPENAI_API_KEY
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Admin: [http://localhost:3000/admin](http://localhost:3000/admin)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Fluxo
 
-## Learn More
+1. Entre no admin com a senha
+2. Faça upload do plano (PDF ou TXT) de um candidato
+3. Clique em **Analisar**
+4. A análise aparece no site público
 
-To learn more about Next.js, take a look at the following resources:
+## Observações
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- PDFs escaneados (só imagem) não têm texto extraível — use PDF com texto ou TXT.
+- Análises e uploads ficam em `data/` localmente.

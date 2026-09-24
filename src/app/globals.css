@@ -1,26 +1,589 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #ffffff;
+  --wash: #f0f0f0;
+  --ink: #000000;
+  --ink-soft: #1a1a1a;
+  --muted: #555555;
+  --muted-2: #4a4a4a;
+  --muted-3: #3d3d3d;
+  --muted-4: #2a2a2a;
+  --line: #000000;
+  --accent: #000000;
+  --accent-soft: #e8e8e8;
+  --invert-on-ink: #ffffff;
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --font-scale: 1;
+  /* Traço fino + canto suave: menos “brutalista cru” */
+  --border-strong: 1px;
+  --radius-soft: 0.5rem;
+  --shadow-hard: #000000;
+  --shadow-lift: 2px 2px 0 0 var(--shadow-hard);
 }
 
+/* Tema escuro: inverte papel/tinta (P&B do Lupa) */
+html[data-theme="dark"] {
+  --paper: #0a0a0a;
+  --wash: #161616;
+  --ink: #f5f5f5;
+  --ink-soft: #e8e8e8;
+  --muted: #a3a3a3;
+  --muted-2: #b0b0b0;
+  --muted-3: #c0c0c0;
+  --muted-4: #d0d0d0;
+  --line: #f5f5f5;
+  --accent: #f5f5f5;
+  --accent-soft: #262626;
+  --invert-on-ink: #0a0a0a;
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --shadow-hard: #f5f5f5;
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Alto contraste */
+html[data-contrast="high"] {
+  --muted: var(--ink);
+  --muted-2: var(--ink);
+  --muted-3: var(--ink);
+  --muted-4: var(--ink);
+  --wash: var(--paper);
+  --accent-soft: var(--paper);
+  --border-strong: 2px;
+  --radius-soft: 0.25rem;
+}
+
+html[data-contrast="high"][data-theme="dark"] {
+  --paper: #000000;
+  --ink: #ffffff;
+  --line: #ffffff;
+  --invert-on-ink: #000000;
+  --shadow-hard: #ffffff;
+}
+
+/* Escala de tipografia (rem) */
+html[data-font="sm"] {
+  --font-scale: 0.9;
+}
+html[data-font="md"] {
+  --font-scale: 1;
+}
+html[data-font="lg"] {
+  --font-scale: 1.125;
+}
+html[data-font="xl"] {
+  --font-scale: 1.25;
+}
+
+html {
+  font-size: calc(100% * var(--font-scale));
+  scroll-padding-top: 9rem;
+}
+
+/*
+  Remapeia white/black do Tailwind para papel/tinta.
+  Assim bg-white / bg-black / text-white / border-black
+  acompanham o tema sem reescrever cada componente.
+*/
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-white: var(--paper);
+  --color-black: var(--ink);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --radius-sm: 0.5rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-DEFAULT: 0.5rem;
+  /* border-2 / border-b-2 etc. passam a 1px */
+  --border-width-2: 1px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+  Bordas do Lupa: reforço além do token do tema
+  (casos em que a utility ainda pinte 2px).
+*/
+.border-2 {
+  border-width: var(--border-strong) !important;
+}
+.border-t-2 {
+  border-top-width: var(--border-strong) !important;
+}
+.border-r-2 {
+  border-right-width: var(--border-strong) !important;
+}
+.border-b-2 {
+  border-bottom-width: var(--border-strong) !important;
+}
+.border-l-2 {
+  border-left-width: var(--border-strong) !important;
+}
+.border-x-2 {
+  border-left-width: var(--border-strong) !important;
+  border-right-width: var(--border-strong) !important;
+}
+.border-y-2 {
+  border-top-width: var(--border-strong) !important;
+  border-bottom-width: var(--border-strong) !important;
+}
+
+/*
+  Cantos suaves em caixas e controles.
+  Faixas full-bleed (só border-b / border-t) ficam retas.
+*/
+.lupa-soft,
+button,
+input,
+textarea,
+select,
+a.border-2,
+.border-2.border-black,
+.border-2.border-white,
+[role="dialog"],
+[role="listbox"] {
+  border-radius: var(--radius-soft) !important;
+}
+
+/* Itens do select custom: sem raio (senão abre fresta branca no hover). */
+[role="listbox"] button,
+button[role="option"] {
+  border-radius: 0 !important;
+}
+
+/* Trigger + lista aberta = um bloco só. */
+.lupa-select-trigger[aria-expanded="true"] {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.lupa-select-menu {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  overflow: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Safari/Chrome pintam um “x” nativo estranho em type=search. */
+input[type="search"].lupa-search-input {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="search"].lupa-search-input::-webkit-search-decoration,
+input[type="search"].lupa-search-input::-webkit-search-cancel-button,
+input[type="search"].lupa-search-input::-webkit-search-results-button,
+input[type="search"].lupa-search-input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+/*
+  Linguagem de interação padronizada
+  ───────────────────────────────────
+  · lupa-nav-link  → menu (traço embaixo, sem caixinha)
+  · lupa-text-link → link no meio do texto (sublinhado que engrossa)
+  · Botões / cards → continuam com invert P&B + lupa-soft
+*/
+.lupa-nav-link {
+  display: inline-block;
+  padding: 0.35rem 0.2rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: inset 0 -2px 0 0 transparent;
+  transition: box-shadow 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+
+.lupa-nav-link:hover {
+  box-shadow: inset 0 -2px 0 0 currentColor;
+  background: transparent !important;
+}
+
+.lupa-nav-link[aria-current="page"],
+.lupa-nav-link[data-active="true"] {
+  box-shadow: inset 0 -2px 0 0 currentColor;
+  background: transparent !important;
+}
+
+.lupa-nav-link-sm {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  padding: 0.3rem 0.15rem;
+}
+
+.lupa-text-link {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-thickness 0.15s ease;
+}
+
+.lupa-text-link:hover {
+  text-decoration-thickness: 2px;
+  background: transparent !important;
+  color: inherit !important;
+  text-decoration-line: underline !important;
+}
+
+/* Links já com underline do Tailwind: tira a caixinha no hover */
+a.underline:hover {
+  background-color: transparent !important;
+  color: inherit !important;
+  text-decoration-thickness: 2px;
+}
+
+/* Leitura longa: ~60–70 caracteres, respiro entre blocos */
+.lupa-prose {
+  max-width: 40rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--muted-4);
+}
+
+.lupa-prose > * + * {
+  margin-top: 0.85rem;
+}
+
+.lupa-prose p {
+  margin: 0;
+}
+
+.lupa-prose-lead {
+  max-width: 40rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+@media (min-width: 640px) {
+  .lupa-prose-lead {
+    font-size: 1.2rem;
+  }
+}
+
+.lupa-prose-wide {
+  max-width: 42rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--muted-4);
+}
+
+.lupa-bullets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 40rem;
+}
+
+.lupa-bullets > li {
+  display: flex;
+  gap: 0.75rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--muted-4);
+}
+
+.lupa-bullets > li + li {
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.lupa-bullets > li::before {
+  content: "";
+  margin-top: 0.45rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  flex-shrink: 0;
+  background: var(--ink);
+}
+
+/* Foco visível (teclado) */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus,
+.focus\:not-sr-only:focus-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+.font-display,
+[class*="font-display"] {
+  letter-spacing: 0.02em;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Fotos do site já vão em P&B nos arquivos. Filtro só em uploads coloridos. */
+img[data-needs-bw] {
+  filter: grayscale(1);
+}
+
+/* Cinzas hardcoded → tokens (tema / contraste) */
+.text-\[\#666\],
+.text-\[\#666666\] {
+  color: var(--muted) !important;
+}
+.text-\[\#555\],
+.text-\[\#555555\] {
+  color: var(--muted-2) !important;
+}
+.text-\[\#444\],
+.text-\[\#444444\] {
+  color: var(--muted-3) !important;
+}
+.text-\[\#333\],
+.text-\[\#333333\],
+.text-\[\#222\] {
+  color: var(--muted-4) !important;
+}
+.bg-\[\#f0f0f0\],
+.bg-\[\#f5f5f5\],
+.bg-\[\#ddd\],
+.bg-\[\#111\] {
+  background-color: var(--wash) !important;
+}
+
+/* Hover invertido: precisa vencer os !important dos cinzas acima */
+.hover\:text-white:hover,
+.group:hover.hover\:text-white,
+.group:hover .group-hover\:text-white {
+  color: var(--paper) !important;
+}
+.hover\:text-black:hover,
+.group:hover.hover\:text-black,
+.group:hover .group-hover\:text-black {
+  color: var(--ink) !important;
+}
+.group:hover .group-hover\:text-white\/55 {
+  color: color-mix(in srgb, var(--paper) 55%, transparent) !important;
+}
+.group:hover .group-hover\:text-white\/60 {
+  color: color-mix(in srgb, var(--paper) 60%, transparent) !important;
+}
+.group:hover .group-hover\:text-white\/65,
+.group:hover .group-hover\:text-white\/70 {
+  color: color-mix(in srgb, var(--paper) 70%, transparent) !important;
+}
+.group:hover .group-hover\:text-white\/75 {
+  color: color-mix(in srgb, var(--paper) 75%, transparent) !important;
+}
+.group:hover .group-hover\:text-white\/85 {
+  color: color-mix(in srgb, var(--paper) 85%, transparent) !important;
+}
+.group:hover .group-hover\:text-white\/90 {
+  color: color-mix(in srgb, var(--paper) 90%, transparent) !important;
+}
+.group:hover .group-hover\:text-black\/60 {
+  color: color-mix(in srgb, var(--ink) 60%, transparent) !important;
+}
+.group:hover .group-hover\:text-black\/80 {
+  color: color-mix(in srgb, var(--ink) 80%, transparent) !important;
+}
+.shadow-\[4px_4px_0_0_\#000\],
+.hover\:shadow-\[4px_4px_0_0_\#000\]:hover,
+.hover\:shadow-\[6px_6px_0_0_\#000\]:hover,
+.shadow-\[8px_8px_0_0_\#000\] {
+  --tw-shadow-color: var(--shadow-hard);
+}
+
+html[data-contrast="high"] .border,
+html[data-contrast="high"] .border-2,
+html[data-contrast="high"] .border-b-2,
+html[data-contrast="high"] .border-t-2,
+html[data-contrast="high"] .border-y-2,
+html[data-contrast="high"] .border-r-2,
+html[data-contrast="high"] .border-l-2 {
+  border-width: var(--border-strong);
+}
+
+/* Interativos */
+a[href],
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+[role="option"],
+[role="menuitem"],
+summary,
+label,
+select:not(:disabled),
+input[type="checkbox"]:not(:disabled),
+input[type="radio"]:not(:disabled),
+input[type="submit"]:not(:disabled),
+input[type="button"]:not(:disabled),
+input[type="reset"]:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled,
+[aria-disabled="true"],
+input:disabled,
+select:disabled {
+  cursor: not-allowed;
+}
+
+select.appearance-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes hero-film {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes inv-chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lupa-quem-reveal {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes lupa-quem-card {
+  from {
+    opacity: 0;
+    transform: translateY(1.1rem) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.inv-chat-in {
+  animation: inv-chat-in 0.35s ease-out both;
+}
+
+.lupa-quem-reveal {
+  animation: lupa-quem-reveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lupa-quem-card {
+  opacity: 0;
+  animation: lupa-quem-card 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-rise {
+  opacity: 0;
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-marquee {
+  animation: hero-marquee 36s linear infinite;
+}
+
+.hero-film {
+  animation: hero-film 55s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+  .hero-marquee,
+  .hero-film,
+  .inv-chat-in,
+  .lupa-quem-reveal,
+  .lupa-quem-card {
+    animation: none;
+  }
+  .lupa-quem-card {
+    opacity: 1;
+  }
+  body {
+    transition: none;
+  }
 }

@@ -1,0 +1,43 @@
+# Lupa do Brasil
+
+> O Brasil de perto. Casos públicos, planos oficiais do TSE (Eleições 2026) e glossário político, com fontes rastreáveis. Sem partido e sem veredicto editorial.
+
+Site: use NEXT_PUBLIC_SITE_URL em produção. Caminhos abaixo são relativos à raiz do site.
+
+## O que é
+
+- Produto editorial/informativo sobre o Brasil contemporâneo.
+- Fonte primária das candidaturas e planos: Tribunal Superior Eleitoral (TSE).
+- Casos e glossário citam reportagens e documentos públicos; a lista completa está em /fontes.
+
+## Rotas principais
+
+- / : início
+- /eleicoes : chapas deferidas à Presidência 2026 (ordem A→Z)
+- /comparar : comparar planos de governo de dois candidatos por pauta ou área
+- /buscar : ver planos por área temática (economia, saúde, segurança, clima…)
+- /candidatos/{slug} : ficha da pessoa + extrato do plano TSE
+- /noticias : índice de casos
+- /noticias/caso-vorcaro-master-turma-kn : Caso Vorcaro (Master, Judiciário, Lagoinha)
+- /glossario : conceitos e planos/políticas
+- /fontes : todas as fontes (TSE, imprensa, fotos, fichas)
+- /pesquisa : busca no site
+
+## Como citar
+
+1. Prefira o trecho da página do Lupa + o link original listado na seção Fontes da página ou em /fontes.
+2. Planos de governo: PDF oficial do TSE (Dados Abertos), não assessoria.
+3. O Lupa não endossa candidatos e não emite veredicto judicial.
+
+## Entidades
+
+- Organização: Lupa do Brasil
+- Eleição: Presidência da República do Brasil, 2026
+- Caso em destaque: Daniel Vorcaro / Banco Master / “turma do KN”
+- Lista de chapas: ver /eleicoes e /fontes (notícia TSE das 12 candidaturas deferidas)
+
+## Contato de crawl
+
+- Sitemap: /sitemap.xml
+- Robots: /robots.txt
+- Não indexar: /admin, /api/
