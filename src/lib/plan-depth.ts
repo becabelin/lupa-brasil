@@ -29,6 +29,22 @@ export const PLAN_DEPTH_SHORT: Record<PlanDepth, string> = {
 export const PLAN_DEPTH_LEGEND =
   "Muito, médio, pouco ou fora: só diz o quanto o plano de governo fala da pauta. Não é nota da pessoa.";
 
+/**
+ * Quando a pauta não aparece no plano.
+ * Tom direto do Lupa, com nome da chapa quando houver.
+ */
+export function absentPlanSummary(params: {
+  candidateName?: string;
+  topicLabel: string;
+}): string {
+  const label = params.topicLabel.trim().replace(/^./u, (c) => c.toLowerCase());
+  const name = params.candidateName?.trim();
+  if (name) {
+    return `Na nossa análise do plano de governo de ${name}, não encontramos menções sobre ${label}.`;
+  }
+  return `Na nossa análise do plano de governo, não encontramos menções sobre ${label}.`;
+}
+
 type CoverageSlice = {
   summary: string;
   proposals: string[];
@@ -55,7 +71,7 @@ export function normalizeCoverage<T extends CoverageSlice>(slice: T): T {
       summary:
         slice.depth === "ausente" && slice.summary?.trim()
           ? slice.summary
-          : "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          : "Na nossa análise do plano de governo, não encontramos menções concretas sobre esta pauta.",
     };
   }
 

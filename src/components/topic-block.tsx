@@ -3,23 +3,34 @@ import { getTopic } from "@/data/topics";
 import { LinkedText } from "@/components/linked-text";
 import { PlanQuoteLine, PlanQuotes } from "@/components/plan-quotes";
 import { ArrowRightIcon } from "@/components/icons";
-import { PLAN_DEPTH_LABEL } from "@/lib/plan-depth";
+import { PLAN_DEPTH_LABEL, absentPlanSummary } from "@/lib/plan-depth";
 
 type Props = {
   topic: TopicAnalysis;
+  candidateName?: string;
   onOpen?: () => void;
   /** Compact card (lista) vs conteúdo completo (modal). */
   variant?: "card" | "full";
 };
 
-export function TopicBlock({ topic, onOpen, variant = "card" }: Props) {
+export function TopicBlock({
+  topic,
+  candidateName,
+  onOpen,
+  variant = "card",
+}: Props) {
   const meta = getTopic(topic.topicId);
+  const topicLabel = meta?.label ?? topic.topicId;
+  const summaryText =
+    topic.depth === "ausente"
+      ? absentPlanSummary({ candidateName, topicLabel })
+      : topic.summary;
   const previewProposals = topic.proposals.slice(0, 3);
   const previewQuote = topic.quotes[0];
   const hasMore =
     topic.proposals.length > 3 ||
     topic.quotes.length > 0 ||
-    topic.summary.length > 180;
+    summaryText.length > 180;
   const claimsCoverage = topic.depth !== "ausente";
 
   if (variant === "full") {
@@ -27,7 +38,7 @@ export function TopicBlock({ topic, onOpen, variant = "card" }: Props) {
       <div className="space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h3 className="font-[family-name:var(--font-display)] text-2xl uppercase tracking-tight sm:text-3xl">
-            {meta?.label ?? topic.topicId}
+            {topicLabel}
           </h3>
           <span className="border-2 border-black px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
             {PLAN_DEPTH_LABEL[topic.depth]}
@@ -39,7 +50,7 @@ export function TopicBlock({ topic, onOpen, variant = "card" }: Props) {
           </p>
         ) : null}
         <p className="text-base font-medium leading-relaxed text-[#222]">
-          <LinkedText text={topic.summary} />
+          <LinkedText text={summaryText} />
         </p>
 
         {topic.quotes.length > 0 ? (
@@ -72,11 +83,7 @@ export function TopicBlock({ topic, onOpen, variant = "card" }: Props) {
             Nenhuma proposta concreta listada nesta área. O que há no documento
             está nos trechos acima, quando disponíveis.
           </p>
-        ) : (
-          <p className="text-sm font-medium text-[#666]">
-            Área sem menção identificada no documento analisado.
-          </p>
-        )}
+        ) : null}
       </div>
     );
   }
@@ -89,14 +96,14 @@ export function TopicBlock({ topic, onOpen, variant = "card" }: Props) {
     >
       <div className="flex flex-wrap items-start justify-between gap-2">
         <h3 className="font-[family-name:var(--font-display)] text-xl uppercase tracking-tight sm:text-2xl">
-          {meta?.label ?? topic.topicId}
+          {topicLabel}
         </h3>
         <span className="border border-black px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
           {PLAN_DEPTH_LABEL[topic.depth]}
         </span>
       </div>
       <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-[#333]">
-        {topic.summary}
+        {summaryText}
       </p>
       {previewProposals.length > 0 ? (
         <ul className="mt-4 space-y-1.5">

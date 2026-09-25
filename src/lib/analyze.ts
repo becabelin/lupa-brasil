@@ -51,7 +51,7 @@ const analysisSchema = z.object({
       summary: z
         .string()
         .describe(
-          "Parágrafo factual (3 a 6 frases) sobre o que o plano diz nesta área. Se ausente, diga isso de forma neutra.",
+          "Parágrafo factual (3 a 6 frases) sobre o que o plano diz nesta área. Se ausente: 'Na nossa análise do plano de governo de [Nome], não encontramos menções sobre [área].'",
         ),
       proposals: z
         .array(z.string())
@@ -74,7 +74,7 @@ const analysisSchema = z.object({
       summary: z
         .string()
         .describe(
-          "O que o plano diz sobre esta pauta contemporânea (2 a 5 frases). Se não aborda, declare ausência de forma neutra.",
+          "O que o plano diz sobre esta pauta (2 a 5 frases). Se não aborda: 'Na nossa análise do plano de governo de [Nome], não encontramos menções sobre [pauta].'",
         ),
       proposals: z
         .array(z.string())
@@ -111,7 +111,7 @@ ANTI-ALUCINAÇÃO (obrigatório)
 - Não invente números, datas, programas, leis, orçamentos, nomes de políticas ou trechos.
 - Não complete lacunas com “provavelmente”, “implicitamente” ou o que “o partido costuma defender”.
 - Citações (quotes) devem ser literais e curtas, SEM aspas envolventes no valor do campo; se não puder citar fielmente, deixe a lista vazia.
-- Se depth for "baixo", "medio" ou "alto": inclua AO MENOS 1 quote literal que fundamente o summary (de onde veio a afirmação). Sem trecho fiel → depth "ausente" e summary só declara ausência.
+- Se depth for "baixo", "medio" ou "alto": inclua AO MENOS 1 quote literal que fundamente o summary (de onde veio a afirmação). Sem trecho fiel → depth "ausente" e summary no formato: "Na nossa análise do plano de governo de [Nome], não encontramos menções sobre [tema]."
 - Em dúvida, prefira depth "ausente" ou "baixo" e proposals/quotes vazios a inventar.
 - Quando o tema EXISTE no texto: seja específico (o quê, para quem, com qual mecanismo, se o texto disser).
 - Formato BOM de proposal: "Criar programa X para Y com medida Z citada no texto".
@@ -191,7 +191,7 @@ ${text}
     }
     return {
       topicId: t.id,
-      summary: "Tema não identificado no documento analisado.",
+      summary: `Na nossa análise do plano de governo de ${params.candidateName}, não encontramos menções sobre ${t.label.toLowerCase()}.`,
       proposals: [] as string[],
       quotes: [] as string[],
       depth: "ausente" as const,
@@ -209,7 +209,7 @@ ${text}
     }
     return {
       agendaId: a.id,
-      summary: "Pauta não identificada no documento analisado.",
+      summary: `Na nossa análise do plano de governo de ${params.candidateName}, não encontramos menções sobre ${a.label.toLowerCase()}.`,
       proposals: [] as string[],
       quotes: [] as string[],
       depth: "ausente" as const,

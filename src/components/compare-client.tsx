@@ -10,7 +10,7 @@ import type { AgendaAnalysis, PlanAnalysis, TopicAnalysis } from "@/lib/types";
 import { FilterSelect } from "@/components/ui/fields";
 import { PlanQuoteLine } from "@/components/plan-quotes";
 import { ArrowRightIcon } from "@/components/icons";
-import { PLAN_DEPTH_LABEL, PLAN_DEPTH_LEGEND } from "@/lib/plan-depth";
+import { PLAN_DEPTH_LABEL, PLAN_DEPTH_LEGEND, absentPlanSummary } from "@/lib/plan-depth";
 
 type Props = {
   candidates: Candidate[];
@@ -225,12 +225,14 @@ export function CompareClient({ candidates, topics, analyses }: Props) {
           candidate={leftCand}
           slice={leftSlice}
           hasAnalysis={Boolean(left)}
+          topicLabel={lensMeta.label}
         />
         <CompareColumn
           side="B"
           candidate={rightCand}
           slice={rightSlice}
           hasAnalysis={Boolean(right)}
+          topicLabel={lensMeta.label}
         />
       </div>
 
@@ -261,7 +263,10 @@ export function CompareClient({ candidates, topics, analyses }: Props) {
             const depth = slice?.depth ?? "ausente";
             const oneLine =
               depth === "ausente"
-                ? null
+                ? absentPlanSummary({
+                    candidateName: candidate.name,
+                    topicLabel: lensMeta.label,
+                  })
                 : slice?.summary?.trim() || null;
 
             return (
@@ -328,11 +333,13 @@ function CompareColumn({
   candidate,
   slice,
   hasAnalysis,
+  topicLabel,
 }: {
   side: "A" | "B";
   candidate?: Candidate;
   slice?: Slice | null;
   hasAnalysis: boolean;
+  topicLabel: string;
 }) {
   if (!candidate) {
     return (
@@ -352,6 +359,14 @@ function CompareColumn({
     : !slice
       ? "Sem extrato para esta pauta (reanalise o plano no admin se necessário)."
       : null;
+
+  const summaryText =
+    slice?.depth === "ausente"
+      ? absentPlanSummary({
+          candidateName: candidate.name,
+          topicLabel,
+        })
+      : slice?.summary || "Sem resumo para esta pauta.";
 
   return (
     <article className="lupa-soft flex flex-col overflow-hidden border-2 border-black bg-white">
@@ -406,7 +421,7 @@ function CompareColumn({
             </p>
 
             <p className="text-sm font-medium leading-relaxed text-[#2a2a2a]">
-              {slice.summary || "Sem resumo para esta pauta."}
+              {summaryText}
             </p>
 
             {slice.proposals.length > 0 ? (
@@ -425,12 +440,7 @@ function CompareColumn({
                   ))}
                 </ul>
               </div>
-            ) : slice.depth === "ausente" ? (
-              <p className="text-sm font-medium text-[#555]">
-                Sem trecho literal nesta pauta nesta análise. Sem citação, o Lupa
-                trata como fora do plano.
-              </p>
-            ) : (
+            ) : slice.depth === "ausente" ? null : (
               <p className="text-sm font-medium text-[#555]">
                 Sem proposta concreta listada.
               </p>

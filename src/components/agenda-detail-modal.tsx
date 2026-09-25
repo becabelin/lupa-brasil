@@ -5,17 +5,19 @@ import { getAgenda } from "@/data/agendas";
 import type { AgendaAnalysis } from "@/lib/types";
 import { LinkedText } from "@/components/linked-text";
 import { PlanQuotes } from "@/components/plan-quotes";
-import { PLAN_DEPTH_LABEL, PLAN_DEPTH_LEGEND } from "@/lib/plan-depth";
+import { PLAN_DEPTH_LABEL, PLAN_DEPTH_LEGEND, absentPlanSummary } from "@/lib/plan-depth";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 
 type Props = {
   agenda: AgendaAnalysis | null;
+  candidateName?: string;
   sourceFileName?: string;
   onClose: () => void;
 };
 
 export function AgendaDetailModal({
   agenda,
+  candidateName,
   sourceFileName,
   onClose,
 }: Props) {
@@ -28,6 +30,11 @@ export function AgendaDetailModal({
 
   if (!agenda) return null;
   const meta = getAgenda(agenda.agendaId);
+  const topicLabel = meta?.label ?? agenda.agendaId;
+  const summaryText =
+    agenda.depth === "ausente"
+      ? absentPlanSummary({ candidateName, topicLabel })
+      : agenda.summary;
 
   return (
     <div
@@ -81,7 +88,7 @@ export function AgendaDetailModal({
             {PLAN_DEPTH_LEGEND}
           </p>
           <p className="mt-4 text-base font-medium leading-relaxed text-[#222]">
-            <LinkedText text={agenda.summary} />
+            <LinkedText text={summaryText} />
           </p>
           {agenda.quotes.length > 0 ? (
             <div className="mt-5">
@@ -116,11 +123,7 @@ export function AgendaDetailModal({
               Nenhuma medida concreta listada nesta pauta. O que há no documento
               está nos trechos acima, quando disponíveis.
             </p>
-          ) : (
-            <p className="mt-5 text-sm font-medium text-[#666]">
-              Pauta sem menção identificada no documento analisado.
-            </p>
-          )}
+          ) : null}
           {sourceFileName ? (
             <p className="mt-8 text-[11px] font-medium leading-relaxed text-[#666]">
               Extrato factual do plano oficial ({sourceFileName}). A pauta é

@@ -26,6 +26,7 @@ import {
   PLAN_DEPTH_LABEL,
   PLAN_DEPTH_LEGEND,
   PLAN_DEPTH_SHORT,
+  absentPlanSummary,
 } from "@/lib/plan-depth";
 
 type FilterMode = "tudo" | TopicId;
@@ -417,7 +418,12 @@ export function CandidateDetail({
                             </span>
                           </div>
                           <p className="mt-3 line-clamp-2 flex-1 text-sm leading-relaxed text-[#333]">
-                            {a.summary}
+                            {a.depth === "ausente"
+                              ? absentPlanSummary({
+                                  candidateName: candidate.name,
+                                  topicLabel: meta?.label ?? a.agendaId,
+                                })
+                              : a.summary}
                           </p>
                           <p className="mt-auto flex items-center gap-1.5 pt-3 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2 group-hover:bg-black group-hover:text-white group-hover:no-underline">
                             Ver o que o plano diz
@@ -496,6 +502,7 @@ export function CandidateDetail({
                     >
                       <TopicBlock
                         topic={t}
+                        candidateName={candidate.name}
                         onOpen={() => setOpenTopic(t)}
                       />
                     </div>
@@ -633,11 +640,13 @@ export function CandidateDetail({
 
       <TopicDetailModal
         topic={openTopic}
+        candidateName={candidate.name}
         sourceFileName={analysis?.sourceFileName}
         onClose={() => setOpenTopic(null)}
       />
       <AgendaDetailModal
         agenda={openAgenda}
+        candidateName={candidate.name}
         sourceFileName={analysis?.sourceFileName}
         onClose={() => setOpenAgenda(null)}
       />

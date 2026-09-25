@@ -7,11 +7,17 @@ import { useFocusTrap } from "@/lib/use-focus-trap";
 
 type Props = {
   topic: TopicAnalysis | null;
+  candidateName?: string;
   sourceFileName?: string;
   onClose: () => void;
 };
 
-export function TopicDetailModal({ topic, sourceFileName, onClose }: Props) {
+export function TopicDetailModal({
+  topic,
+  candidateName,
+  sourceFileName,
+  onClose,
+}: Props) {
   const titleId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -56,7 +62,11 @@ export function TopicDetailModal({ topic, sourceFileName, onClose }: Props) {
           </button>
         </div>
         <div className="overflow-y-auto px-4 py-5 sm:px-6 sm:py-6">
-          <TopicBlock topic={topic} variant="full" />
+          <TopicBlock
+            topic={topic}
+            candidateName={candidateName}
+            variant="full"
+          />
           {sourceFileName ? (
             <p className="mt-8 text-[11px] font-medium leading-relaxed text-[#666]">
               Extrato factual do plano oficial ({sourceFileName}). Sem opinião
