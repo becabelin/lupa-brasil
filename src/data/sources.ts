@@ -30,7 +30,7 @@ export const EDITORIAL_PRINCIPLES = [
 
 /**
  * Quando abrir uma página nova.
- * Casos → /noticias. Conceitos e planos → /glossario.
+ * Post curto → /noticias (feed Agora). Casos → /noticias (dossiê). Conceitos e planos → /glossario.
  * Se passar no critério: criar. Não deixar o leitor só com hover ou link seco.
  */
 export const NEWS_PAGE_CRITERIA = [
@@ -40,6 +40,8 @@ export const NEWS_PAGE_CRITERIA = [
   "Uma página por conceito ou caso durável. Slogan de um candidato não basta.",
   "Não ranqueia chapas. Não diz se a proposta é boa ou ruim. Não instaura culpa.",
   "Caso e conceito não misturam: caso é relato imersivo; conceito/plano vai para o glossário.",
+  "Post curto (blog Lupa): fato político, de corrupção ou institucional com 1 a 3 fontes da allowlist, capa P&B creditada e texto próprio do Lupa. Publicação humana. Não é pesquisa eleitoral nem lifestyle.",
+  "Caso imersivo: só quando o tema exige várias frentes, linha do tempo e quem aparece (nível Vorcaro). Post curto não vira caso automático.",
 ] as const;
 
 /**
@@ -53,7 +55,16 @@ export const NEWS_PAGE_DEPTH = [
   "Como ler com cuidado: o que a página não decide (sem veredicto, sem panfleto).",
   "Origem rastreável: a lista completa com link fica em /fontes. A página aponta para lá.",
   "Casos (/noticias): várias frentes + linha do tempo + quem aparece + o que cada lado diz, quando houver nota pública. Dá pra seguir o fio.",
+  "Posts curtos (/noticias): título, lede, corpo em voz Lupa (fato direto), capa P&B com crédito, fontes no rodapé. Sem “segundo o portal X” em loop. Sem foto, não publica.",
   "Conceitos e planos (/glossario): o bastante para entender o trecho do plano sem sair perdido.",
+] as const;
+
+/** Escopo temático das notícias curtas do Lupa. */
+export const NEWS_POST_SCOPE = [
+  "Política institucional, eleições, Congresso, Executivo, partidos e campanha (sem lifestyle de campanha).",
+  "Corrupção, lavagem, investigações (PF, Coaf, MP), decisões judiciais com impacto público.",
+  "STF, TSE, tribunais e órgãos de controle quando o ato for público e rastreável.",
+  "Fora: celebridade, esporte, curiosidade, pesquisa eleitoral como “notícia do dia”, conteúdo sem fonte da allowlist.",
 ] as const;
 
 /**

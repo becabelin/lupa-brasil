@@ -8,6 +8,7 @@ import {
   explainerPath,
   type Explainer,
 } from "@/data/explainers";
+import { recentPosts, type Post } from "@/data/posts";
 import { HomeHero } from "@/components/home-hero";
 import { HomeEleicoes } from "@/components/home-eleicoes";
 import { BrandButton, SectionHead } from "@/components/brand-ui";
@@ -16,6 +17,7 @@ import { VOICE } from "@/data/voice";
 
 export default async function HomePage() {
   const cases = featuredCases();
+  const posts = recentPosts(4);
   const glossaryFeatured = glossaryExplainers()
     .filter((e) => e.featured)
     .slice(0, 4);
@@ -35,8 +37,8 @@ export default async function HomePage() {
             href: "/eleicoes",
           },
           {
-            k: String(cases.length),
-            v: "Casos em alta",
+            k: String(posts.length + cases.length),
+            v: "Notícias e casos",
             href: "/noticias",
           },
           {
@@ -49,12 +51,39 @@ export default async function HomePage() {
 
       <HomeEleicoes candidateCount={CANDIDATES.length} />
 
+      {posts.length > 0 ? (
+        <section className="border-b-2 border-black">
+          <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16">
+            <SectionHead
+              eyebrow={VOICE.homeSections.noticiasEyebrow}
+              title="Agora"
+              aside={
+                <BrandButton
+                  href="/noticias"
+                  variant="outline"
+                  className="!py-2.5 !px-4 text-xs"
+                >
+                  Ver tudo
+                </BrandButton>
+              }
+            />
+            <ul className="grid gap-4 sm:grid-cols-2 sm:gap-5">
+              {posts.map((p) => (
+                <li key={p.slug}>
+                  <HomePostCard post={p} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
+
       {cases.length > 0 ? (
         <section className="border-b-2 border-black bg-[#f0f0f0]">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16">
             <SectionHead
-              eyebrow={VOICE.homeSections.noticiasEyebrow}
-              title={VOICE.homeSections.noticiasTitle}
+              eyebrow="Dossiês"
+              title="Casos"
               aside={
                 <BrandButton
                   href="/noticias"
@@ -106,6 +135,43 @@ export default async function HomePage() {
         </section>
       ) : null}
     </div>
+  );
+}
+
+function HomePostCard({ post }: { post: Post }) {
+  return (
+    <Link
+      href={`/noticias/${post.slug}`}
+      className="group lupa-soft flex h-full flex-col overflow-hidden border-2 border-black bg-white transition hover:bg-black hover:text-white"
+    >
+      <div className="relative aspect-[16/9] w-full overflow-hidden border-b-2 border-black bg-[#ddd]">
+        <Image
+          src={post.cover.src}
+          alt=""
+          fill
+          className="object-cover transition duration-500 group-hover:scale-[1.03]"
+          style={{
+            objectPosition: post.cover.objectPosition ?? "center center",
+          }}
+          sizes="(max-width: 640px) 100vw, 50vw"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#333] group-hover:text-white/80">
+          Notícia
+        </span>
+        <span className="mt-2 font-[family-name:var(--font-display)] text-2xl uppercase leading-none tracking-tight sm:text-3xl">
+          {post.title}
+        </span>
+        <span className="mt-3 flex-1 text-sm font-medium leading-relaxed text-[#222] group-hover:text-white/90">
+          {post.lede}
+        </span>
+        <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] underline underline-offset-2">
+          Ler
+          <ArrowRightIcon size={12} />
+        </span>
+      </div>
+    </Link>
   );
 }
 

@@ -3,7 +3,7 @@
 /** Links do header (logo = início; Fontes e Aa ficam no rodapé). */
 export const HEADER_LINKS = [
   { href: "/eleicoes", label: "Eleições 2026" },
-  { href: "/noticias", label: "Casos" },
+  { href: "/noticias", label: "Notícias" },
   { href: "/glossario", label: "Glossário" },
 ] as const;
 
@@ -11,7 +11,7 @@ export const HEADER_LINKS = [
 export const FOOTER_LINKS = [
   { href: "/", label: "Início" },
   { href: "/eleicoes", label: "Eleições 2026" },
-  { href: "/noticias", label: "Casos" },
+  { href: "/noticias", label: "Notícias" },
   { href: "/glossario", label: "Glossário" },
   { href: "/fontes", label: "Fontes" },
   { href: "/privacidade", label: "Privacidade" },

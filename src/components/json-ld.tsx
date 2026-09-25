@@ -1,6 +1,7 @@
 import { absoluteUrl, getSiteUrl } from "@/lib/site";
 import type { Candidate } from "@/data/candidates";
 import type { Explainer } from "@/data/explainers";
+import type { Post } from "@/data/posts";
 
 type JsonLd = Record<string, unknown>;
 
@@ -90,6 +91,37 @@ export function articleJsonLd(
       url: getSiteUrl(),
     },
     citation: e.sources.map((s) => ({
+      "@type": "CreativeWork",
+      name: s.label,
+      url: s.url,
+    })),
+  };
+}
+
+export function newsPostJsonLd(post: Post): JsonLd {
+  const url = absoluteUrl(`/noticias/${post.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: post.title,
+    description: post.lede,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
+    inLanguage: "pt-BR",
+    mainEntityOfPage: url,
+    url,
+    image: [absoluteUrl(post.cover.src)],
+    author: {
+      "@type": "Organization",
+      name: "Lupa do Brasil",
+      url: getSiteUrl(),
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Lupa do Brasil",
+      url: getSiteUrl(),
+    },
+    citation: post.sources.map((s) => ({
       "@type": "CreativeWork",
       name: s.label,
       url: s.url,

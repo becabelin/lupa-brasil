@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { CANDIDATES } from "@/data/candidates";
 import { EXPLAINERS, isCaseKind, isGlossaryKind } from "@/data/explainers";
+import { POSTS } from "@/data/posts";
 import { getSiteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -60,6 +61,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  const posts: MetadataRoute.Sitemap = POSTS.map((p) => ({
+    url: `${base}/noticias/${p.slug}`,
+    lastModified: p.updatedAt
+      ? new Date(p.updatedAt)
+      : new Date(p.publishedAt),
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
   const cases: MetadataRoute.Sitemap = EXPLAINERS.filter((e) =>
     isCaseKind(e.kind),
   ).map((e) => ({
@@ -78,5 +88,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...candidates, ...cases, ...glossary];
+  return [...staticRoutes, ...candidates, ...posts, ...cases, ...glossary];
 }

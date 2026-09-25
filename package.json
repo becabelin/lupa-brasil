@@ -11,7 +11,8 @@
     "analyze:plans": "tsx --env-file=.env.local scripts/import-tse-plans.ts --analyze",
     "analyze:existing": "tsx --env-file=.env.local scripts/analyze-existing.ts",
     "press:fetch": "tsx --env-file=.env.local scripts/fetch-press.ts",
-    "press:enrich": "tsx --env-file=.env.local scripts/enrich-press-ledes.ts"
+    "press:enrich": "tsx --env-file=.env.local scripts/enrich-press-ledes.ts",
+    "news:draft": "tsx --env-file=.env.local scripts/draft-news.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.73",

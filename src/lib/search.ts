@@ -9,8 +9,14 @@ import {
   explainerPath,
   type Explainer,
 } from "@/data/explainers";
+import { postsNewestFirst, type Post } from "@/data/posts";
 
-export type SearchHitKind = "candidato" | "caso" | "conceito" | "plano";
+export type SearchHitKind =
+  | "candidato"
+  | "noticia"
+  | "caso"
+  | "conceito"
+  | "plano";
 
 export type SearchHit = {
   id: string;
@@ -203,22 +209,43 @@ function explainerHitLite(e: Explainer): SearchHit {
   };
 }
 
+function postHit(p: Post): SearchHit {
+  return {
+    id: `post-${p.slug}`,
+    kind: "noticia",
+    title: p.title,
+    blurb: p.lede,
+    href: `/noticias/${p.slug}`,
+    meta: "Notícia",
+    haystack: joinHay(
+      p.title,
+      p.slug,
+      p.lede,
+      ...p.body,
+      ...p.tags,
+      ...p.sources.map((s) => s.label),
+    ),
+  };
+}
+
 /** Índice estático para a busca do site (corpo completo). */
 export function buildSearchIndex(): SearchHit[] {
   const candidates = candidatesAlphabetical().map(candidateHit);
+  const posts = postsNewestFirst().map(postHit);
   const pages = EXPLAINERS.map(explainerHit).sort((a, b) =>
     a.title.localeCompare(b.title, "pt-BR"),
   );
-  return [...candidates, ...pages];
+  return [...candidates, ...posts, ...pages];
 }
 
 /** Índice leve pro header: título, teaser e aliases (sem seções/ângulos). */
 export function buildSearchIndexLite(): SearchHit[] {
   const candidates = candidatesAlphabetical().map(candidateHit);
+  const posts = postsNewestFirst().map(postHit);
   const pages = EXPLAINERS.map(explainerHitLite).sort((a, b) =>
     a.title.localeCompare(b.title, "pt-BR"),
   );
-  return [...candidates, ...pages];
+  return [...candidates, ...posts, ...pages];
 }
 
 /**
@@ -266,6 +293,7 @@ export function searchHits(index: SearchHit[], query: string): SearchHit[] {
 
 export const SEARCH_KIND_LABEL: Record<SearchHitKind, string> = {
   candidato: "Candidato",
+  noticia: "Notícia",
   caso: "Caso",
   conceito: "Conceito",
   plano: "Plano / política",

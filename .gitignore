@@ -41,10 +41,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# uploaded plans + local store
+# uploaded plan PDFs (pesados). store.json e press.json vão no deploy.
 /data/uploads/
-/data/store.json
-/data/press.json
 
 # local tooling
 .cursor/skills/

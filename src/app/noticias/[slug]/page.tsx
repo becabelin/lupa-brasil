@@ -6,21 +6,47 @@ import {
   isCaseKind,
   isGlossaryKind,
 } from "@/data/explainers";
+import { POSTS, getPostBySlug } from "@/data/posts";
 import { NewsArticle } from "@/components/news-article";
-import { JsonLdScript, articleJsonLd } from "@/components/json-ld";
+import { NewsPost } from "@/components/news-post";
+import { JsonLdScript, articleJsonLd, newsPostJsonLd } from "@/components/json-ld";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
-  return EXPLAINERS.filter((e) => isCaseKind(e.kind)).map((e) => ({
+  const caseSlugs = EXPLAINERS.filter((e) => isCaseKind(e.kind)).map((e) => ({
     slug: e.slug,
   }));
+  const postSlugs = POSTS.map((p) => ({ slug: p.slug }));
+  return [...postSlugs, ...caseSlugs];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (post) {
+    return {
+      title: post.title,
+      description: post.lede,
+      alternates: { canonical: `/noticias/${post.slug}` },
+      openGraph: {
+        title: post.title,
+        description: post.lede,
+        type: "article",
+        publishedTime: post.publishedAt,
+        modifiedTime: post.updatedAt ?? post.publishedAt,
+        images: [{ url: post.cover.src, alt: post.cover.alt }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.title,
+        description: post.lede,
+      },
+    };
+  }
+
   const e = getExplainer(slug);
   if (!e || !isCaseKind(e.kind)) {
     return { title: "Não encontrado" };
@@ -49,6 +75,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function NoticiaSlugPage({ params }: Props) {
   const { slug } = await params;
+
+  const post = getPostBySlug(slug);
+  if (post) {
+    return (
+      <>
+        <JsonLdScript data={newsPostJsonLd(post)} />
+        <NewsPost post={post} />
+      </>
+    );
+  }
+
   const e = getExplainer(slug);
   if (!e) notFound();
   if (isGlossaryKind(e.kind)) {

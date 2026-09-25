@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Candidate } from "@/data/candidates";
 import { FilterInput } from "@/components/ui/fields";
 
@@ -12,18 +12,40 @@ type Row = {
   analyzedAt?: string;
 };
 
+type DraftRow = {
+  slug: string;
+  title: string;
+  createdAt: string;
+  topicOk: boolean;
+  topicNote: string;
+  sources: { label: string; url: string }[];
+};
+
 export function AdminPanel({
   rows,
   initiallyAuthed = false,
+  initialDrafts = [],
 }: {
   rows: Row[];
   initiallyAuthed?: boolean;
+  initialDrafts?: DraftRow[];
 }) {
   const [password, setPassword] = useState("");
   const [authed, setAuthed] = useState(initiallyAuthed);
   const [message, setMessage] = useState<string | null>(null);
   const [busyId, setBusyId] = useState<string | null>(null);
   const [localRows, setLocalRows] = useState(rows);
+  const [drafts, setDrafts] = useState<DraftRow[]>(initialDrafts);
+
+  useEffect(() => {
+    if (!authed) return;
+    void (async () => {
+      const res = await fetch("/api/admin/news-drafts");
+      if (!res.ok) return;
+      const data = (await res.json()) as { drafts?: DraftRow[] };
+      if (data.drafts) setDrafts(data.drafts);
+    })();
+  }, [authed]);
 
   async function login(e: React.FormEvent) {
     e.preventDefault();
@@ -97,6 +119,16 @@ export function AdminPanel({
     setMessage("Análise concluída.");
   }
 
+  async function copyDraftPath(slug: string) {
+    const text = `data/drafts/noticias/${slug}.json`;
+    try {
+      await navigator.clipboard.writeText(text);
+      setMessage(`Copiado: ${text}. Edite e publique em src/data/posts.ts.`);
+    } catch {
+      setMessage(`Arquivo: ${text}`);
+    }
+  }
+
   if (!authed) {
     return (
       <form
@@ -132,7 +164,7 @@ export function AdminPanel({
   }
 
   return (
-    <div className="mt-8 space-y-4">
+    <div className="mt-8 space-y-10">
       <div className="flex items-center justify-between gap-3">
         <p className="text-sm font-medium text-[#555]">
           Envie PDF/TXT e depois clique em Analisar.
@@ -150,7 +182,66 @@ export function AdminPanel({
           {message}
         </p>
       ) : null}
-      <div className="space-y-3">
+
+      <section className="space-y-3">
+        <div>
+          <h2 className="font-[family-name:var(--font-display)] text-2xl uppercase tracking-tight">
+            Rascunhos de notícia
+          </h2>
+          <p className="mt-1 text-sm font-medium text-[#555]">
+            Gerados com{" "}
+            <code className="text-xs">npm run news:draft -- --url=…</code>.
+            Publicar é copiar para{" "}
+            <code className="text-xs">src/data/posts.ts</code> com capa P&B
+            creditada (humano). Sem foto, não publica.
+          </p>
+        </div>
+        {drafts.length === 0 ? (
+          <p className="border-2 border-dashed border-black p-4 text-sm font-medium text-[#555]">
+            Nenhum rascunho em data/drafts/noticias/.
+          </p>
+        ) : (
+          <ul className="space-y-3">
+            {drafts.map((d) => (
+              <li
+                key={d.slug}
+                className="border-2 border-black bg-white p-4 sm:p-5"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-[family-name:var(--font-display)] text-xl uppercase tracking-tight">
+                      {d.title}
+                    </h3>
+                    <p className="mt-1 text-xs font-bold uppercase tracking-widest text-[#555]">
+                      {d.slug} ·{" "}
+                      {new Date(d.createdAt).toLocaleString("pt-BR")} ·{" "}
+                      {d.topicOk ? "tema ok" : "tema fraco"}
+                    </p>
+                    <p className="mt-2 text-sm font-medium text-[#2a2a2a]">
+                      {d.topicNote}
+                    </p>
+                    <p className="mt-1 text-xs font-medium text-[#666]">
+                      {d.sources.length} fonte(s)
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => void copyDraftPath(d.slug)}
+                    className="border-2 border-black bg-black px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-white hover:text-black"
+                  >
+                    Copiar caminho
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="font-[family-name:var(--font-display)] text-2xl uppercase tracking-tight">
+          Planos TSE
+        </h2>
         {localRows.map((row) => (
           <div
             key={row.candidate.id}
@@ -200,7 +291,7 @@ export function AdminPanel({
             </div>
           </div>
         ))}
-      </div>
+      </section>
     </div>
   );
 }

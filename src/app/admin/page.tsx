@@ -1,6 +1,7 @@
 import { CANDIDATES } from "@/data/candidates";
 import { AdminPanel } from "@/components/admin-panel";
 import { isAdminAuthenticated } from "@/lib/auth";
+import { listNewsDrafts } from "@/lib/news-draft";
 import { readStore } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
@@ -11,7 +12,11 @@ export const metadata = {
 };
 
 export default async function AdminPage() {
-  const [store, authed] = await Promise.all([readStore(), isAdminAuthenticated()]);
+  const [store, authed, drafts] = await Promise.all([
+    readStore(),
+    isAdminAuthenticated(),
+    listNewsDrafts(),
+  ]);
 
   const rows = CANDIDATES.map((candidate) => {
     const doc = store.documents.find((d) => d.candidateId === candidate.id);
@@ -31,9 +36,14 @@ export default async function AdminPage() {
         Painel admin
       </h1>
       <p className="mt-2 text-sm text-[var(--ink-soft)]">
-        Upload dos planos e disparo da análise por IA. Visitantes só visualizam.
+        Planos TSE, análise por IA e rascunhos de notícia. Publicar notícia é
+        ato humano em posts.ts.
       </p>
-      <AdminPanel rows={rows} initiallyAuthed={authed} />
+      <AdminPanel
+        rows={rows}
+        initiallyAuthed={authed}
+        initialDrafts={drafts}
+      />
     </div>
   );
 }

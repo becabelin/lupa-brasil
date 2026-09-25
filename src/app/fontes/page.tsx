@@ -7,6 +7,7 @@ import {
   IMAGE_SOURCE_RULES,
   NEWS_PAGE_CRITERIA,
   NEWS_PAGE_DEPTH,
+  NEWS_POST_SCOPE,
   PHOTO_CREDITS,
   TSE_CANDIDATURAS_TITLE,
   TSE_CANDIDATURAS_URL,
@@ -70,11 +71,22 @@ export default function FontesPage() {
           Quando abrimos uma página
         </h2>
         <p className="mt-4 text-sm font-medium leading-relaxed">
-          Se o tema precisa de contexto, a gente cria a página. Caso vai para
-          Casos. Conceito ou plano vai para o Glossário. O critério evita
-          panfleto; a profundidade evita página rala.
+          Se o tema precisa de contexto, a gente cria a página. Notícia curta
+          vai para o feed Agora. Caso grande (nível Vorcaro) vai para Casos.
+          Conceito ou plano vai para o Glossário. O critério evita panfleto; a
+          profundidade evita página rala.
         </p>
         <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em]">
+          Escopo das notícias curtas
+        </p>
+        <ul className="mt-2 space-y-2">
+          {NEWS_POST_SCOPE.map((p) => (
+            <li key={p} className="text-sm font-medium leading-relaxed">
+              • {p}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.18em]">
           Entrada
         </p>
         <ul className="mt-2 space-y-2">

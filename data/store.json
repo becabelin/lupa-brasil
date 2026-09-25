@@ -1,0 +1,2483 @@
+{
+  "documents": [
+    {
+      "candidateId": "lula",
+      "fileName": "2026BR280002542548_01.pdf",
+      "storedName": "lula-tse-280002542548.pdf",
+      "uploadedAt": "2026-09-23T12:22:21.199Z",
+      "textLength": 166314
+    },
+    {
+      "candidateId": "flavio-bolsonaro",
+      "fileName": "2026BR280002551544_01.pdf",
+      "storedName": "flavio-bolsonaro-tse-280002551544.pdf",
+      "uploadedAt": "2026-09-23T12:22:22.228Z",
+      "textLength": 164376
+    },
+    {
+      "candidateId": "ronaldo-caiado",
+      "fileName": "2026BR280002551932_01.pdf",
+      "storedName": "ronaldo-caiado-tse-280002551932.pdf",
+      "uploadedAt": "2026-09-23T12:22:24.177Z",
+      "textLength": 308794
+    },
+    {
+      "candidateId": "romeu-zema",
+      "fileName": "2026BR280002539826_01.pdf",
+      "storedName": "romeu-zema-tse-280002539826.pdf",
+      "uploadedAt": "2026-09-23T12:22:25.185Z",
+      "textLength": 143769
+    },
+    {
+      "candidateId": "renan-santos",
+      "fileName": "2026BR280002540694_01.pdf",
+      "storedName": "renan-santos-tse-280002540694.pdf",
+      "uploadedAt": "2026-09-23T12:22:26.996Z",
+      "textLength": 138158
+    },
+    {
+      "candidateId": "augusto-cury",
+      "fileName": "2026BR280002551547_01.pdf",
+      "storedName": "augusto-cury-tse-280002551547.pdf",
+      "uploadedAt": "2026-09-23T12:22:29.698Z",
+      "textLength": 296283
+    },
+    {
+      "candidateId": "rui-costa-pimenta",
+      "fileName": "2026BR280002552487_01.pdf",
+      "storedName": "rui-costa-pimenta-tse-280002552487.pdf",
+      "uploadedAt": "2026-09-23T12:22:31.034Z",
+      "textLength": 15921
+    },
+    {
+      "candidateId": "samara-martins",
+      "fileName": "2026BR280002538811_01.pdf",
+      "storedName": "samara-martins-tse-280002538811.pdf",
+      "uploadedAt": "2026-09-23T12:22:32.920Z",
+      "textLength": 226869
+    },
+    {
+      "candidateId": "hertz-dias",
+      "fileName": "2026BR280002541457_01.pdf",
+      "storedName": "hertz-dias-tse-280002541457.pdf",
+      "uploadedAt": "2026-09-23T12:22:33.359Z",
+      "textLength": 86443
+    },
+    {
+      "candidateId": "edmilson-costa",
+      "fileName": "2026BR280002551975_01.pdf",
+      "storedName": "edmilson-costa-tse-280002551975.pdf",
+      "uploadedAt": "2026-09-23T12:22:33.889Z",
+      "textLength": 51702
+    },
+    {
+      "candidateId": "wilson-grassi",
+      "fileName": "2026BR280002548139_01.pdf",
+      "storedName": "wilson-grassi-tse-280002548139.pdf",
+      "uploadedAt": "2026-09-23T12:22:34.596Z",
+      "textLength": 111062
+    },
+    {
+      "candidateId": "clariana-barao",
+      "fileName": "2026BR280002552484_01.pdf",
+      "storedName": "clariana-barao-tse-280002552484.pdf",
+      "uploadedAt": "2026-09-23T12:38:19.933Z",
+      "textLength": 15044
+    }
+  ],
+  "analyses": [
+    {
+      "candidateId": "hertz-dias",
+      "overview": "O plano de governo de Hertz Dias (PSTU) apresenta uma crítica ao sistema capitalista e propõe um Brasil soberano e socialista. O documento aborda a desigualdade social, a precarização do trabalho e a degradação dos serviços públicos, como saúde e educação. Propõe a estatização de empresas estratégicas e um planejamento econômico voltado para o pleno emprego e a redução da jornada de trabalho. O texto é estruturado em seções que tratam de diversas áreas temáticas, como economia, saúde, educação, segurança, meio ambiente, assistência social, infraestrutura, agricultura, direitos e relações exteriores.",
+      "priorities": [
+        "Estatização das empresas estratégicas para garantir serviços públicos de qualidade.",
+        "Redução da jornada de trabalho para 36 horas semanais sem redução salarial.",
+        "Aumento do salário mínimo e criação de um programa de renda para desempregados.",
+        "Revogação de reformas trabalhistas e da previdência.",
+        "Defesa de um SUS público, gratuito e 100% estatal."
+      ],
+      "strengths": [
+        "Propostas concretas para a estatização de empresas como Petrobras e Vale.",
+        "Medidas para a redução da jornada de trabalho e aumento do salário mínimo.",
+        "Defesa de um sistema de saúde pública universal e gratuito.",
+        "Planos para a construção de moradias populares e infraestrutura.",
+        "Propostas de combate à violência contra a mulher e à violência policial."
+      ],
+      "gaps": [
+        "Ausência de propostas específicas para relações exteriores.",
+        "Falta de menção a políticas de educação profissionalizante.",
+        "Não aborda diretamente a questão da inflação e política monetária.",
+        "Não apresenta medidas concretas para a regulação de big techs e inteligência artificial.",
+        "Não discute a questão da isenção do Imposto de Renda."
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano critica a exploração capitalista e propõe um planejamento econômico que vincule produção e consumo. Defende a estatização de setores estratégicos e a criação de um banco público para financiar o desenvolvimento.",
+          "proposals": [
+            "Estatizar empresas estratégicas como Petrobras e Vale.",
+            "Criar um banco público para financiar o desenvolvimento nacional.",
+            "Implementar uma tributação progressiva sobre lucros empresariais."
+          ],
+          "quotes": [
+            "Estatização das empresas estratégicas do país",
+            "O que sobra para o país?"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O documento defende a defesa do SUS como um sistema público, gratuito e estatal, propondo o fim da privatização e a ampliação do investimento em saúde.",
+          "proposals": [
+            "Defesa do SUS público, gratuito e 100% estatal.",
+            "Ampliação do investimento público em saúde, com prioridade para a atenção básica.",
+            "Produção pública de medicamentos e insumos estratégicos."
+          ],
+          "quotes": [
+            "Defesa do SUS público, universal, gratuito e 100% estatal",
+            "Ampliação do investimento público em saúde"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "O plano propõe a revogação de reformas que privatizam a educação e defende uma educação pública de qualidade, sem influência de grandes grupos empresariais.",
+          "proposals": [
+            "Revogação das Parcerias Público-Privadas (PPP) na educação.",
+            "Ampliação de vagas em creches, escolas e universidades públicas.",
+            "Valorização dos profissionais da educação com salários dignos."
+          ],
+          "quotes": [
+            "Nenhuma verba pública para os grandes empresários da educação!",
+            "Por uma formação completa, crítica e científica nas escolas públicas."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O documento critica a violência policial e propõe a desmilitarização das polícias, além de um sistema de segurança baseado na auto-organização da população.",
+          "proposals": [
+            "Desmilitarização da Polícia Militar e unificação das polícias em uma única instituição civil.",
+            "Combate ao crime organizado por meio de investigação e desarticulação de seus negócios.",
+            "Implantação de câmeras corporais para todos os agentes de segurança pública."
+          ],
+          "quotes": [
+            "A população trabalhadora convive diariamente com diferentes formas de violência.",
+            "Desmilitarização da Polícia Militar e reversão da dinâmica de militarização das demais polícias."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O plano aborda a crise ambiental e propõe medidas para enfrentar a degradação ambiental, como a recuperação de áreas desmatadas e a promoção da agroecologia.",
+          "proposals": [
+            "Fim dos créditos públicos ao grande agronegócio.",
+            "Recuperação das áreas desmatadas e dos biomas devastados.",
+            "Garantia do direito à autodefesa de comunidades que lutam pela preservação ambiental."
+          ],
+          "quotes": [
+            "A crise ambiental expressa o esgotamento do próprio sistema e modelo de produção.",
+            "É preciso enfrentar o agronegócio e os governos capitalistas."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "O documento propõe a criação de programas de renda e a universalização de serviços públicos, como moradia e saneamento, para combater a pobreza.",
+          "proposals": [
+            "Criação de um programa de renda equivalente a um salário mínimo para desempregados.",
+            "Universalização do saneamento básico e construção de moradias populares.",
+            "Garantia de infraestrutura nos bairros populares."
+          ],
+          "quotes": [
+            "Casa para morar, não para especular!",
+            "Construção massiva de moradias populares e infraestrutura por empresa pública de obras."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O plano defende a construção de infraestrutura pública voltada para as necessidades da população, como transporte e saneamento.",
+          "proposals": [
+            "Estatização dos sistemas de transporte urbano e reversão das concessões privadas.",
+            "Ampliação e integração da rede de transporte público.",
+            "Garantia de qualidade e manutenção adequada dos serviços de transporte."
+          ],
+          "quotes": [
+            "Transporte público é um direito social e condição fundamental para o acesso ao trabalho.",
+            "Tarifa zero no transporte público."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O documento critica o agronegócio e propõe a expropriação de grandes propriedades rurais para garantir a soberania alimentar.",
+          "proposals": [
+            "Expropriação das grandes propriedades rurais e das empresas do agronegócio.",
+            "Crédito público direcionado aos pequenos produtores com juros baixos.",
+            "Incentivo à produção de alimentos da cesta básica."
+          ],
+          "quotes": [
+            "Terra para quem nela vive e trabalha!",
+            "Expropriação das grandes propriedades rurais e das empresas do agronegócio."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "O plano aborda a luta por direitos sociais e a necessidade de combater as opressões, propondo medidas para garantir igualdade e justiça.",
+          "proposals": [
+            "Combate ao racismo, machismo e lgbtfobia.",
+            "Garantia de direitos para todas as trabalhadoras, independentemente do vínculo empregatício.",
+            "Punição severa para empregadores que estimulam ou toleram racismo."
+          ],
+          "quotes": [
+            "A opressão das mulheres não será superada por políticas compensatórias.",
+            "Vidas LGBTQIAPN+ importam: basta de violência!"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano não aborda diretamente a política externa, mas critica a subserviência do Brasil ao imperialismo.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano não menciona diretamente a política monetária, juros ou controle da inflação.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "O documento não aborda questões relacionadas ao equilíbrio fiscal ou responsabilidade fiscal.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "Não há menção à isenção do Imposto de Renda ou propostas relacionadas.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "O plano propõe o fim da escala 6x1 e a redução da jornada de trabalho.",
+          "proposals": [
+            "Redução da jornada de trabalho para 36 horas, sem redução de salários."
+          ],
+          "quotes": [
+            "Fim da escala 6×1 sem redução de salários e direitos."
+          ],
+          "depth": "alto"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "O documento não menciona a regulação de big techs ou inteligência artificial.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "O plano aborda o combate ao crime organizado e a violência policial, propondo medidas de investigação e controle social.",
+          "proposals": [
+            "Combate ao crime organizado por meio de investigação e desarticulação de seus negócios."
+          ],
+          "quotes": [
+            "O crime organizado e o narcotráfico são empresas capitalistas ilegais."
+          ],
+          "depth": "alto"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "O documento propõe medidas para combater a violência contra a mulher e garantir proteção.",
+          "proposals": [
+            "Proteção real para as mulheres com delegacias especializadas abertas 24 horas.",
+            "Punição efetiva aos agressores."
+          ],
+          "quotes": [
+            "Basta de feminicídio e violência contra as mulheres!"
+          ],
+          "depth": "alto"
+        }
+      ],
+      "analyzedAt": "2026-09-23T13:13:21.551Z",
+      "sourceFileName": "2026BR280002541457_01.pdf (TSE)"
+    },
+    {
+      "candidateId": "wilson-grassi",
+      "overview": "O plano de governo de Wilson Grassi está estruturado em 14 eixos, abordando temas como reforma tributária, segurança pública, saúde, educação, infraestrutura e direitos animais. Cada eixo apresenta diagnósticos, propostas concretas e mecanismos de verificação. O documento enfatiza a importância de medidas que visam desburocratizar e desonerar a economia, além de promover a transparência e a responsabilidade fiscal. O plano também inclui um cronograma para os primeiros cem dias de governo e um painel de indicadores para monitorar o progresso das propostas.",
+      "priorities": [
+        "Reforma tributária com a criação do Imposto Único Federal.",
+        "Desoneração da folha de pagamento para estimular a formalização do emprego.",
+        "Fortalecimento da segurança pública através da integração de dados e combate ao crime organizado.",
+        "Atenção primária em saúde como prioridade orçamentária.",
+        "Educação com foco na alfabetização e formação técnica.",
+        "Proteção e direitos animais como eixo central."
+      ],
+      "strengths": [
+        "Propostas detalhadas para a reforma tributária, incluindo a criação do Imposto Único Federal.",
+        "Medidas específicas para desoneração da folha de pagamento e estímulo à formalização do emprego.",
+        "Planos concretos para a segurança pública, incluindo a integração de dados e combate ao crime organizado.",
+        "Estratégias para a saúde, com foco na atenção primária e prevenção de zoonoses.",
+        "Iniciativas para a educação, com ênfase na alfabetização e formação técnica."
+      ],
+      "gaps": [
+        "Ausência de propostas específicas sobre direitos humanos e igualdade.",
+        "Falta de menção a políticas de inclusão social e combate à pobreza.",
+        "Não aborda diretamente questões relacionadas a relações exteriores e diplomacia.",
+        "Não apresenta medidas concretas para a regulação de big techs e inteligência artificial.",
+        "Não discute a questão da violência contra a mulher de forma detalhada."
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano propõe a criação do Imposto Único Federal, que substituirá diversos tributos federais, visando simplificar a arrecadação e reduzir a carga tributária sobre a produção. A proposta busca desonerar a folha de pagamento, tornando a contratação formal mais acessível.",
+          "proposals": [
+            "Substituir tributos federais por um único imposto sobre movimentação financeira.",
+            "Zerar a contribuição patronal sobre a folha de pagamento."
+          ],
+          "quotes": [
+            "Quem movimenta dinheiro paga. Quem movimenta mais paga mais.",
+            "Contratar com carteira assinada deixa de ser a forma mais cara de organizar trabalho."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O eixo de saúde enfatiza a importância da atenção primária e a prevenção de zoonoses, propondo um programa nacional de vigilância e campanhas de vacinação. A integração entre saúde humana, animal e ambiental é destacada como fundamental.",
+          "proposals": [
+            "Expandir a cobertura de equipes de saúde da família com meta por município.",
+            "Implementar um programa nacional permanente de vigilância de zoonoses."
+          ],
+          "quotes": [
+            "Saúde humana, saúde animal e saúde ambiental são o mesmo problema visto de ângulos diferentes.",
+            "Fila única e pública por procedimento, com a sua posição consultável por você mesmo."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "O plano de educação foca na alfabetização na idade certa e na ampliação da rede de educação profissional. Propõe a continuidade de políticas já existentes, com condicionalidades ligadas a resultados.",
+          "proposals": [
+            "Ampliar a rede federal de educação profissional com base na demanda regional.",
+            "Enviar a Proposta de Emenda à Constituição da Pesquisa para garantir carreira a pesquisadores."
+          ],
+          "quotes": [
+            "A continuidade e endurecimento da política federal de alfabetização na idade certa.",
+            "O governo enviará ao Congresso a Proposta de Emenda à Constituição da Pesquisa."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O eixo de segurança pública propõe uma abordagem integrada para combater o crime organizado, com foco na inteligência financeira e na repressão ao tráfico de drogas e armas. A proposta inclui a criação de bases permanentes nas fronteiras.",
+          "proposals": [
+            "Isolar o comando das facções em presídios de segurança máxima.",
+            "Ampliar a capacidade federal de custódia de lideranças criminosas."
+          ],
+          "quotes": [
+            "Organização criminosa não morre de tiro. Morre quando quebra.",
+            "Bases permanentes nos trechos críticos, com efetivo fixo."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O plano aborda a necessidade de combater o desmatamento ilegal e promover a rastreabilidade da cadeia produtiva. Propõe medidas para garantir a proteção ambiental e a adaptação climática.",
+          "proposals": [
+            "Combater o desmatamento ilegal com inteligência e rastreabilidade.",
+            "Licenciamento ambiental com prazo definido e análise técnica de qualidade."
+          ],
+          "quotes": [
+            "Combater o desmatamento ilegal com inteligência, rastreabilidade da cadeia produtiva e responsabilização patrimonial.",
+            "Licenciamento ambiental com prazo definido e análise técnica de qualidade."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "O plano não aborda diretamente a assistência social, mas menciona a importância de políticas que promovam a formalização do emprego e a redução da carga tributária como formas de combater a pobreza.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O eixo de infraestrutura propõe a retomada de corredores ferroviários e a integração entre diferentes modais de transporte. A proposta inclui a cobrança de metas de universalização do saneamento.",
+          "proposals": [
+            "Retomar e concluir os corredores ferroviários de carga prioritários.",
+            "Cobrar a meta de universalização do saneamento."
+          ],
+          "quotes": [
+            "Programa Brasil nos Trilhos: retomada e conclusão dos corredores ferroviários de carga prioritários.",
+            "Cobrança da meta de universalização já fixada pelo marco legal de 2020."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O plano propõe a defesa sanitária como política de Estado, com foco na recomposição do serviço veterinário e na rastreabilidade da produção agrícola. A proposta busca garantir a qualidade e a segurança alimentar.",
+          "proposals": [
+            "Recompor o serviço veterinário oficial com concurso e carreira.",
+            "Cumprir o Plano Nacional de Identificação Individual de Bovinos e Búfalos."
+          ],
+          "quotes": [
+            "Defesa sanitária como política de Estado.",
+            "Rastreabilidade: o plano existe, o prazo é que não fecha."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "O plano menciona a proteção e direitos animais como um eixo central, mas não aborda diretamente questões de direitos humanos e igualdade de forma detalhada.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano não apresenta propostas específicas sobre relações exteriores, focando mais em questões internas e de segurança nacional.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano não aborda diretamente questões relacionadas à Selic, juros e inflação, focando mais em propostas de reforma tributária e desoneração da folha de pagamento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "O plano menciona a responsabilidade fiscal, mas não apresenta propostas específicas sobre contas públicas e equilíbrio fiscal.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "O plano propõe a fixação do limite de isenção do Imposto de Renda em cinco salários mínimos, aumentando a faixa de isenção.",
+          "proposals": [
+            "Fixar o limite de isenção do IRPF em cinco salários mínimos."
+          ],
+          "quotes": [
+            "Cinco salários mínimos é o patamar da proposta original do Imposto Único Federal."
+          ],
+          "depth": "alto"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "O plano não aborda diretamente a jornada de trabalho e a escala 6x1, focando mais em propostas de desoneração e formalização do emprego.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "O plano não menciona a regulação de big techs e inteligência artificial, concentrando-se em outras áreas de política pública.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "O plano apresenta propostas específicas para combater o crime organizado, com foco na inteligência financeira e no isolamento do comando das facções.",
+          "proposals": [
+            "Ampliar a capacidade federal de custódia de lideranças criminosas.",
+            "Integrar a inteligência financeira com as forças de segurança."
+          ],
+          "quotes": [
+            "O crime organizado se administra de dentro do sistema prisional.",
+            "Isolar o comando das facções em presídios de segurança máxima."
+          ],
+          "depth": "alto"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "O plano não aborda diretamente a violência contra a mulher, focando mais em segurança pública e combate ao crime organizado.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "analyzedAt": "2026-09-23T13:13:57.778Z",
+      "sourceFileName": "2026BR280002548139_01.pdf (TSE)"
+    },
+    {
+      "candidateId": "lula",
+      "overview": "O plano de governo de Luiz Inácio Lula da Silva apresenta diretrizes para a transformação do Brasil, com foco em um país soberano, democrático e sustentável. O documento é organizado em seções que abordam temas como fortalecimento da democracia, combate às desigualdades, segurança pública, educação, saúde, cultura, infraestrutura, economia e relações exteriores. Cada seção contém propostas específicas e metas a serem alcançadas até 2026, visando a inclusão social e o desenvolvimento sustentável. O plano enfatiza a importância da participação social e da modernização do Estado.",
+      "priorities": [
+        "Fortalecer a democracia e a participação social.",
+        "Combater as desigualdades.",
+        "Proteger a vida com uma segurança pública mais eficiente.",
+        "Garantir o direito à educação.",
+        "Fortalecer a saúde com equidade e inovação.",
+        "Promover uma economia mais sustentável e produtiva."
+      ],
+      "strengths": [
+        "Detalhamento das propostas para a educação, incluindo a expansão de creches e escolas.",
+        "Medidas concretas para a saúde, como a ampliação do SUS e a recuperação da cobertura vacinal.",
+        "Propostas específicas para a segurança pública, incluindo o fortalecimento do Sistema Único de Segurança Pública.",
+        "Iniciativas para a economia, como a reforma tributária e o investimento em infraestrutura."
+      ],
+      "gaps": [
+        "Ausência de propostas específicas sobre direitos humanos e igualdade de gênero.",
+        "Falta de menção a políticas para a juventude e inclusão digital.",
+        "Não aborda diretamente a questão da violência contra a mulher."
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano propõe uma economia mais sustentável e produtiva, com foco na inclusão social e na redução das desigualdades. Destaca a importância de investimentos em infraestrutura e na modernização da indústria.",
+          "proposals": [
+            "Implementar a Nova Indústria Brasil com investimentos de R$ 860 bilhões até 2026.",
+            "Promover a reforma tributária para garantir justiça fiscal."
+          ],
+          "quotes": [
+            "A economia brasileira voltou a crescer com inclusão e estabilidade."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O plano enfatiza a importância do SUS e propõe a ampliação da atenção básica e especializada. Destaca a recuperação da cobertura vacinal e a modernização da infraestrutura de saúde.",
+          "proposals": [
+            "Construir 2.734 unidades básicas de saúde até 2026.",
+            "Ampliar o programa Mais Médicos para garantir a fixação de profissionais em áreas vulneráveis."
+          ],
+          "quotes": [
+            "O SUS voltou a estar ao lado do povo brasileiro."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "A educação é apresentada como prioridade, com foco na alfabetização e na expansão do ensino técnico e superior. O plano propõe ações para combater a evasão escolar e melhorar a infraestrutura educacional.",
+          "proposals": [
+            "Construir 3.562 creches e escolas de educação infantil até 2026.",
+            "Expandir a rede de institutos federais de educação técnica e tecnológica."
+          ],
+          "quotes": [
+            "A educação constitui o principal instrumento de transformação social."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O plano propõe uma abordagem integrada para a segurança pública, com foco no combate ao crime organizado e na proteção da vida. Destaca a importância da cooperação entre os diferentes níveis de governo.",
+          "proposals": [
+            "Fortalecer o Sistema Único de Segurança Pública (SUSP).",
+            "Implementar a Lei Antifacção para enfrentar o crime organizado."
+          ],
+          "quotes": [
+            "A segurança é um direito de toda brasileira e de todo brasileiro."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O plano aborda a sustentabilidade ambiental e a transição para uma economia de baixo carbono. Propõe ações para reduzir o desmatamento e promover a recuperação de biomas.",
+          "proposals": [
+            "Restabelecer ações ambientais para reduzir o desmatamento.",
+            "Promover a recuperação e restauração florestal."
+          ],
+          "quotes": [
+            "O Brasil alcançou a menor taxa de desmatamento da história da Amazônia."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "O plano propõe a ampliação de programas de assistência social, com foco na proteção das populações vulneráveis e na promoção da inclusão produtiva.",
+          "proposals": [
+            "Recriar e expandir o Bolsa Família com benefícios especiais.",
+            "Fortalecer as redes de proteção social para enfrentar a pobreza."
+          ],
+          "quotes": [
+            "O combate às desigualdades requer justiça tributária e fortalecimento do Estado de bem-estar social."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O plano destaca a importância de investimentos em infraestrutura urbana e rural, com foco na mobilidade e no saneamento. Propõe a recuperação de obras paralisadas e a construção de novas.",
+          "proposals": [
+            "Mobilizar R$ 1,3 trilhão em investimentos até 2026.",
+            "Retomar obras do Minha Casa Minha Vida."
+          ],
+          "quotes": [
+            "A infraestrutura urbana voltou a receber atenção para assegurar um desenvolvimento urbano inclusivo."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O plano propõe fortalecer a agricultura familiar e garantir a segurança alimentar. Destaca a importância de políticas de crédito e assistência técnica para os agricultores.",
+          "proposals": [
+            "Ampliar o Plano Safra da Agricultura Familiar com juros compatíveis.",
+            "Fortalecer o Programa de Aquisição de Alimentos (PAA)."
+          ],
+          "quotes": [
+            "O Brasil saiu do Mapa da Fome."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "O plano menciona a importância de combater as desigualdades e promover a inclusão social, mas não aborda diretamente questões específicas de direitos humanos.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano propõe retomar o protagonismo do Brasil na arena internacional, com foco na cooperação e no fortalecimento de laços com outros países.",
+          "proposals": [
+            "Reassumir a liderança em iniciativas internacionais contra a fome.",
+            "Fortalecer a diplomacia cultural."
+          ],
+          "quotes": [
+            "O Brasil rompeu definitivamente com o isolamento geopolítico pretérito."
+          ],
+          "depth": "alto"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano menciona a necessidade de controlar a inflação e reduzir a taxa de juros, mas não apresenta propostas específicas sobre a Selic.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "O plano aborda a responsabilidade fiscal e a necessidade de um novo arcabouço fiscal, mas não detalha medidas específicas para o equilíbrio das contas públicas.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "O plano não aborda a jornada de trabalho ou a escala 6x1.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "O plano não menciona a regulação de big techs ou inteligência artificial.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "O plano menciona a violência contra a mulher, mas não apresenta propostas específicas para combatê-la.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "analyzedAt": "2026-09-23T17:04:00.516Z",
+      "sourceFileName": "2026BR280002542548_01.pdf (TSE)"
+    },
+    {
+      "candidateId": "flavio-bolsonaro",
+      "overview": "O plano de governo de Flávio Bolsonaro é estruturado em diversos eixos que abordam temas como segurança, economia, saúde, educação e infraestrutura. Cada eixo apresenta propostas específicas para melhorar a vida dos cidadãos e promover o crescimento do país. O documento enfatiza a importância de um governo que atue de forma integrada, visando a proteção e a autonomia das famílias. As propostas incluem medidas concretas para enfrentar problemas como a violência, a burocracia e a carga tributária, além de iniciativas voltadas para a inclusão social e o desenvolvimento econômico.",
+      "priorities": [
+        "Segurança pública como prioridade para garantir a liberdade e a proteção das famílias.",
+        "Desburocratização e simplificação do Estado para facilitar a vida do cidadão.",
+        "Redução de impostos e promoção de um ambiente econômico favorável ao empreendedorismo.",
+        "Apoio à educação de qualidade e à formação profissional para preparar os jovens para o mercado de trabalho.",
+        "Fortalecimento de programas sociais como ponto de partida para a autonomia das famílias."
+      ],
+      "strengths": [
+        "Detalhamento das propostas de segurança pública, incluindo medidas contra o crime organizado e feminicídio.",
+        "Propostas concretas para a desburocratização e digitalização dos serviços públicos.",
+        "Iniciativas voltadas para a inclusão digital e capacitação feminina.",
+        "Medidas para a redução de impostos e promoção de crédito acessível.",
+        "Planos para a construção de infraestrutura e melhoria da logística no país."
+      ],
+      "gaps": [
+        "Ausência de propostas específicas sobre direitos humanos e igualdade de gênero além do feminicídio.",
+        "Falta de menção a políticas de saúde mental e apoio psicológico.",
+        "Não aborda diretamente questões relacionadas a minorias e diversidade.",
+        "Pouca ênfase em políticas ambientais além da infraestrutura.",
+        "Não apresenta medidas concretas para a reforma política."
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano propõe a redução de impostos e a simplificação da carga tributária para estimular o crescimento econômico. Também menciona a importância de um ambiente favorável ao empreendedorismo e à formalização de negócios.",
+          "proposals": [
+            "Reduzir impostos sobre consumo e produção.",
+            "Implementar um programa de crédito acessível para pequenos empreendedores.",
+            "Promover a revisão da reforma tributária em curso."
+          ],
+          "quotes": [
+            "Menos impostos, mais formalidade, mais crescimento."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O plano aborda a necessidade de um sistema de saúde mais eficiente, com foco na prevenção e no atendimento ágil. Propõe a digitalização do SUS e a ampliação do acesso a exames preventivos.",
+          "proposals": [
+            "Implantar o prontuário eletrônico único vinculado ao CPF.",
+            "Ampliar a Estratégia Saúde da Família para atendimento próximo ao cidadão.",
+            "Fortalecer a imunização e a produção nacional de vacinas."
+          ],
+          "quotes": [
+            "Saúde que cuida antes de a doença chegar."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "O plano enfatiza a importância da educação de qualidade, propondo métodos de alfabetização eficazes e a ampliação da educação técnica. Destaca a necessidade de preparar os jovens para o mercado de trabalho.",
+          "proposals": [
+            "Priorizar o método fônico para alfabetização.",
+            "Ampliar a oferta de educação técnica e profissionalizante.",
+            "Criar o Programa Acolher para reforço escolar."
+          ],
+          "quotes": [
+            "Ensinar de verdade é garantir que o aluno aprenda."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O plano apresenta medidas rigorosas para combater o crime organizado e a violência, incluindo a criação de novos presídios e a proposta de redução da maioridade penal.",
+          "proposals": [
+            "Criar 5 novos presídios de segurança máxima.",
+            "Implementar a castração química para estupradores.",
+            "Aumentar o investimento em segurança pública."
+          ],
+          "quotes": [
+            "Terrorista vai ser tratado como terrorista."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O plano menciona a importância da infraestrutura e do desenvolvimento sustentável, mas não apresenta propostas detalhadas sobre a proteção ambiental.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "O plano propõe a manutenção e o aperfeiçoamento dos programas sociais, visando a autonomia das famílias e a superação da pobreza.",
+          "proposals": [
+            "Criar uma trilha de qualificação para beneficiários de programas sociais.",
+            "Garantir retorno imediato ao benefício após o seguro-desemprego."
+          ],
+          "quotes": [
+            "O programa social é o começo da caminhada, não o fim."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O plano destaca a necessidade de investimentos em infraestrutura para melhorar a logística e o transporte no país, visando reduzir custos e aumentar a eficiência.",
+          "proposals": [
+            "Investir R$ 900 bilhões em rodovias, hidrovias, portos e aeroportos.",
+            "Criar Corredores Logísticos Inteligentes para escoamento da produção."
+          ],
+          "quotes": [
+            "O Brasil perde uma fortuna no caminho entre quem produz e quem consome."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O plano menciona a importância do agronegócio, mas não apresenta propostas específicas para o setor.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "O plano trata da proteção de mulheres no eixo Brasil por Elas e em medidas de tolerância zero ao feminicídio, com reforço de medidas protetivas e monitoramento de agressores. Não desenvolve um capítulo amplo de direitos humanos para outros grupos.",
+          "proposals": [
+            "Adotar tolerância zero ao feminicídio e reforçar medidas protetivas, inclusive com monitoramento eletrônico de agressores.",
+            "Criar o programa Brasil por Elas como eixo transversal de proteção e fortalecimento das mulheres."
+          ],
+          "quotes": [
+            "Tolerância zero para o feminicídio. Medida protetiva vai deixar de ser um pedaço de papel para ser um instrumento real de proteção às mulheres.",
+            "Os agressores das mais de meio milhão de mulheres com medida protetiva no Brasil serão monitorados pelas autoridades com o uso de tornozeleiras eletrônicas.",
+            "Quando protegemos uma mulher, protegemos uma família."
+          ],
+          "depth": "medio"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano não aborda diretamente questões de política externa ou relações internacionais.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano menciona a alta da taxa de juros e a necessidade de controlar a inflação, mas não apresenta propostas específicas sobre política monetária.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "O plano enfatiza a importância do equilíbrio fiscal e a redução do gasto público, mas não detalha um arcabouço fiscal específico.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "O plano não menciona propostas específicas sobre isenção do Imposto de Renda ou faixa de isenção.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "O plano não aborda a jornada de trabalho ou a escala 6x1.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "O plano não menciona a regulação de big techs ou inteligência artificial.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "O plano dedica espaço à violência contra a mulher: tolerância zero ao feminicídio, reforço de medidas protetivas e monitoramento de agressores com tornozeleira eletrônica, no eixo Brasil por Elas.",
+          "proposals": [
+            "Tolerância zero ao feminicídio e reforço das medidas protetivas.",
+            "Monitorar com tornozeleira eletrônica agressores com medida protetiva.",
+            "Canal de denúncia e eixo Brasil por Elas de proteção às mulheres."
+          ],
+          "quotes": [
+            "Tolerância zero para o feminicídio. Medida protetiva vai deixar de ser um pedaço de papel para ser um instrumento real de proteção às mulheres.",
+            "Os agressores das mais de meio milhão de mulheres com medida protetiva no Brasil serão monitorados pelas autoridades com o uso de tornozeleiras eletrônicas.",
+            "Quando protegemos uma mulher, protegemos uma família."
+          ],
+          "depth": "alto"
+        }
+      ],
+      "analyzedAt": "2026-09-23T17:04:28.160Z",
+      "sourceFileName": "2026BR280002551544_01.pdf (TSE)"
+    },
+    {
+      "candidateId": "ronaldo-caiado",
+      "overview": "O plano de governo de Ronaldo Caiado para o período de 2027 a 2030 apresenta uma série de propostas organizadas em temas que abrangem diversas áreas, como segurança, educação, saúde e economia. O documento enfatiza a necessidade de um governo que priorize a responsabilidade fiscal, a segurança pública e a promoção de oportunidades para todos os cidadãos. As propostas são estruturadas em compromissos claros, com foco na implementação de políticas públicas que visem a melhoria da qualidade de vida da população. O plano também destaca a importância da integração entre diferentes esferas de governo e a participação da sociedade na construção de soluções.",
+      "priorities": [
+        "Responsabilidade fiscal como princípio moral e condição de crescimento.",
+        "Segurança pública como responsabilidade direta da Presidência da República.",
+        "Educação como política de liberdade e mobilidade social.",
+        "Proteção social que combine acolhimento e emancipação.",
+        "Desenvolvimento sustentável e proteção ambiental como aliados."
+      ],
+      "strengths": [
+        "Detalhamento das propostas para segurança pública, incluindo a criação de um Ministério da Segurança Pública.",
+        "Propostas concretas para a educação, como o Pacto Nacional pela Alfabetização.",
+        "Compromissos claros em relação à saúde, como a reorganização do SUS.",
+        "Estratégias para o agronegócio, incluindo a biocompetitividade e a modernização do crédito agrícola.",
+        "Planos para a infraestrutura, com foco em transporte e logística."
+      ],
+      "gaps": [
+        "Ausência de propostas específicas sobre direitos humanos e igualdade de gênero.",
+        "Falta de menção a políticas de inclusão para pessoas com deficiência.",
+        "Não aborda diretamente a questão da violência contra a mulher.",
+        "Não apresenta medidas concretas para a proteção de minorias étnicas e raciais.",
+        "Não discute a regulação de plataformas digitais e inteligência artificial."
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano propõe uma estratégia de crescimento baseada no aumento do investimento e da produtividade, com foco na iniciativa privada como motor da economia. A responsabilidade fiscal é destacada como essencial para garantir a confiança e a previsibilidade necessárias para o investimento.",
+          "proposals": [
+            "Estabelecer uma estratégia nacional de desenvolvimento que integre agronegócio, indústria e serviços.",
+            "Criar um ambiente de negócios que favoreça a inovação e o investimento de longo prazo.",
+            "Promover a reindustrialização com foco nas vantagens competitivas do Brasil."
+          ],
+          "quotes": [
+            "A iniciativa privada será o principal motor da economia; ao Estado caberá garantir estabilidade, concorrência, infraestrutura."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O plano reafirma o compromisso com os princípios do SUS, propondo melhorias na capacidade de entrega do sistema de saúde. A ênfase está na prevenção e no atendimento próximo da população, com foco na qualidade e na transparência.",
+          "proposals": [
+            "Reorganizar o SUS para oferecer fila transparente e atendimento no tempo certo.",
+            "Implementar prontuário interoperável e garantir acesso a especialistas em tempo adequado."
+          ],
+          "quotes": [
+            "A saúde preservará os princípios do SUS, mas mudará sua capacidade de entrega: cuidado preventivo, atendimento perto de casa."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "A educação é tratada como prioridade nacional, com propostas para garantir a alfabetização na idade certa e a formação conectada ao mercado de trabalho. O plano busca melhorar a qualidade do ensino e a formação de professores.",
+          "proposals": [
+            "Implementar o Pacto Nacional pela Alfabetização e Matemática na Idade Certa.",
+            "Expandir a educação profissional e tecnológica em parceria com o setor produtivo."
+          ],
+          "quotes": [
+            "A aprendizagem será prioridade nacional."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O plano propõe uma abordagem integrada para a segurança pública, com foco no combate ao crime organizado e na proteção das fronteiras. A criação de um Ministério da Segurança Pública é uma das principais propostas.",
+          "proposals": [
+            "Criar o Ministério da Segurança Pública e o Sistema Integrado de Proteção à Soberania Nacional.",
+            "Implantar o Sistema Nacional de Inteligência Criminal para integrar dados e informações."
+          ],
+          "quotes": [
+            "Segurança é o primeiro dever do Estado e condição para todos os outros direitos."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O plano aborda a necessidade de desenvolvimento sustentável, propondo medidas para combater o desmatamento e promover a bioeconomia. A proteção ambiental é vista como aliada do desenvolvimento econômico.",
+          "proposals": [
+            "Combater com rigor o desmatamento e a grilagem.",
+            "Transformar ativos ambientais em prosperidade por meio da bioeconomia."
+          ],
+          "quotes": [
+            "Desenvolvimento e proteção ambiental serão tratados como aliados."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "O plano propõe a manutenção da rede de transferência de renda, mas com foco na inclusão produtiva e na qualificação. A proteção social é vista como um meio de emancipação.",
+          "proposals": [
+            "Conectar benefícios a qualificação, cuidado infantil e inclusão produtiva.",
+            "Priorizar a infância nas políticas de assistência social."
+          ],
+          "quotes": [
+            "A proteção social combinará acolhimento e emancipação."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O plano destaca a importância da infraestrutura para o desenvolvimento econômico, propondo a modernização de transportes e a melhoria da logística. A integração entre diferentes modais é enfatizada.",
+          "proposals": [
+            "Organizar ferrovias, hidrovias e rodovias em corredores logísticos estratégicos.",
+            "Priorizar obras estruturantes de escoamento."
+          ],
+          "quotes": [
+            "A infraestrutura será fundamental para o crescimento e a competitividade do Brasil."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O agronegócio é tratado como uma plataforma de liderança global, com propostas para aumentar a produtividade e a sustentabilidade. O plano busca fortalecer a agricultura familiar e a pesquisa agrícola.",
+          "proposals": [
+            "Adotar a biocompetitividade como estratégia nacional.",
+            "Fortalecer a Embrapa e a inovação agropecuária."
+          ],
+          "quotes": [
+            "O agronegócio será tratado como plataforma de liderança global do Brasil em alimentos, bioenergia, biotecnologia e sustentabilidade."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "O plano não aborda diretamente questões de direitos humanos e igualdade, apresentando lacunas em propostas específicas para minorias e grupos vulneráveis.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano propõe uma política externa que priorize o interesse nacional, buscando abrir mercados e atrair investimentos. A integração regional é destacada como uma prioridade.",
+          "proposals": [
+            "Fortalecer a integração regional e negociar parcerias que tragam tecnologia e valor agregado.",
+            "Proteger brasileiros no exterior e defender regras multilaterais."
+          ],
+          "quotes": [
+            "A política externa voltará a servir ao interesse nacional."
+          ],
+          "depth": "alto"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano não aborda diretamente questões relacionadas à taxa Selic, juros e inflação, apresentando lacunas nesse aspecto.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "O plano enfatiza a responsabilidade fiscal como um princípio moral e condição de crescimento, propondo medidas para melhorar a transparência das contas públicas.",
+          "proposals": [
+            "Publicar o Orçamento da Verdade com diagnóstico completo das despesas.",
+            "Adotar estratégia fiscal plurianual para estabilizar a dívida."
+          ],
+          "quotes": [
+            "Responsabilidade fiscal será princípio moral e condição de crescimento."
+          ],
+          "depth": "alto"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "O plano não menciona propostas específicas sobre isenção do Imposto de Renda ou faixas de isenção.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "O plano não aborda a jornada de trabalho ou a escala 6x1, apresentando lacunas nesse tema.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "O plano não menciona a regulação de big techs ou inteligência artificial, apresentando lacunas nesse aspecto.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "O plano propõe medidas concretas para o combate ao crime organizado, destacando a criação de um Ministério da Segurança Pública.",
+          "proposals": [
+            "Implantar o Sistema Nacional de Inteligência Criminal.",
+            "Asfixiar financeiramente o crime organizado."
+          ],
+          "quotes": [
+            "O governo federal assumirá liderança efetiva no combate às facções, milícias, narcotráfico."
+          ],
+          "depth": "alto"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "O plano menciona a violência contra a mulher, mas não apresenta propostas específicas para o combate a essa questão.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "analyzedAt": "2026-09-23T17:05:26.660Z",
+      "sourceFileName": "2026BR280002551932_01.pdf (TSE)"
+    },
+    {
+      "candidateId": "romeu-zema",
+      "overview": "O plano de governo de Romeu Zema apresenta propostas para diversas áreas, organizadas em eixos temáticos como segurança pública, economia, saúde, educação, infraestrutura, meio ambiente, e desenvolvimento social. Cada seção aborda problemas específicos e propõe soluções concretas, com foco em eficiência, redução de custos e promoção de oportunidades. O documento enfatiza a importância de integrar ações entre diferentes esferas do governo e a sociedade civil, visando a melhoria da qualidade de vida dos cidadãos. As propostas são detalhadas e incluem medidas para combater a corrupção, melhorar a gestão pública e promover o desenvolvimento econômico.",
+      "priorities": [
+        "Combater a corrupção e os privilégios no governo.",
+        "Reformar a segurança pública para enfrentar o crime organizado.",
+        "Promover a educação de qualidade e a formação profissional.",
+        "Aumentar a eficiência na saúde pública e garantir acesso a serviços.",
+        "Desenvolver a infraestrutura e garantir investimentos privados."
+      ],
+      "strengths": [
+        "Detalhamento das propostas de segurança pública, incluindo medidas contra o crime organizado.",
+        "Propostas concretas para a reforma da previdência e ajuste fiscal.",
+        "Medidas para a promoção da educação básica e profissional.",
+        "Planos para a melhoria da saúde pública e uso de tecnologia.",
+        "Estratégias para o desenvolvimento econômico e atração de investimentos."
+      ],
+      "gaps": [
+        "Ausência de propostas específicas sobre direitos humanos e igualdade de gênero.",
+        "Falta de menção a políticas de inclusão social para minorias.",
+        "Não aborda diretamente a questão da violência contra a mulher.",
+        "Pouca ênfase em políticas de saúde mental e apoio psicológico.",
+        "Não menciona ações específicas para a proteção do meio ambiente."
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano aborda a necessidade de um choque fiscal e a reforma da previdência para equilibrar as contas públicas. Propõe a privatização de estatais e a redução da carga tributária para estimular o crescimento econômico.",
+          "proposals": [
+            "Realizar uma reforma da previdência que inclua estados e municípios.",
+            "Privatizar todas as empresas estatais para reduzir gastos.",
+            "Definir metas de redução de impostos que forcem o corte efetivo de gastos."
+          ],
+          "quotes": [
+            "O Brasil entrou em 2026 com a maior carga tributária da sua história, em torno de 32,4% do PIB.",
+            "Fazer o ajuste fiscal de verdade exige atacar a raiz do problema: cortar gastos."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O plano propõe transformar a saúde brasileira em uma saúde digital, ampliando a cobertura da atenção primária e utilizando o setor privado para reduzir filas. A integração de dados e a telemedicina são enfatizadas como soluções para melhorar o atendimento.",
+          "proposals": [
+            "Expandir o acesso a consultas médicas por meio da telemedicina.",
+            "Construir um registro nacional de saúde unificado sob controle do cidadão.",
+            "Fortalecer a Estratégia de Saúde da Família como porta de entrada do sistema."
+          ],
+          "quotes": [
+            "Três em cada quatro brasileiros dependem exclusivamente do SUS e, muitas vezes, o que encontram é fila.",
+            "Cuidar da saúde do brasileiro exige prevenir doenças, integrar a rede com tecnologia."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "O plano destaca a necessidade de melhorar a educação básica, com foco na alfabetização e na formação de professores. Propõe a ampliação da educação profissional e a valorização do ensino técnico.",
+          "proposals": [
+            "Ampliar a oferta de vagas em creches e pré-escolas.",
+            "Aprimorar o sistema nacional de avaliação de aprendizagem.",
+            "Expandir a educação profissional e tecnológica conectada ao mercado de trabalho."
+          ],
+          "quotes": [
+            "A educação básica brasileira ainda enfrenta problemas graves: apenas 13,3% dos alunos saem do ensino fundamental sabendo Português e Matemática de forma adequada.",
+            "Transformar o ensino médio em porta de entrada para o trabalho e oportunidades para a vida."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O plano propõe medidas rigorosas para combater o crime organizado, incluindo a classificação de facções como organizações terroristas e a redução da maioridade penal. A integração das forças de segurança é enfatizada.",
+          "proposals": [
+            "Classificar facções criminosas como organizações terroristas.",
+            "Ampliar a prisão obrigatória nas audiências de custódia para criminosos reincidentes.",
+            "Reduzir a maioridade penal para 16 anos."
+          ],
+          "quotes": [
+            "A segurança pública segue sendo a principal preocupação dos brasileiros.",
+            "O resultado é um país em que o bandido perdeu o medo e o cidadão de bem perdeu a paz."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O plano menciona a necessidade de enfrentar o desmatamento e a grilagem, mas não apresenta propostas concretas para a proteção ambiental. A ênfase está na utilização sustentável dos recursos naturais.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "O plano propõe a criação de um programa de apoio para famílias em situação de vulnerabilidade, focando na inclusão produtiva e na superação da pobreza.",
+          "proposals": [
+            "Criar o programa Casas da Cidadania para apoiar famílias em vulnerabilidade.",
+            "Impedir que adultos saudáveis permaneçam no Bolsa Família se recusarem trabalho.",
+            "Premiar as famílias que conseguirem deixar a dependência dos programas sociais."
+          ],
+          "quotes": [
+            "O Brasil tem cerca de 60 milhões de pessoas vivendo em situação de pobreza.",
+            "O assistencialismo sem uma porta de saída não resolve os problemas do país."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O plano destaca a importância de investimentos em infraestrutura, propondo a construção de um portfólio robusto de projetos e a ampliação das parcerias público-privadas.",
+          "proposals": [
+            "Construir e executar o maior portfólio de investimentos em infraestrutura da história do país.",
+            "Ampliar e diversificar o mercado de financiamento e desenvolvimento de projetos de infraestrutura.",
+            "Garantir segurança jurídica para investidores e operadores."
+          ],
+          "quotes": [
+            "O investimento total, público e privado, em infraestrutura no país representa 2,22% do PIB.",
+            "Conectar o Brasil de ponta a ponta requer um robusto plano de investimentos em infraestrutura."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O plano propõe facilitar a produção agrícola e a compra de insumos, além de melhorar a logística de transporte para aumentar a competitividade do agronegócio.",
+          "proposals": [
+            "Facilitar a produção nacional e a compra de fertilizantes e defensivos agrícolas.",
+            "Melhorar a logística de transporte de cargas para reduzir o custo do frete.",
+            "Ampliar o acesso dos produtores rurais a tecnologia e assistência técnica."
+          ],
+          "quotes": [
+            "O agronegócio é o motor do Brasil.",
+            "O frete da soja do Centro-Oeste até o porto chega a custar três vezes o de um trajeto equivalente nos Estados Unidos."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "O plano não aborda diretamente questões de direitos humanos ou igualdade de gênero, focando mais em propostas de segurança e combate à corrupção.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano menciona a necessidade de recuperar a credibilidade do Brasil no cenário internacional, mas não apresenta propostas concretas para a política externa.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano menciona a alta carga tributária e a necessidade de um choque fiscal, mas não aborda diretamente a política monetária ou a taxa Selic.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "O plano não menciona propostas específicas sobre isenção do Imposto de Renda ou faixas de isenção.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "O plano não aborda a jornada de trabalho ou a escala 6x1.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "O plano não menciona a regulação de big techs ou inteligência artificial.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "analyzedAt": "2026-09-23T17:05:55.808Z",
+      "sourceFileName": "2026BR280002539826_01.pdf (TSE)"
+    },
+    {
+      "candidateId": "renan-santos",
+      "overview": "O plano de governo de Renan Santos, intitulado \"Livro Amarelo\", apresenta uma análise detalhada da situação do Brasil e propõe uma série de reformas em diversas áreas. O documento é estruturado em três partes principais: Estado Novo, Reformas de Base e País do Futuro, abordando temas como ajuste fiscal, segurança pública, infraestrutura, saúde, educação, agricultura e política externa. Cada seção contém diagnósticos dos problemas enfrentados e propostas concretas para solucioná-los, visando transformar o Brasil em uma potência global.",
+      "priorities": [
+        "Ajuste fiscal com a aprovação de uma PEC de Transição para desindexar benefícios.",
+        "Implementação do Direito Penal do Inimigo para combater o crime organizado.",
+        "Reorganização territorial com a Grande Consolidação Municipal.",
+        "Criação de um sistema de saúde baseado em prioridade de risco.",
+        "Desenvolvimento de Zonas Econômicas Especiais para impulsionar a indústria."
+      ],
+      "strengths": [
+        "Detalhamento das propostas de ajuste fiscal, incluindo a PEC do Equilíbrio Fiscal.",
+        "Propostas concretas para a segurança pública, como a adoção do Direito Penal do Inimigo.",
+        "Estratégias para a reforma da infraestrutura, com foco em parcerias público-privadas.",
+        "Inovações na saúde, como a criação da ENER para priorização de atendimento.",
+        "Planos para a educação, incluindo a reforma do ensino básico e superior."
+      ],
+      "gaps": [
+        "Ausência de propostas específicas para a política de direitos humanos.",
+        "Falta de menção a medidas para a proteção do meio ambiente.",
+        "Não aborda a questão da violência contra a mulher de forma detalhada.",
+        "Não apresenta um plano claro para a regulação de big techs e inteligência artificial.",
+        "Não discute a questão da isenção do Imposto de Renda."
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano aborda a necessidade de um ajuste fiscal rigoroso e propõe a aprovação de uma PEC de Transição para desindexar benefícios e revisar gastos públicos. A proposta inclui a racionalização do superávit financeiro e a reforma do funcionalismo público.",
+          "proposals": [
+            "Aprovar a PEC do Equilíbrio Fiscal para desindexar benefícios previdenciários.",
+            "Revisar o abono salarial e reduzir renúncias fiscais."
+          ],
+          "quotes": [
+            "O ajuste fiscal necessário é da ordem de R$ 250 bilhões anuais.",
+            "A PEC de Transição deverá utilizar como base um projeto já protocolado por nosso deputado Kim Kataguiri."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O plano propõe a criação da ENER, um sistema de fila viva que prioriza o atendimento de acordo com o risco do paciente, além de integrar tecnologia à saúde. A proposta inclui a criação de um prontuário eletrônico nacional e a adoção de um modelo de vigilância epidemiológica preditiva.",
+          "proposals": [
+            "Criar a ENER para priorização de atendimento com base no risco.",
+            "Integrar o Programa Genomas Brasil ao Prontuário Eletrônico do SUS."
+          ],
+          "quotes": [
+            "A ideia central de nossa proposta é criar a ENER, um sistema de fila viva.",
+            "O sistema deve conduzir à criação de uma vigilância epidemiológica preditiva e em tempo real."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "O plano enfatiza a necessidade de uma reforma educacional focada na qualidade do ensino básico e na disciplina nas escolas. Propõe a adoção de um sistema de ranqueamento das escolas e a implementação de um código de conduta para os alunos.",
+          "proposals": [
+            "Implementar um sistema de ranqueamento das escolas mais violentas.",
+            "Criar um código de conduta para o estudante com previsões de sanções."
+          ],
+          "quotes": [
+            "Estamos profundamente convencidos de que os dois problemas centrais da educação brasileira em nível básico são a baixa qualidade do aprendizado e a falta de ordem no ambiente escolar.",
+            "Devemos criar outros instrumentos para a retenção do aluno em sala para além da progressão."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O plano propõe a adoção do Direito Penal do Inimigo como uma estratégia para combater o crime organizado, além de medidas para a recuperação do controle territorial pelo Estado. A proposta inclui a criação de tribunais especializados para lidar com facções criminosas.",
+          "proposals": [
+            "Declarar uma grande Guerra ao Crime e adotar o Direito Penal do Inimigo.",
+            "Criar tribunais especializados com magistrados selecionados por critérios técnicos."
+          ],
+          "quotes": [
+            "Policiais devem capturar todos os líderes desses grupos anômalos e, quando houver perigo ou resistência, neutralizá-los da maneira mais eficiente.",
+            "A implementação prática do DPI no Brasil se daria por sucessivos decretos de Estado de Defesa."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O plano não aborda diretamente questões relacionadas ao meio ambiente, como desmatamento ou políticas de sustentabilidade, limitando-se a mencionar a necessidade de desenvolvimento econômico.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "O plano menciona a substituição do Bolsa Família por um programa de Frentes Cidadãs, que visa a inserção dos beneficiários no mercado de trabalho. A proposta busca transformar o assistencialismo em uma ferramenta de inclusão.",
+          "proposals": [
+            "Substituir o Bolsa Família por um programa de Frentes Cidadãs.",
+            "Criar um sistema de incentivos para a inserção de beneficiários no mercado de trabalho."
+          ],
+          "quotes": [
+            "A proposta de reforma do assistencialismo, com a substituição do Bolsa Família por um programa de Frentes Cidadãs."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O plano apresenta a Missão Rondon, um programa de infraestrutura que visa aumentar os investimentos em infraestrutura e modernizar os modais de transporte. Propõe a mobilização do capital privado por meio de concessões e parcerias público-privadas.",
+          "proposals": [
+            "Aumentar o investimento estatal em infraestrutura, condicionado à reforma administrativa e fiscal prévia.",
+            "Mobilizar capital privado por concessões e PPPs."
+          ],
+          "quotes": [
+            "A Missão Rondon é o nome que damos ao programa de infraestrutura do governo da Missão.",
+            "A partir do espaço fiscal aberto e das melhorias econômicas atingidas, teremos grande capacidade de investir em infraestrutura."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O plano propõe a criação de um programa AgroBrasil 2030, que visa a segurança jurídica no campo, a auditoria de terras destinadas à reforma agrária e a soberania em fertilizantes. O objetivo é verticalizar as cadeias produtivas agrícolas.",
+          "proposals": [
+            "Revogar a Nota Técnica nº 4/2025 para restaurar a segurança jurídica no campo.",
+            "Auditar e produtivizar os 140 milhões de hectares já destinados à reforma agrária."
+          ],
+          "quotes": [
+            "O plano AgroBrasil 2030 se sustenta em cinco pilares.",
+            "Vamos executar e ampliar o Plano Nacional de Fertilizantes."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "O plano não aborda diretamente questões de direitos humanos ou igualdade, limitando-se a discutir aspectos relacionados à segurança e à ordem pública.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano menciona a necessidade de uma nova estratégia de política externa que fortaleça a posição do Brasil no Sul Global e enfrente a influência de potências externas, especialmente no contexto do narcotráfico.",
+          "proposals": [
+            "Estabelecer uma nova doutrina de política externa que transcenda ideologias.",
+            "Fortalecer a liderança do Brasil no Sul Global."
+          ],
+          "quotes": [
+            "Pretendemos inaugurar uma doutrina de política externa.",
+            "A ausência de uma estratégia internacional institucionalizada deixa o país vulnerável a pressões de potências maiores."
+          ],
+          "depth": "alto"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano não aborda diretamente questões relacionadas à Selic, juros ou inflação, limitando-se a discutir aspectos fiscais e de responsabilidade fiscal.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "O plano discute a necessidade de um ajuste fiscal e propõe a aprovação de uma PEC de Transição para desindexar benefícios e revisar gastos públicos, visando a sustentabilidade das contas públicas.",
+          "proposals": [
+            "Aprovar a PEC do Equilíbrio Fiscal para desindexar benefícios previdenciários.",
+            "Revisar o abono salarial e reduzir renúncias fiscais."
+          ],
+          "quotes": [
+            "O ajuste fiscal necessário é da ordem de R$ 250 bilhões anuais."
+          ],
+          "depth": "alto"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "O plano não menciona propostas específicas sobre isenção do Imposto de Renda ou faixas de isenção, limitando-se a discutir aspectos fiscais em geral.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "O plano não aborda questões relacionadas à jornada de trabalho ou à escala 6x1, focando mais em propostas de segurança e produtividade.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "O plano menciona a necessidade de regulação de tecnologias e a criação de um marco para a inteligência artificial, mas não detalha propostas específicas para big techs.",
+          "proposals": [
+            "Criar um Marco Brasileiro da Inteligência Artificial (MBIA) para regular o setor."
+          ],
+          "quotes": [
+            "O MBIA é uma arquitetura de catorze medidas distribuídas também em cinco eixos."
+          ],
+          "depth": "medio"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "O plano discute a necessidade de combater o crime organizado por meio da adoção do Direito Penal do Inimigo e a recuperação do controle territorial pelo Estado.",
+          "proposals": [
+            "Declarar uma grande Guerra ao Crime e adotar o Direito Penal do Inimigo."
+          ],
+          "quotes": [
+            "Policiais devem capturar todos os líderes desses grupos anômalos e, quando houver perigo ou resistência, neutralizá-los da maneira mais eficiente."
+          ],
+          "depth": "alto"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "O plano não aborda diretamente questões relacionadas à violência contra a mulher, limitando-se a discutir aspectos de segurança pública em geral.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "analyzedAt": "2026-09-23T17:06:52.695Z",
+      "sourceFileName": "2026BR280002540694_01.pdf (TSE)"
+    },
+    {
+      "candidateId": "augusto-cury",
+      "overview": "O plano de governo de Augusto Cury apresenta uma visão abrangente para o Brasil, abordando temas como educação, saúde, segurança, economia e direitos humanos. O documento é estruturado em projetos específicos, cada um focando em áreas distintas, como empreendedorismo, saúde mental e combate à corrupção. Cury enfatiza a importância da responsabilidade fiscal e do crescimento sustentável, propondo medidas concretas para a modernização do Estado e a promoção da inclusão social. O texto também destaca a necessidade de uma cultura de paz e diálogo, buscando unir diferentes ideologias em prol do desenvolvimento do país.",
+      "priorities": [
+        "Educação como prioridade absoluta para transformação nacional.",
+        "Responsabilidade fiscal e crescimento sustentável.",
+        "Promoção da saúde integral e modernização do SUS.",
+        "Combate à corrupção e transparência na administração pública.",
+        "Valorização da segurança pública e combate ao crime organizado."
+      ],
+      "strengths": [
+        "Detalhamento de propostas para a educação, incluindo a valorização de professores e a gestão da emoção nas escolas.",
+        "Medidas concretas para a modernização do SUS e a expansão da telemedicina.",
+        "Propostas específicas para a segurança pública, como a integração das forças de segurança e o uso de tecnologia.",
+        "Planos para o desenvolvimento econômico, incluindo a criação de escolas de empreendedorismo e um banco do empreendedor.",
+        "Iniciativas para a proteção das mulheres e a promoção da igualdade de gênero."
+      ],
+      "gaps": [
+        "Ausência de propostas específicas sobre direitos humanos e igualdade racial.",
+        "Falta de menção a políticas de inclusão para pessoas com deficiência.",
+        "Não aborda diretamente questões relacionadas ao meio ambiente e mudanças climáticas.",
+        "Não apresenta medidas concretas para a reforma agrária ou apoio à agricultura familiar.",
+        "Não discute a regulação de big techs e inteligência artificial."
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano propõe um controle rigoroso dos gastos públicos e a redução gradual da dívida pública. A simplificação tributária e a criação de um ambiente favorável ao empreendedorismo são enfatizadas.",
+          "proposals": [
+            "Promover a redução gradual e sustentável da dívida pública.",
+            "Implementar a simplificação tributária para aumentar a competitividade.",
+            "Criar um banco especializado em financiar pequenos empreendedores."
+          ],
+          "quotes": [
+            "O equilíbrio das contas públicas será uma prioridade nacional.",
+            "Defenderemos a simplificação dos tributos, a redução da burocracia."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O plano prioriza a atenção primária e a modernização do SUS, com foco na digitalização e na expansão da telemedicina. A saúde mental é abordada como uma questão central.",
+          "proposals": [
+            "Fortalecer a atenção primária com equipes multiprofissionais.",
+            "Expandir a telemedicina para atender regiões distantes.",
+            "Implantar um programa nacional de saúde mental."
+          ],
+          "quotes": [
+            "A atenção básica continuará sendo o principal eixo do Sistema Único de Saúde.",
+            "Implantaremos uma ampla política nacional de saúde mental."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "A educação é apresentada como a principal política de transformação nacional, com foco na alfabetização, valorização de professores e gestão da emoção nas escolas.",
+          "proposals": [
+            "Investir na alfabetização na idade certa.",
+            "Ampliar o ensino técnico integrado ao ensino médio.",
+            "Implantar programas de gestão da emoção nas escolas."
+          ],
+          "quotes": [
+            "A educação será a principal política de transformação nacional.",
+            "Nenhum país alcançou elevado desenvolvimento econômico sem colocar a educação básica como prioridade absoluta."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O plano propõe a recriação do Ministério da Segurança Pública e a integração das forças de segurança para combater o crime organizado. A tecnologia será utilizada para aumentar a eficiência das operações.",
+          "proposals": [
+            "Recriar o Ministério da Segurança Pública.",
+            "Promover a integração entre Polícia Federal e Polícias Estaduais.",
+            "Utilizar inteligência artificial para monitoramento e prevenção."
+          ],
+          "quotes": [
+            "O combate ao crime organizado exige atuação coordenada entre União, Estados e Municípios.",
+            "A segurança pública será fortalecida pelo uso de câmeras inteligentes e análise preditiva."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O plano não aborda diretamente questões ambientais, mas menciona a importância da sustentabilidade em propostas de desenvolvimento econômico e energético.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "O plano menciona a importância de programas de proteção social, mas não detalha propostas específicas para assistência social.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O plano propõe a ampliação das concessões e parcerias público-privadas para melhorar a infraestrutura nacional, além de modernizar a logística e universalizar a infraestrutura digital.",
+          "proposals": [
+            "Ampliar as concessões e parcerias público-privadas.",
+            "Implantar um programa nacional de integração logística.",
+            "Universalizar a infraestrutura digital com internet de alta velocidade."
+          ],
+          "quotes": [
+            "O Estado brasileiro não possui recursos suficientes para realizar sozinho todos os investimentos de que o país necessita.",
+            "Levaremos internet de alta velocidade às escolas, hospitais, comunidades rurais e regiões remotas."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O plano propõe dobrar a produção agropecuária e investir em tecnologia e inovação para fortalecer o setor agrícola, mas não aborda diretamente a agricultura familiar.",
+          "proposals": [
+            "Dobrar a produção agropecuária nos próximos anos.",
+            "Ampliar o acesso ao crédito e assistência técnica para pequenos agricultores.",
+            "Estimular a criação de cooperativas agrícolas."
+          ],
+          "quotes": [
+            "O Brasil reúne condições únicas para liderar a segurança alimentar mundial.",
+            "Ampliaremos o acesso ao crédito, assistência técnica, seguro rural, mecanização e mercados consumidores."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "O plano menciona a proteção das mulheres e a promoção da igualdade de gênero, mas não aborda diretamente outros direitos humanos.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano propõe uma política externa ativa e equilibrada, buscando ampliar a influência do Brasil em fóruns globais e fortalecer a cooperação internacional.",
+          "proposals": [
+            "Ampliar acordos comerciais estratégicos com diferentes blocos econômicos.",
+            "Fortalecer a cooperação com países em desenvolvimento."
+          ],
+          "quotes": [
+            "O Brasil adotará uma política externa ativa, equilibrada e pragmática.",
+            "Fortaleceremos a cooperação com países em desenvolvimento."
+          ],
+          "depth": "alto"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano não aborda diretamente questões relacionadas à Selic, juros e inflação.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "O plano enfatiza a responsabilidade fiscal e o controle rigoroso dos gastos públicos, visando um déficit próximo de zero.",
+          "proposals": [
+            "Promover a redução gradual e sustentável da dívida pública.",
+            "Implementar a simplificação tributária."
+          ],
+          "quotes": [
+            "O equilíbrio das contas públicas será uma prioridade nacional.",
+            "O dinheiro público pertence ao cidadão."
+          ],
+          "depth": "alto"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "O plano não menciona propostas específicas sobre isenção do Imposto de Renda.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "O plano não aborda questões relacionadas à jornada de trabalho e escala 6x1.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "O plano não menciona a regulação de big techs ou inteligência artificial.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "O plano propõe medidas específicas para combater o crime organizado, incluindo a integração das forças de segurança e o uso de tecnologia.",
+          "proposals": [
+            "Promover a integração entre Polícia Federal e Polícias Estaduais.",
+            "Intensificar o combate ao tráfico de drogas e lavagem de dinheiro."
+          ],
+          "quotes": [
+            "O combate ao crime organizado exige atuação coordenada entre União, Estados e Municípios.",
+            "A segurança pública será fortalecida pelo uso de câmeras inteligentes e análise preditiva."
+          ],
+          "depth": "alto"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "O plano apresenta o Programa Mulheres Vivas, que visa integrar tecnologia e segurança para proteger mulheres em situação de risco.",
+          "proposals": [
+            "Implantar o Programa Mulheres Vivas para proteção das mulheres.",
+            "Utilizar monitoramento inteligente e aplicativos de emergência."
+          ],
+          "quotes": [
+            "Nenhuma mulher deverá viver sob o medo permanente da violência.",
+            "Utilizaremos monitoramento inteligente, aplicativos de emergência para proteger mulheres em situação de risco."
+          ],
+          "depth": "alto"
+        }
+      ],
+      "analyzedAt": "2026-09-23T17:07:25.297Z",
+      "sourceFileName": "2026BR280002551547_01.pdf (TSE)"
+    },
+    {
+      "candidateId": "rui-costa-pimenta",
+      "overview": "O plano de governo do PCO para as eleições de 2026 apresenta uma série de propostas voltadas para a defesa dos direitos dos trabalhadores e a luta contra o capitalismo. O documento é estruturado em pontos centrais que abordam temas como salários, jornada de trabalho, privatizações, serviços públicos, educação e saúde. O partido defende a organização e mobilização dos trabalhadores como meio para conquistar seus direitos, enfatizando a necessidade de um governo operário. As propostas incluem medidas concretas para a revogação de reformas trabalhistas e a reestatização de empresas.",
+      "priorities": [
+        "Reajuste imediato dos salários e proteção contra a inflação.",
+        "Redução da jornada de trabalho e combate ao desemprego.",
+        "Revogação das reformas trabalhistas de 2016.",
+        "Cancelamento das privatizações e reestatização de empresas.",
+        "Aumento de verbas para saúde e educação."
+      ],
+      "strengths": [
+        "Detalhamento das propostas de reajuste salarial e proteção contra a inflação.",
+        "Medidas específicas para a redução da jornada de trabalho e combate ao desemprego.",
+        "Propostas claras para a revogação das reformas trabalhistas.",
+        "Planos de reestatização de empresas e serviços públicos.",
+        "Ações concretas para a melhoria da saúde pública."
+      ],
+      "gaps": [
+        "Ausência de propostas específicas sobre meio ambiente e clima.",
+        "Não aborda diretamente a questão da agricultura e agronegócio.",
+        "Falta de menção a direitos humanos e igualdade de gênero.",
+        "Não apresenta medidas para relações exteriores.",
+        "Não discute a regulação de big techs e inteligência artificial."
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano aborda a necessidade de um reajuste salarial e proteção contra a inflação, propondo medidas como a reposição integral das perdas salariais e aumento emergencial dos salários.",
+          "proposals": [
+            "Reposição integral de 100% das perdas salariais.",
+            "Aumento emergencial de 50% de todos os salários.",
+            "Escala móvel dos salários com aumento automático a cada 3% de aumento do custo de vida."
+          ],
+          "quotes": [
+            "A inflação, a cassação dos direitos trabalhistas e os juros exorbitantes vêm corroendo ininterruptamente o salário do trabalhador brasileiro."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O plano defende a saúde pública gratuita e sob controle dos trabalhadores, propondo aumento de verbas para a saúde e a construção de novos hospitais.",
+          "proposals": [
+            "Mais verbas para a saúde pública.",
+            "Plano de emergência para construção de hospitais e postos de saúde.",
+            "Volta do programa Mais Médicos."
+          ],
+          "quotes": [
+            "Mais verbas para a saúde pública. Não pode haver limite nos gastos para salvar a vida do povo."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "O documento propõe a luta por um ensino público, gratuito e de qualidade, com medidas para aumentar a verba destinada à educação e revogar reformas anteriores.",
+          "proposals": [
+            "Mais verbas para a educação.",
+            "Revogação de todas as \"reformas\" do regime golpista contra a educação.",
+            "Piso salarial nacional dos professores de, pelo menos, R$8,5 mil."
+          ],
+          "quotes": [
+            "A educação deve ser garantida para todo o povo."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O plano critica a repressão policial e propõe a dissolução da polícia militar, defendendo o direito de autodefesa dos trabalhadores.",
+          "proposals": [
+            "Dissolução da polícia militar e de todo o aparato repressivo.",
+            "Direito de autodefesa dos trabalhadores da cidade e do campo."
+          ],
+          "quotes": [
+            "Abaixo a repressão. Liberdade de expressão e direito de autodefesa."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O plano não aborda diretamente questões relacionadas ao meio ambiente e clima.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O plano não apresenta propostas específicas sobre infraestrutura e desenvolvimento urbano.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O plano não discute diretamente a agricultura e o agronegócio.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano não aborda diretamente questões de política externa ou relações internacionais.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano não menciona diretamente a taxa Selic, juros ou inflação.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "O documento não aborda questões relacionadas a contas públicas ou responsabilidade fiscal.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "O plano não discute isenção do Imposto de Renda ou tributação da renda.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "O plano não aborda a regulação de big techs ou inteligência artificial.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "O plano não menciona diretamente o crime organizado ou diretrizes de segurança pública.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "O plano não discute a violência contra a mulher ou medidas de proteção.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "analyzedAt": "2026-09-23T17:07:41.142Z",
+      "sourceFileName": "2026BR280002552487_01.pdf (TSE)"
+    },
+    {
+      "candidateId": "samara-martins",
+      "overview": "O plano de governo da Unidade Popular pelo Socialismo, liderado por Samara Martins, aborda diversas áreas temáticas, propondo medidas para enfrentar desigualdades sociais e promover direitos. O documento é estruturado em seções que tratam de economia, saúde, educação, segurança, meio ambiente, assistência social, infraestrutura, agricultura, direitos, relações exteriores, e questões de gênero e raça. Cada seção apresenta um diagnóstico da situação atual e propostas concretas para transformação social, enfatizando a necessidade de um governo que priorize as necessidades da classe trabalhadora.",
+      "priorities": [
+        "Aumento de 100% no salário mínimo",
+        "Fim da escala 6x1 e redução da jornada de trabalho",
+        "Fortalecimento do SUS e valorização dos trabalhadores da saúde",
+        "Universalização da educação pública e gratuita",
+        "Combate à violência de gênero e promoção da igualdade racial"
+      ],
+      "strengths": [
+        "Propostas detalhadas para aumento do salário mínimo e controle da economia",
+        "Medidas específicas para a saúde pública e valorização do SUS",
+        "Planos para a educação pública, incluindo a revogação de reformas recentes",
+        "Ações concretas para a redução da jornada de trabalho e fim da escala 6x1",
+        "Iniciativas para a proteção dos direitos das mulheres e da população negra"
+      ],
+      "gaps": [
+        "Ausência de propostas específicas para relações exteriores",
+        "Falta de menção a políticas de segurança pública detalhadas",
+        "Não aborda diretamente a questão da dívida pública",
+        "Pouca ênfase em medidas para a agricultura familiar",
+        "Não menciona estratégias para a regulação de big techs e inteligência artificial"
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano discute a desigualdade econômica no Brasil, destacando a concentração de riqueza e a precarização do trabalho. Propõe um aumento de 100% no salário mínimo e o fim do arcabouço fiscal que limita investimentos sociais.",
+          "proposals": [
+            "Aumentar o salário mínimo em 100% no primeiro momento de governo",
+            "Revogar o arcabouço fiscal que limita investimentos sociais"
+          ],
+          "quotes": [
+            "O salário mínimo necessário para sustentar uma família de quatro pessoas deveria ser de R$ 7.892,55"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O plano defende o fortalecimento do Sistema Único de Saúde (SUS) e a valorização dos trabalhadores da saúde. Propõe a unificação do SUS sob gestão estatal e a produção nacional de medicamentos.",
+          "proposals": [
+            "Fortalecer e unificar o SUS 100% estatal",
+            "Garantir a produção nacional de medicamentos e vacinas"
+          ],
+          "quotes": [
+            "Defender o SUS é defender a vida, a ciência e a soberania nacional"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "O documento propõe a revogação de reformas que mercantilizaram a educação e a destinação de 10% do PIB para a educação pública. Defende a universalização do acesso à educação em todos os níveis.",
+          "proposals": [
+            "Revogar o Novo Ensino Médio e as reformas empresariais",
+            "Destinar 10% do PIB para a educação pública"
+          ],
+          "quotes": [
+            "A educação deve ser tratada como um direito, e não como uma mercadoria"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O plano menciona a necessidade de combater a violência de gênero e a violência policial, mas não apresenta propostas específicas para a segurança pública em geral.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O documento não aborda diretamente questões ambientais, mas menciona a necessidade de soberania nacional e controle sobre recursos naturais.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "O plano propõe a criação de frentes emergenciais de trabalho e a ampliação do Benefício de Prestação Continuada (BPC) para pessoas com deficiência.",
+          "proposals": [
+            "Criar frentes emergenciais de trabalho para atender necessidades sociais",
+            "Ampliar o BPC considerando os gastos com medicamentos e cuidados"
+          ],
+          "quotes": [
+            "A assistência social deve ser um direito garantido a todos"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O plano menciona a necessidade de investimentos em infraestrutura, mas não detalha propostas específicas para o setor.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O documento não aborda diretamente a agricultura, mas menciona a necessidade de reforma agrária e apoio à agricultura familiar.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "O plano enfatiza a luta por direitos humanos, igualdade e combate à violência de gênero, propondo medidas para a proteção das mulheres e da população negra.",
+          "proposals": [
+            "Fortalecer políticas de prevenção e combate à violência contra a mulher",
+            "Ampliar vagas para a população negra no serviço público"
+          ],
+          "quotes": [
+            "A emancipação das mulheres deve ser uma prioridade permanente"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano não aborda diretamente a política externa, mas menciona a luta anti-imperialista e a defesa da soberania nacional.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano menciona a taxa Selic e seu impacto sobre a dívida pública, mas não apresenta propostas específicas para controle da inflação.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "O documento critica o arcabouço fiscal e propõe a revogação de reformas que limitam investimentos sociais, mas não detalha um plano para as contas públicas.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "O plano não aborda diretamente a isenção do Imposto de Renda ou propostas relacionadas à tributação da renda.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "O plano propõe o fim da escala 6x1 e a redução da jornada de trabalho, destacando a necessidade de melhores condições para os trabalhadores.",
+          "proposals": [
+            "Fim da escala 6x1 e redução da jornada para 30 horas semanais"
+          ],
+          "quotes": [
+            "A exploração capitalista está diretamente relacionada ao tempo de trabalho"
+          ],
+          "depth": "alto"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "O plano não menciona a regulação de big techs ou inteligência artificial.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "O documento não aborda diretamente o crime organizado ou propostas para segurança pública.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "analyzedAt": "2026-09-23T17:08:00.778Z",
+      "sourceFileName": "2026BR280002538811_01.pdf (TSE)"
+    },
+    {
+      "candidateId": "edmilson-costa",
+      "overview": "O plano de governo do Partido Comunista Brasileiro (PCB) para as eleições presidenciais de 2026, liderado por Edmilson Costa, apresenta uma proposta de transformação radical da sociedade brasileira, com foco na construção do Poder Popular e na luta pelo socialismo. O documento é estruturado em cinco grandes transformações: política, economia, área social e do trabalho, serviços públicos e meio ambiente, e relações internacionais. Cada transformação inclui propostas específicas para abordar questões como direitos sociais, saúde, educação, e combate às opressões. O plano enfatiza a necessidade de uma mudança estrutural na sociedade, visando a emancipação da classe trabalhadora e a superação do capitalismo.",
+      "priorities": [
+        "Construir o Poder Popular e promover a Revolução Socialista.",
+        "Estatização das áreas estratégicas da economia e controle público do sistema monetário.",
+        "Revogação das contrarreformas trabalhistas e previdenciárias.",
+        "Universalização dos serviços públicos de saúde e educação.",
+        "Combate às opressões e promoção dos direitos humanos."
+      ],
+      "strengths": [
+        "Detalhamento das propostas de transformação política, como a criação de um Parlamento Unicameral e Orçamento Popular.",
+        "Propostas concretas para a economia, incluindo a nacionalização de empresas e reforma tributária progressiva.",
+        "Medidas específicas para a área social, como a redução da jornada de trabalho e a reforma agrária popular.",
+        "Planos para a universalização do SUS e educação pública gratuita.",
+        "Estratégias para a proteção ambiental e combate ao desmatamento."
+      ],
+      "gaps": [
+        "Ausência de propostas específicas sobre segurança pública e combate ao crime organizado.",
+        "Não aborda diretamente a questão da violência contra a mulher.",
+        "Falta de menção a políticas específicas para a agricultura familiar.",
+        "Não apresenta medidas concretas sobre relações exteriores além do internacionalismo.",
+        "Não discute a questão da inflação e política monetária."
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano propõe a nacionalização e controle público do sistema monetário e financeiro, além da criação do Banco dos Trabalhadores. A dívida pública será reestruturada e investigada, e haverá uma reforma tributária com impostos progressivos.",
+          "proposals": [
+            "Criar o Banco dos Trabalhadores para gestão dos fundos previdenciários.",
+            "Reestruturar a dívida pública e suspender pagamentos durante a investigação.",
+            "Implementar uma reforma tributária com isenção do imposto de renda para quem ganha até 1 salário-mínimo do Dieese."
+          ],
+          "quotes": [
+            "A dívida pública será reestruturada e seu passivo será substituído por títulos de longo prazo.",
+            "Defendemos a Petrobras 100% estatal, com a redução do ritmo da exploração do petróleo."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O plano propõe a universalização do sistema de saúde, com a estatização do setor privado e fortalecimento do SUS. Serão criados Conselhos Populares de Saúde para controle do sistema em todos os níveis.",
+          "proposals": [
+            "Estatizar todo o setor privado de saúde e fortalecer o SUS.",
+            "Criar Conselhos Populares de Saúde, eleitos pelos trabalhadores.",
+            "Ampliar os investimentos no Complexo Econômico-Industrial da Saúde."
+          ],
+          "quotes": [
+            "Um SUS forte, público, gratuito e de qualidade só será possível com um CEIS planejado, forte e soberano."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "O plano defende a educação 100% pública e gratuita, com a estatização do sistema privado de ensino. Propõe a ampliação dos Institutos Federais e a valorização dos profissionais da educação.",
+          "proposals": [
+            "Estatizar o sistema privado de ensino e ampliar os Institutos Federais.",
+            "Implantar o Piso Salarial Profissional Nacional como vencimento básico para professores.",
+            "Promover o fim do vestibular nas universidades federais."
+          ],
+          "quotes": [
+            "A educação 100% pública e gratuita, com a estatização do sistema privado de ensino."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O plano não aborda diretamente a segurança pública, mas propõe a desmilitarização da segurança e a criação de uma política de segurança dos direitos, com controle social.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O plano propõe uma política radical de combate à destruição ambiental, com ações de reflorestamento e proteção das terras indígenas. Defende a redução das emissões de gases poluentes e a promoção de energias alternativas.",
+          "proposals": [
+            "Implementar programas de reflorestamento com espécies nativas.",
+            "Promover a proteção e demarcação das terras indígenas.",
+            "Desenvolver investimentos em energias alternativas como solar e eólica."
+          ],
+          "quotes": [
+            "O governo do Poder Popular desenvolverá uma política radical de combate à destruição da natureza promovida pelo capitalismo."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "O plano propõe a ampliação dos serviços de assistência social, com foco na infância e na proteção de grupos vulneráveis. Defende a criação de políticas públicas para atender as necessidades da população.",
+          "proposals": [
+            "Fortalecer e expandir os conselhos tutelares e creches.",
+            "Garantir o provimento de auxílios emergenciais para situações de vulnerabilidade.",
+            "Ampliar os serviços de assistência para a infância e adolescentes."
+          ],
+          "quotes": [
+            "Ampliação dos serviços de assistência para a infância, com o fortalecimento e a expansão dos conselhos tutelares."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O plano não aborda diretamente a infraestrutura, mas menciona a necessidade de reestatização de serviços essenciais como energia e saneamento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O plano propõe uma reforma agrária popular, com desapropriação de latifúndios improdutivos e apoio à agricultura familiar. Defende a produção agroecológica e a organização de cooperativas.",
+          "proposals": [
+            "Realizar a reforma agrária popular com desapropriação de latifúndios.",
+            "Fomentar a organização de cooperativas para produção agroecológica.",
+            "Implementar políticas públicas de compras para redes escolares e hospitalares."
+          ],
+          "quotes": [
+            "A reforma agrária popular tem perspectiva anticapitalista, respeitando os povos originários e quilombolas."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "O plano enfatiza a luta contra todas as formas de opressão, propondo políticas de combate ao machismo, racismo e LGBTfobia. Defende a ampliação de direitos para grupos marginalizados.",
+          "proposals": [
+            "Ampliar a licença-maternidade e paternidade para um ano.",
+            "Legalizar o aborto com garantia de atendimento na rede pública de saúde.",
+            "Universalizar as cotas universitárias para a população Trans."
+          ],
+          "quotes": [
+            "O combate permanente a todas as formas de opressão deve realizar-se não apenas em uma dimensão cultural e de valores, mas por meio da efetiva garantia dos direitos."
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano propõe fortalecer a solidariedade internacional e a autodeterminação dos povos, com ênfase em relações diplomáticas com países em luta contra o imperialismo.",
+          "proposals": [
+            "Estabelecer relações diplomáticas plenas com a Palestina e outros países em luta.",
+            "Promover a criação de uma organização de Países Exportadores de Energia.",
+            "Defender o fim da OTAN e de instituições imperialistas."
+          ],
+          "quotes": [
+            "O governo do poder popular atuará visando a construção de uma nova ordem internacional, baseada na cooperação, na paz entre as nações."
+          ],
+          "depth": "alto"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano não aborda questões relacionadas à Selic, juros e inflação.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "O plano não aborda diretamente o combate ao crime organizado.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "analyzedAt": "2026-09-23T17:08:31.636Z",
+      "sourceFileName": "2026BR280002551975_01.pdf (TSE)"
+    },
+    {
+      "candidateId": "clariana-barao",
+      "overview": "O plano de governo de Clariana Barão organiza suas propostas em seis capítulos principais, com foco na proteção de mulheres e crianças como eixo transversal. Os capítulos abordam temas como economia, educação, segurança, saúde e funcionamento do Estado. Cada capítulo apresenta objetivos claros, ações específicas e indicadores sugeridos para acompanhamento. O documento enfatiza a necessidade de coordenação federativa e acompanhamento público das ações propostas. As metas numéricas devem ser calibradas com diagnósticos oficiais e avaliações jurídicas.",
+      "priorities": [
+        "Proteção de mulheres e crianças",
+        "Ambiente de negócios simples e previsível",
+        "Educação de qualidade",
+        "Segurança pública eficaz",
+        "Atenção primária em saúde",
+        "Governo digital e transparente"
+      ],
+      "strengths": [
+        "Detalhamento das ações para proteção de mulheres e crianças",
+        "Propostas específicas para o ambiente de negócios e empreendedorismo",
+        "Estratégias claras para a educação infantil e alfabetização",
+        "Medidas concretas para segurança pública e combate ao crime organizado",
+        "Ações voltadas para a saúde preventiva e digital",
+        "Estruturação de um governo digital e orientado a resultados"
+      ],
+      "gaps": [
+        "Ausência de propostas específicas sobre direitos humanos e cidadania",
+        "Não aborda diretamente questões de meio ambiente e clima",
+        "Falta de menção a políticas de assistência social",
+        "Não apresenta medidas concretas para a agricultura e agronegócio",
+        "Não discute relações exteriores e política internacional"
+      ],
+      "topics": [
+        {
+          "topicId": "economia",
+          "summary": "O plano propõe um ambiente de negócios simples e previsível, com foco na simplificação regulatória e digitalização. Também aborda o apoio a pequenos negócios e empreendedorismo, além de infraestrutura e logística.",
+          "proposals": [
+            "Simplificar a regulamentação para abertura de empresas",
+            "Oferecer crédito produtivo e garantias para pequenos negócios",
+            "Implementar melhorias em rodovias e ferrovias"
+          ],
+          "quotes": [
+            "Ambiente de negócios simples e previsível",
+            "Pequenos negócios e empreendedorismo"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "saude",
+          "summary": "O plano enfatiza a atenção primária resolutiva e a prevenção de doenças. Propõe a integração de serviços de saúde e a promoção de hábitos saudáveis.",
+          "proposals": [
+            "Implementar equipes completas de atenção primária",
+            "Promover vacinação e rastreamento de saúde",
+            "Integrar telemedicina à rede de saúde"
+          ],
+          "quotes": [
+            "Atenção primária resolutiva",
+            "Prevenção e diagnóstico precoce"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "educacao",
+          "summary": "O plano foca na educação de qualidade, com ênfase na alfabetização e no desenvolvimento infantil. Propõe ações para valorização dos professores e modernização das escolas.",
+          "proposals": [
+            "Garantir alfabetização na idade adequada",
+            "Expandir formação técnica conectada às vocações regionais",
+            "Reduzir burocracia e apoiar pedagogicamente os professores"
+          ],
+          "quotes": [
+            "Alfabetização e aprendizagem essencial",
+            "Escola para o século XXI"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "seguranca",
+          "summary": "O plano aborda a segurança pública com foco em fronteiras integradas e combate ao narcotráfico. Propõe ações de inteligência e policiamento baseado em dados.",
+          "proposals": [
+            "Implementar monitoramento remoto nas fronteiras",
+            "Desarticular organizações criminosas",
+            "Integrar informações para proteção urbana"
+          ],
+          "quotes": [
+            "Fronteiras inteligentes e integradas",
+            "Combate ao narcotráfico e ao tráfico de armas"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "meio-ambiente",
+          "summary": "O plano não aborda questões relacionadas ao meio ambiente e clima.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "assistencia-social",
+          "summary": "O plano não menciona diretamente políticas de assistência social.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "infraestrutura",
+          "summary": "O plano propõe melhorias em infraestrutura e logística, com foco em rodovias e ferrovias. Ações visam aumentar a eficiência do transporte e a qualidade da infraestrutura.",
+          "proposals": [
+            "Melhorar a manutenção de rodovias",
+            "Expandir ferrovias e hidrovias",
+            "Planejar concessões e PPPs"
+          ],
+          "quotes": [
+            "Infraestrutura e logística"
+          ],
+          "depth": "alto"
+        },
+        {
+          "topicId": "agricultura",
+          "summary": "O plano não apresenta propostas específicas para a agricultura e agronegócio.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "direitos",
+          "summary": "O plano não aborda diretamente questões de direitos e democracia.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "topicId": "relacoes-exteriores",
+          "summary": "O plano não menciona políticas de relações exteriores.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        }
+      ],
+      "agendas": [
+        {
+          "agendaId": "selic-inflacao",
+          "summary": "O plano não aborda questões relacionadas à Selic, juros e inflação.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "contas-publicas",
+          "summary": "O plano não menciona diretamente contas públicas e responsabilidade fiscal.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "isencao-ir",
+          "summary": "O plano não apresenta propostas sobre isenção do Imposto de Renda.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "escala-6x1",
+          "summary": "O plano não discute a jornada de trabalho e a escala 6x1.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "big-techs-ia",
+          "summary": "O plano não aborda a regulação de big techs e inteligência artificial.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "crime-organizado",
+          "summary": "Não há menção concreta com trecho literal identificada nesta análise do documento.",
+          "proposals": [],
+          "quotes": [],
+          "depth": "ausente"
+        },
+        {
+          "agendaId": "violencia-mulher",
+          "summary": "O plano prioriza a proteção de mulheres e crianças, propondo uma rede de proteção e resposta à violência.",
+          "proposals": [
+            "Criar uma rede nacional de proteção e resposta à violência contra mulheres e crianças"
+          ],
+          "quotes": [
+            "Rede nacional de proteção e resposta à violência"
+          ],
+          "depth": "alto"
+        }
+      ],
+      "analyzedAt": "2026-09-23T17:08:47.830Z",
+      "sourceFileName": "2026BR280002552484_01.pdf (TSE)"
+    }
+  ]
+}

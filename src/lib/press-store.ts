@@ -12,7 +12,6 @@ async function ensureDir() {
 }
 
 export async function readPressStore(): Promise<PressStore> {
-  await ensureDir();
   try {
     const raw = await fs.readFile(PRESS_PATH, "utf8");
     return JSON.parse(raw) as PressStore;
@@ -43,5 +42,3 @@ export async function savePressForCandidate(
   store.updatedAt = new Date().toISOString();
   await writePressStore(store);
 }
-
-export { PRESS_PATH };

@@ -1,0 +1,3 @@
+# Rascunhos de notícia (não publicados).
+# Gerados por: npm run news:draft -- --url=...
+# Publicar = editar e mover para src/data/posts.ts

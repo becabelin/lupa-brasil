@@ -20,6 +20,7 @@ import { VOICE } from "@/data/voice";
 
 const KIND_ORDER: SearchHitKind[] = [
   "candidato",
+  "noticia",
   "caso",
   "conceito",
   "plano",

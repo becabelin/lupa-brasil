@@ -2315,7 +2315,16 @@ export function explainerPath(e: Pick<Explainer, "slug" | "kind">): string {
 }
 
 export function caseExplainers(): Explainer[] {
- return explainersByKind("caso");
+  return explainersByKind("caso");
+}
+
+/** Casos do mais recente ao mais antigo (feed /noticias). */
+export function casesNewestFirst(): Explainer[] {
+  return EXPLAINERS.filter((e) => e.kind === "caso").sort((a, b) => {
+    const byDate = b.publishedAt.localeCompare(a.publishedAt);
+    if (byDate !== 0) return byDate;
+    return a.title.localeCompare(b.title, "pt-BR");
+  });
 }
 
 export function glossaryExplainers(): Explainer[] {
@@ -2337,9 +2346,13 @@ export function featuredExplainers(): Explainer[] {
 }
 
 export function featuredCases(): Explainer[] {
- return EXPLAINERS.filter((e) => e.featured && e.kind === "caso").sort(
- (a, b) => a.title.localeCompare(b.title, "pt-BR"),
- );
+  return EXPLAINERS.filter((e) => e.featured && e.kind === "caso").sort(
+    (a, b) => {
+      const byDate = b.publishedAt.localeCompare(a.publishedAt);
+      if (byDate !== 0) return byDate;
+      return a.title.localeCompare(b.title, "pt-BR");
+    },
+  );
 }
 
 /** Aliases ordenados do mais longo ao mais curto (evita match parcial). */

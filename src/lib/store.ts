@@ -9,13 +9,16 @@ const UPLOADS_DIR = path.join(DATA_DIR, "uploads");
 
 const emptyStore: StoreData = { documents: [], analyses: [] };
 
+/**
+ * Só em escrita. Em serverless (Vercel) o FS é read-only:
+ * leitura não pode mkdir, senão /comparar e /buscar quebram.
+ */
 async function ensureDirs() {
   await fs.mkdir(DATA_DIR, { recursive: true });
   await fs.mkdir(UPLOADS_DIR, { recursive: true });
 }
 
 export async function readStore(): Promise<StoreData> {
-  await ensureDirs();
   try {
     const raw = await fs.readFile(STORE_PATH, "utf8");
     return JSON.parse(raw) as StoreData;

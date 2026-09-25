@@ -18,7 +18,7 @@ export const VOICE = {
     spotlight: "Agora · Eleições 2026",
     lede: "O que está acontecendo no país, sem maquiagem e sem partido. A gente aproxima os fatos. Você decide o que fazer com eles.",
     ctaEleicoes: "Ver a disputa",
-    ctaNoticias: "Ler os casos",
+    ctaNoticias: "Ler notícias",
     ctaComparar: "Comparar planos",
   },
 
@@ -95,12 +95,12 @@ export const VOICE = {
   },
 
   noticias: {
-    eyebrow: "Grandes casos",
-    lede: "Não é blog do dia. São dossiês pra seguir o fio: o que aconteceu, quem aparece, o essencial destruído.",
+    eyebrow: "Política de perto",
+    lede: "Notícias curtas na voz do Lupa e, quando o tema pesa de verdade, dossiês pra seguir o fio. Fonte na mão. Sem veredicto.",
     marquee: [
-      "Entre no caso",
-      "Seguir a linha",
-      "Termo no hover",
+      "Fato direto",
+      "Fonte na mão",
+      "Caso só se for grande",
       "Sem veredicto nosso",
     ],
   },

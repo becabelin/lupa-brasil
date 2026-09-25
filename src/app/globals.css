@@ -639,6 +639,56 @@ select.appearance-none {
   }
 }
 
+/* Splash de entrada: aparece e some com fade (sem corte seco). */
+@keyframes lupa-intro-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lupa-intro-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes lupa-intro-inner-out {
+  from {
+    opacity: 1;
+    filter: blur(0);
+  }
+  to {
+    opacity: 0.35;
+    filter: blur(6px);
+  }
+}
+
+.lupa-intro-splash {
+  pointer-events: auto;
+  will-change: opacity, transform;
+}
+
+.lupa-intro-splash.is-in {
+  animation: lupa-intro-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lupa-intro-splash.is-out {
+  pointer-events: none;
+  animation: lupa-intro-out 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+.lupa-intro-splash.is-out .lupa-intro-splash-inner {
+  animation: lupa-intro-inner-out 0.55s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
 @keyframes hero-marquee {
   from {
     transform: translateX(0);
@@ -1105,6 +1155,14 @@ html[data-intro-splash="open"] .lupa-cookie-banner {
     opacity: 1;
     animation: none;
     transform: none;
+  }
+  .lupa-intro-splash.is-in,
+  .lupa-intro-splash.is-out,
+  .lupa-intro-splash.is-out .lupa-intro-splash-inner {
+    animation: none;
+    opacity: 0;
+    transform: none;
+    filter: none;
   }
   .hero-marquee,
   .hero-film,
