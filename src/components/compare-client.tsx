@@ -110,6 +110,9 @@ export function CompareClient({ candidates, topics, analyses }: Props) {
     ];
   }, []);
 
+  /** Próximo lado a preencher ao clicar numa chapa livre. */
+  const [nextSide, setNextSide] = useState<"A" | "B">("A");
+
   const panelCandidates = useMemo(
     () =>
       [...candidates].sort((a, b) =>
@@ -118,13 +121,25 @@ export function CompareClient({ candidates, topics, analyses }: Props) {
     [candidates],
   );
 
-  /** Click sets A; if that card is already A, sets B. */
+  /** Clique: tira A/B se já estiver marcado; senão preenche o próximo lado (A↔B). */
   function handlePanelSelect(id: string) {
     if (id === leftId) {
-      setRightId(id);
+      setLeftId("");
+      setNextSide("A");
       return;
     }
-    setLeftId(id);
+    if (id === rightId) {
+      setRightId("");
+      setNextSide("B");
+      return;
+    }
+    if (nextSide === "A") {
+      setLeftId(id);
+      setNextSide("B");
+      return;
+    }
+    setRightId(id);
+    setNextSide("A");
   }
 
   return (
@@ -133,24 +148,36 @@ export function CompareClient({ candidates, topics, analyses }: Props) {
         <FilterSelect
           label="Candidato A"
           value={leftId}
-          onChange={(e) => setLeftId(e.target.value)}
+          onChange={(e) => {
+            setLeftId(e.target.value);
+            setNextSide(e.target.value ? "B" : "A");
+          }}
           searchable
           searchPlaceholder="Buscar candidato…"
-          options={candidates.map((c) => ({
-            value: c.id,
-            label: `${c.name} (${c.party})`,
-          }))}
+          options={[
+            { value: "", label: "Nenhum" },
+            ...candidates.map((c) => ({
+              value: c.id,
+              label: `${c.name} (${c.party})`,
+            })),
+          ]}
         />
         <FilterSelect
           label="Candidato B"
           value={rightId}
-          onChange={(e) => setRightId(e.target.value)}
+          onChange={(e) => {
+            setRightId(e.target.value);
+            setNextSide(e.target.value ? "A" : "B");
+          }}
           searchable
           searchPlaceholder="Buscar candidato…"
-          options={candidates.map((c) => ({
-            value: c.id,
-            label: `${c.name} (${c.party})`,
-          }))}
+          options={[
+            { value: "", label: "Nenhum" },
+            ...candidates.map((c) => ({
+              value: c.id,
+              label: `${c.name} (${c.party})`,
+            })),
+          ]}
         />
         <FilterSelect
           label="Comparar por"
@@ -216,8 +243,8 @@ export function CompareClient({ candidates, topics, analyses }: Props) {
             {lensMeta.label}
           </h3>
           <p className="mt-2 text-sm font-medium text-[#2a2a2a]">
-            Clique para colocar no lado A; se a chapa já estiver no A, o clique
-            vai para o B.
+            Clique para colocar no A ou no B (alternando). Clique de novo na
+            chapa marcada para tirar do lado.
           </p>
         </div>
 
